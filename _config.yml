@@ -1,0 +1,28 @@
+# Book settings
+title: Introducción a Algoritmos y Estructuras de Datos
+author: Diana Margot López, Raúl Ramos / Universidad de Antioquia
+logo: content/local/imgs/logo-tf-udea-unal.png
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+only_build_toc_files: false
+
+repository:
+   url: https://github.com/rramosp/introalgs.v1
+   branch: main
+
+launch_buttons:
+  binderhub_url: ""
+  colab_url: https://colab.research.google.com
+
+html:
+  google_analytics_id: "G-MBFEZ3PF64"
+
+execute:
+  execute_notebooks         : off
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - html_image
+    - dollarmath
+    - amsmath

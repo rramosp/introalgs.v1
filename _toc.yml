@@ -1,0 +1,73 @@
+format: jb-book
+root: intro
+chapters:
+  - file: content/M01
+    sections:
+      - file: "content/NOTAS 00 - Introduccion Python.ipynb"
+        title: "00 - Intro Python"
+      - file: "content/NOTAS 01 - Tipos abstractos de datos.ipynb"
+        title: "01 - Tipos abstractos de datos"
+      - file: "content/LAB 00 - Practica-Ejemplo.ipynb"
+        title: "LAB 00 - Intro Python"
+      - file: "content/LAB 01 - Tipos abstractos de datos.ipynb"
+        title: "LAB 01 - Tipos abstractos de datos"
+  - file: content/M02
+    sections:
+      - file: "content/NOTAS 02 - Polinomios.ipynb"
+        title: 02 - Polinomios
+      - file: "content/NOTAS 03 - Matrices dispersas.ipynb"
+        title: 03 - Matrices dispersas
+      - file: "content/NOTAS 04 - Representacion en memoria.ipynb"
+        title: "04 - Representación en memoria"
+      - file: "content/LAB 02 - Polinomios.ipynb"
+        title: LAB 02 - Polinomios
+      - file: "content/LAB 03 - Matrices dispersas.ipynb"
+        title: LAB 03 - Matrices dispersas
+      - file: "content/LAB 04 - Representacion en memoria.ipynb"
+        title: "LAB 04 - Representación en memoria"
+  - file: content/M03
+    sections:
+      - file: "content/NOTAS 05 - Listas generalizadas.ipynb"
+        title: "05 - Listas generalizadas"
+      - file: "content/NOTAS 06 - Arboles.ipynb"
+        title: "06 - Arboles"
+      - file: "content/NOTAS 07 - Arboles de busqueda.ipynb"
+        title: "07 - Arboles de búsqueda"
+      - file: "content/LAB 05 - Listas generalizadas.ipynb"
+        title: "LAB 05 - Listas generalizadas"
+      - file: "content/LAB 06 - Arboles.ipynb"
+        title: "LAB 06 - Arboles"
+      - file: "content/LAB 07 - Arboles de busqueda.ipynb"
+        title: "LAB 07 - Arboles de búsqueda"
+  - file: content/M04
+    sections:
+      - file: "content/NOTAS 08 - Grafos.ipynb"
+        title: "08 - Grafos"
+      - file: "content/NOTAS 09 - Recorridos sobre grafos.ipynb"
+        title: "09 - Recorridos sobre grafos"
+      - file: "content/NOTAS 10 - Algoritmos sobre grafos.ipynb"
+        title: "10 - Algoritmos sobre grafos"
+      - file: "content/LAB 08 - Grafos.ipynb"
+        title: "LAB 08 - Grafos"
+      - file: "content/LAB 09 - Recorridos sobre grafos.ipynb"
+        title: "LAB 09 - Recorridos sobre grafos"
+      - file: "content/LAB 10 - Algoritmos sobre grafos.ipynb"
+        title: "LAB 10 - Algoritmos sobre grafos"
+  - file: content/M05
+    sections:
+      - file: "content/NOTAS 11 - Algoritmos Geneticos.ipynb"
+        title: "11 - Algoritmos genéticos"
+      - file: "content/NOTAS 12 - Simulated Annealing.ipynb"
+        title: "12 - Simulated annealing"
+      - file: "content/LAB 11 - Algoritmos Genéticos.ipynb"
+        title: "LAB 11 - Algoritmos genéticos"
+
+
+
+
+
+
+        
+
+
+
