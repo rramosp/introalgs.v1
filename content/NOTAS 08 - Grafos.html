@@ -1,0 +1,896 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grafos &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recorridos sobre grafos" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html" />
+    <link rel="prev" title="D. Grafos" href="M04.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 08 - Grafos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 08 - Grafos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipos-de-grafos">
+     Tipos de grafos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminologia">
+     Terminología
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#representacion-de-grafos-con-matrices-de-adyacencia">
+   Representación de grafos con matrices de adyacencia
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Grafos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipos-de-grafos">
+     Tipos de grafos
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminologia">
+     Terminología
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#representacion-de-grafos-con-matrices-de-adyacencia">
+   Representación de grafos con matrices de adyacencia
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="grafos">
+<h1>Grafos<a class="headerlink" href="#grafos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivo-del-modulo">
+<h2>Objetivo del módulo<a class="headerlink" href="#objetivo-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer la estructura grafo, la forma como se clasifican, la terminología usada en dicha estructura y la forma de representarla dentro de un computador.</p>
+<p>## Preguntas</p>
+<ol class="simple">
+<li><p>¿Qué es un grafo?</p></li>
+<li><p>¿Qué es un grafo dirigido?</p></li>
+<li><p>¿Qué es un grafo no dirigido?</p></li>
+<li><p>¿En qué consiste la relación de adyacencia?</p></li>
+<li><p>¿En qué consiste la relación de incidencia?</p></li>
+<li><p>¿Cuál es el grado de un vértice?</p></li>
+<li><p>¿Qué es el grado entrante?</p></li>
+<li><p>¿Qué es el grado saliente?</p></li>
+<li><p>¿Qué es una trayectoria?</p></li>
+<li><p>¿Cuál es la longitud de una trayectoria?</p></li>
+<li><p>¿Qué es una trayectoria simple?</p></li>
+<li><p>¿Qué es un ciclo?</p></li>
+<li><p>¿Qué es un grafo conectado?</p></li>
+<li><p>¿Qué es un grafo completo?</p></li>
+</ol>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Introducción
+Trataremos en este módulo los conceptos básicos sobre grafos. Los grafos son estructuras ampliamente utilizadas en el modelaje de muchas situaciones que se presentan en la vida real. Un grafo se puede utilizar para representar el pensum de un programa, la secuencia de actividades para construir un edificio, los vuelos de una aerolínea, el sistema vial de una ciudad, una red de computadoras, etc.</p>
+<p><strong>Definición</strong>: Un grafo consta de:</p>
+<ul class="simple">
+<li><p>Un conjunto finito de vértices.</p></li>
+<li><p>Un conjunto de pares de vértices llamados lados.</p></li>
+</ul>
+<p>Por ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/grafos.jpg&#39;, width=700)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 08 - Grafos_3_0.jpg" src="../_images/NOTAS 08 - Grafos_3_0.jpg" />
+</div>
+</div>
+<p>Los conjuntos de vértices y lados para cada uno de los grafos de la figura son:</p>
+<p>Grafo <strong>G1</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V = \{0, 1, 2, 3\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \{(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)\}\)</span></p></li>
+</ul>
+<p>Grafo <strong>G2</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V = \{0, 1, 2, 3, 4, 5, 6\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \{(0,1), (0,2), (1,3), (1,4), (2,5), (2,6)\}\)</span></p></li>
+</ul>
+<p>Grafo *<em>G3</em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V = \{0, 1, 2\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E = \{&lt;0, 1&gt;, &lt;1, 0&gt;, &lt;1, 2&gt;, &lt;2, 0&gt;\}\)</span></p></li>
+</ul>
+<div class="section" id="tipos-de-grafos">
+<h3>Tipos de grafos<a class="headerlink" href="#tipos-de-grafos" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Grafos no Dirigidos</strong>: son aquellos en los cuales los lados no están orientados, como en los grafos G1 y G2. Cuando se trata de grafos no dirigidos cada  pareja de vértices se representa entre paréntesis. El orden de los vértices que definen un lado no es relevante, es decir el lado <span class="math notranslate nohighlight">\((V_i, V_j)\)</span> es exactamente lo mismo que el lado <span class="math notranslate nohighlight">\((V_j, V_i)\)</span></p></li>
+<li><p><strong>Grafos Dirigidos</strong>: Son aquellos grafos en los cuales los lados están orientados como en el grafo G3. La pareja de vértices que representa un lado se escribe entre ángulos. La orientación del lado depende del orden en que  escriba la pareja de vértices. Es decir, el lado <span class="math notranslate nohighlight">\(&lt;V_i, V_j&gt;\)</span> es diferente del  lado  <span class="math notranslate nohighlight">\(&lt;V_j, V_i&gt;\)</span>.</p></li>
+</ul>
+<p>Cuando se trata de un grafo dirigido, cada vértice de un lado se diferencia así:</p>
+<p><span class="math notranslate nohighlight">\(&lt;V_i, V_j&gt;\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_i\)</span> = cola del lado</p></li>
+<li><p><span class="math notranslate nohighlight">\(V_j\)</span> = cabeza del lado</p></li>
+</ul>
+</div>
+<div class="section" id="terminologia">
+<h3>Terminología<a class="headerlink" href="#terminologia" title="Permalink to this headline">¶</a></h3>
+<p>Dos vértices son <strong>adyacentes</strong> si conforman un lado.</p>
+<p>En el grafo G1 los vértices 0 y 1 son adyacentes, también lo son los vértices  1 y 2.</p>
+<p>Para grafos dirigidos la relación de adyacencia se discrimina así: Si tenemos el lado <span class="math notranslate nohighlight">\(&lt;V_i, V_j&gt;\)</span> se dice que <span class="math notranslate nohighlight">\(V_i\)</span> es adyacente hacia <span class="math notranslate nohighlight">\(V_j\)</span> y que <span class="math notranslate nohighlight">\(V_j\)</span> es adyacente desde <span class="math notranslate nohighlight">\(V_i\)</span>.</p>
+<p>El lado formado por dos vértices es <strong>incidente</strong> sobre ellos.</p>
+<p><strong>Grado de un Vértice</strong>: Es el número de lados incidentes sobre él. Para el grafo G1 el grado del vértice 0 es 3.  Para el grafo G2 el vértice 3 tiene grado 1 y el vértice 2 tiene grado 3. Para el grafo G3 el vértice 1 tiene grado 3.</p>
+<p>Para grafos Dirigidos hay que diferenciar entre grado entrante y grado saliente.</p>
+<p><strong>Grado entrante</strong> es el número de lados que llegan al vértice y <strong>grado saliente</strong> es el número de lados que salen del vértice.</p>
+<p>Para el grafo G3 el vértice 0 tiene: grado entrante = 2 y  grado saliente = 1</p>
+<p>En grafos dirigidos el grado total es la suma del grado entrante más el grado saliente.</p>
+<p><strong>Trayectoria</strong>: Son los vértices por los cuales hay que pasar para ir desde un vértice i hacia un vértice j. Por ejemplo en el grafo G2 para ir desde el vértice 3 hacia el 5, la trayectoria es:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>           3, 1, 0, 2, 5       {1}
+</pre></div>
+</div>
+<p>Para que una trayectoria sea válida la condición es que los lados sobre la trayectoria existan en el conjunto de lados que define el grafo. En nuestro ejemplo, los lados definidos en la trayectoria son los lados (3,1), (1,0), (0,2) y (2,5). Todos esos lados existen en el conjunto de lados que definen el grafo G2, por tanto dicha trayectoria es válida.</p>
+<p>Si tuviéramos otra trayectoria:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> 		3, 1, 2, 5
+</pre></div>
+</div>
+<p>Los lados definidos en ella son: (3, 1), (1, 2) y (1, 5). Si observamos el conjunto de lados que define el grafo G2, allí no se encuentra definido el lado (1, 2), por consiguiente, la trayectoria presentada aquí no es válida.</p>
+<p><strong>Longitud de una trayectoria</strong>: Es el número de lados en ella. En el ejemplo de la trayectoria {1}, la cual, es válida, en el grafo G2, para ir desde el vértice cuatro hacia el vértice seis es 4, es decir hay que pasar por cuatro lados.</p>
+<p><strong>Trayectoria Simple</strong>: Es una trayectoria en la que todos los vértices, excepto posiblemente el primero y el último, son diferentes. Por ejemplo, si consideramos el grafo G1, una trayectoria para ir desde el vértice 0 hacia el vértice 3 sería:
+0, 2, 1, 3</p>
+<p>y esta es una trayectoria simple. Todos los vértices en ella son diferentes.</p>
+<p>Si en el mismo grafo G1 consideramos la siguiente trayectoria:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>				0, 2, 1, 3, 0
+</pre></div>
+</div>
+<p>también será una trayectoria simple. Todos los vértices son diferentes excepto el primero y el último.</p>
+<p>Si consideramos una trayectoria como:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>				0, 2, 1, 3, 1, 0
+</pre></div>
+</div>
+<p>esta ya no es una trayectoria simple porque por el vértice 1 se pasa dos veces.</p>
+<p><strong>Ciclo</strong>: Es una trayectoria simple en la cual el primero y el último vértice son el mismo. Por ejemplo, en el mismo grafo G1 la trayectoria
+0, 2, 1, 3, 0
+es un ciclo.</p>
+<p><strong>Grafo Conectado</strong>: Se dice que un grafo es conectado si desde cualquier vértice i del grafo se puede ir hacia cualquier otro vértice j del grafo. Este concepto se usa para grafos no dirigidos. Para grafos dirigidos se utiliza el concepto de <strong>grafo fuertemente conectado</strong>. Se dice que un grafo dirigido está fuertemente conectado se desde cualquier vértice se puede viajar hacia cualquier otro vértice del grafo.</p>
+<p>Para grafos no dirigidos: el máximo número de lados es: <span class="math notranslate nohighlight">\(\frac{n(n – 1)}{2}\)</span> siendo <span class="math notranslate nohighlight">\(n\)</span> el número de vértices del grafo</p>
+<p>Para grafos dirigidos: el máximo número de lados es <span class="math notranslate nohighlight">\(n(n – 1)\)</span>.</p>
+<p>Un grafo dirigido es completo cuando tiene n vértices y <span class="math notranslate nohighlight">\(n(n – 1)\)</span> lados.</p>
+</div>
+</div>
+<div class="section" id="representacion-de-grafos-con-matrices-de-adyacencia">
+<h2>Representación de grafos con matrices de adyacencia<a class="headerlink" href="#representacion-de-grafos-con-matrices-de-adyacencia" title="Permalink to this headline">¶</a></h2>
+<p>observa la siguiente implementación y cómo en <code class="docutils literal notranslate"><span class="pre">self.ady_matrix</span></code> se guarda la información del grafo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+class Graph:
+    def __init__(self, num_nodes, edge_list, is_directed=False):
+        assert type(edge_list)==list, &quot;edge_list must be a list of tuples&quot;
+        assert type(num_nodes)==int, &quot;num_nodes must be an int&quot;
+        
+        for t in edge_list:
+            assert len(t)==2, &quot;edge_list must be a list of tuples&quot;
+            assert t[0]&lt;num_nodes and t[0]&gt;=0 and t[1]&lt;num_nodes and t[1]&gt;=0, &quot;edge number not allowed &quot; + str(t)
+            
+        self.ady_matrix  = np.zeros((num_nodes, num_nodes)).astype(int)
+        self.is_directed = is_directed
+        self.num_nodes   = num_nodes
+        for i,j in edge_list:
+            self.ady_matrix[i,j]=1
+            if not is_directed:
+                self.ady_matrix[j,i]=1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g1 = Graph(4, [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)])
+g1.ady_matrix
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 1, 1],
+       [1, 0, 1, 1],
+       [1, 1, 0, 1],
+       [1, 1, 1, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g2 = Graph(7, [(0,1), (0,2), (1,3), (1,4), (2,5), (2,6)])
+g2.ady_matrix
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 1, 0, 0, 0, 0],
+       [1, 0, 0, 1, 1, 0, 0],
+       [1, 0, 0, 0, 0, 1, 1],
+       [0, 1, 0, 0, 0, 0, 0],
+       [0, 1, 0, 0, 0, 0, 0],
+       [0, 0, 1, 0, 0, 0, 0],
+       [0, 0, 1, 0, 0, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g3 = Graph(3, [(0,1), (1,0), (1,2), (2,0)], is_directed=True)
+g3.ady_matrix
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1, 0],
+       [1, 0, 1],
+       [1, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observa que</p>
+<ul class="simple">
+<li><p>para grafos no dirigidos la matriz de adyacencia es simétrica.</p></li>
+<li><p>la matriz puede ser dispersa, por consiguiente se podrá implementar como una matriz dispersa, como en las notas anteriores.</p></li>
+</ul>
+<p>observa cómo implementamos ciertos métodos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Graph2(Graph):
+
+    def assert_valid_node_number(self, n):
+        assert n&gt;=0 and n&lt;self.num_nodes, &quot;invalid node number: %d&quot;%n        
+    
+    def grade(self, node_number):
+        self.assert_valid_node_number(node_number)
+        return np.sum(self.ady_matrix[node_number]) if not self.is_directed else self.grade_out(node_number)+self.grade_in(node_number)
+    
+    def grade_out(self, node_number):
+        assert self.is_directed, &quot;only directed graphs have in/out grades&quot;
+        self.assert_valid_node_number(node_number)
+        return np.sum(self.ady_matrix[node_number])
+
+    def grade_in(self, node_number):
+        assert self.is_directed, &quot;only directed graphs have in/out grades&quot;
+        self.assert_valid_node_number(node_number)
+        return np.sum(self.ady_matrix[:, node_number])
+
+    def are_adyacent(self, node_number_1, node_number_2):
+        self.assert_valid_node_number(node_number_1)
+        self.assert_valid_node_number(node_number_2)
+        
+        return self.ady_matrix[node_number_1, node_number_2]==1 or self.ady_matrix[node_number_2, node_number_1]==1
+        
+    def is_valid_trayectory(self, trayectory):
+        assert type(trayectory)==list, &quot;trayectory must be a list&quot;
+        
+        n = trayectory[0]
+        self.assert_valid_node_number(n)
+
+        for i in trayectory[1:]:
+            self.assert_valid_node_number(i)
+            if self.ady_matrix[n,i]!=1:
+                return False
+            n=i
+        return True
+    
+    def is_simple_trayectory(self, trayectory):
+        return self.is_valid_trayectory(trayectory) and \
+               len(np.unique(trayectory[1:-1])) == len(trayectory[1:-1]) and \
+               np.allclose(np.sort(np.unique(trayectory[1:-1])), np.sort(trayectory[1:-1]))
+    
+    def is_cycle(self, trayectory):
+        return self.is_simple_trayectory(trayectory) and trayectory[0]==trayectory[-1]
+    
+    
+    def is_complete(self):
+        assert self.is_directed, &quot;only directed graphs can be checked if complete&quot;
+        
+        return np.allclose(1-np.eye(self.ady_matrix.shape[0]), self.ady_matrix)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g1 = Graph2(4, [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)])
+for i in range(g1.num_nodes):
+    print(&quot;node&quot;,i, &quot;, grade =&quot;, g1.grade(i))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>node 0 , grade = 3
+node 1 , grade = 3
+node 2 , grade = 3
+node 3 , grade = 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g3 = Graph2(4, [(0,1), (1,0), (1,2), (2,0), (2,3)], is_directed=True)
+for i in range(g3.num_nodes):
+    print(&quot;node&quot;,i, &quot;, grade_in =&quot;, g3.grade_in(i),&quot;, grade_out =&quot;, g3.grade_out(i), &quot;, total grade =&quot;, g3.grade(i))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>node 0 , grade_in = 2 , grade_out = 1 , total grade = 3
+node 1 , grade_in = 1 , grade_out = 2 , total grade = 3
+node 2 , grade_in = 1 , grade_out = 2 , total grade = 3
+node 3 , grade_in = 1 , grade_out = 0 , total grade = 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(g3.are_adyacent(0,1))
+print(g3.are_adyacent(3,2))
+print(g3.are_adyacent(0,3))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t1 = [ 0, 2, 1, 3]
+t2 = [ 0, 2, 1, 2, 3]
+t3 = [ 0, 2, 1, 3, 0]
+print(&quot;          trayectory    is_valid   is_simple   is_cycle&quot;)
+for t in [t1, t2, t3]:
+    print(&quot;%20s&quot;%str(t), &quot;%10s&quot;%g1.is_valid_trayectory(t),&quot;%10s&quot;%g1.is_simple_trayectory(t), &quot;%10s&quot;%g1.is_cycle(t))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          trayectory    is_valid   is_simple   is_cycle
+        [0, 2, 1, 3]       True       True      False
+     [0, 2, 1, 2, 3]       True      False      False
+     [0, 2, 1, 3, 0]       True       True       True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g3.is_complete()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g3 = Graph2(4, [(0,1), (1,0), (1,2), (2,1), (2,0), (0,2), (2,3), (3,2), (3,0), (0,3), (1,3), (3,1)], is_directed=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g3.is_complete()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="M04.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">D. Grafos</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Recorridos sobre grafos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

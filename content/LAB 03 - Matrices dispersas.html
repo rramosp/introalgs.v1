@@ -1,0 +1,1575 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 03 Matrices dispersas &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB 04 - Representación en memoria" href="LAB%2004%20-%20Representacion%20en%20memoria.html" />
+    <link rel="prev" title="LAB Polinomios" href="LAB%2002%20-%20Polinomios.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 03 - Matrices dispersas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 03 - Matrices dispersas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en linea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-7">
+   Ejercicio 7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-8">
+   Ejercicio 8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-9">
+   Ejercicio 9
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-de-complejidad-computacional">
+   Análisis de complejidad computacional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setitem">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __setitem__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getitem">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __getitem__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __add__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dot">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dot
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB 03 Matrices dispersas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en linea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-7">
+   Ejercicio 7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-8">
+   Ejercicio 8
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-9">
+   Ejercicio 9
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-de-complejidad-computacional">
+   Análisis de complejidad computacional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setitem">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __setitem__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getitem">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __getitem__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     __add__
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dot">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dot
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import init
+from local.lib.rlxmoocapi import submit, session
+import inspect
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_03&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<p>vamos a implementar una matriz dispersa con una estructura de datos que nos permita realizar operaciones más eficientes. Representaremos una matriz como un <strong>diccionario de diccionarios</strong>. Es decir, usaremos un diccionario que, por cada fila, mantenga a su vez un diccionario indexado por columnas de valores de esa fila.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="lab-03-matrices-dispersas">
+<h1>LAB 03 Matrices dispersas<a class="headerlink" href="#lab-03-matrices-dispersas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ejercicio-1">
+<h2>Ejercicio 1.<a class="headerlink" href="#ejercicio-1" title="Permalink to this headline">¶</a></h2>
+<p>Completa la función siguiente para que el diccionario <code class="docutils literal notranslate"><span class="pre">d</span></code> opere como un diccionario de diccionarios. Es decir, que cada <code class="docutils literal notranslate"><span class="pre">key1</span></code> del diccionario sea a su vez un diccionario de forma que al añadir un <code class="docutils literal notranslate"><span class="pre">item</span></code> con una <code class="docutils literal notranslate"><span class="pre">key2</span></code>  concreta:</p>
+<ol class="simple">
+<li><p>si <code class="docutils literal notranslate"><span class="pre">d</span></code> no tiene ningún elemento en esa <code class="docutils literal notranslate"><span class="pre">key1</span></code> se cree un nuevo elemento con una diccionario vacío</p></li>
+<li><p>se añada el <code class="docutils literal notranslate"><span class="pre">item</span></code> al diccionario referenciado con <code class="docutils literal notranslate"><span class="pre">d[key1][key2]</span></code></p></li>
+</ol>
+<p>observa que, dado un diccionario <code class="docutils literal notranslate"><span class="pre">d</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">d.keys()</span></code> devuelve la lista de claves</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">in</span> <span class="pre">d.keys()</span></code> devuelve <code class="docutils literal notranslate"><span class="pre">True</span></code> si el diccionario ya contiente la clave <code class="docutils literal notranslate"><span class="pre">key</span></code></p></li>
+</ul>
+<p>Ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; d = {}
+&gt; add_to_dict(d, 10, 3,  &quot;20&quot;)
+&gt; add_to_dict(d, 1, 5,  &quot;4&quot;)
+&gt; add_to_dict(d, 1, 2, &quot;14&quot;)
+&gt; print d
+&gt; print d[1][5]
+
+{1: {2: &#39;14&#39;, 5: &#39;4&#39;}, 10: {3: &#39;20&#39;}}
+4
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add_to_dict(d, key1, key2, val):
+    
+    &lt;... TU CODIGO AQUI ...&gt;
+    return d
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d = {}
+add_to_dict(d, 10, 3,  &quot;20&quot;)
+add_to_dict(d, 1, 5,  &quot;4&quot;)
+add_to_dict(d, 1, 2, &quot;14&quot;)
+print(d)
+</pre></div>
+</div>
+</div>
+</div>
+<p>observa que si los índices son números de files y columnas, accedemos a un elemento con una notación <em>matricial</em> muy limpia</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print (d[1][5])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="registra-tu-solucion-en-linea">
+<h3>registra tu solución en línea<a class="headerlink" href="#registra-tu-solucion-en-linea" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_01&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permalink to this headline">¶</a></h2>
+<p>implementa el constructor de la siguiente clase y el método <code class="docutils literal notranslate"><span class="pre">sparseness_metric</span></code></p>
+<p>Observa que el constructor deberá:</p>
+<ul class="simple">
+<li><p>establecer el valor de <code class="docutils literal notranslate"><span class="pre">self.shape</span></code> al tamaño de la matrix <code class="docutils literal notranslate"><span class="pre">m</span></code>. Si <code class="docutils literal notranslate"><span class="pre">m</span></code> es <code class="docutils literal notranslate"><span class="pre">None</span></code> el tamaño ha de ser <code class="docutils literal notranslate"><span class="pre">(0,0)</span></code></p></li>
+<li><p>rellenar el diccionario <code class="docutils literal notranslate"><span class="pre">self.rows</span></code> como un diccionario de diccionarios con los valores de <code class="docutils literal notranslate"><span class="pre">m</span></code> que sean distintos de 0. Tendrás que recorrer toda la matriz <code class="docutils literal notranslate"><span class="pre">m</span></code> para esto.</p></li>
+</ul>
+<p>Ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; m = array([[1, 0, 9],
+&gt;       [0, 0, 7],
+&gt;       [3, 5, 0],
+&gt;       [5, 0, 0],
+&gt;       [0, 3, 0]])
+&gt;
+&gt; s = SparseMatrix(m)
+&gt; print &quot;rows&quot;, s.rows
+&gt; print &quot;length of each row&quot;, [len(s.rows[i]) for i in s.rows.keys()]
+&gt; print &quot;sparseness metric&quot;, s.sparseness_metric()
+
+rows {0: {0: 1, 2: 9}, 1: {2: 7}, 2: {0: 3, 1: 5}, 3: {0: 5}, 4: {1: 3}}
+length of each row [2, 1, 2, 1, 1]
+sparseness metric 0.3333333
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix2(m=None, **kwargs):
+    
+    import itertools
+
+    def add_to_dict(d, key1, key2, val):
+    
+        &lt;... TU CODIGO AQUI ...&gt;
+        return d
+
+    class SparseMatrix2_class:
+
+        def __init__(self, m=m, **kwargs):
+            self.rows = {}
+            self.shape =  ... 
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def sparseness_metric(self):
+            metric = &lt;... TU CODIGO AQUI ...&gt;
+            return metric
+    
+    return SparseMatrix2_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+def random_sparse_matrix(size):
+    m = np.random.randint(2, size=size)
+    m = m * np.random.randint(10,size=size)
+    return m
+
+m = random_sparse_matrix((5,3))
+
+sm = SparseMatrix2(m)
+print(m.shape, sm.sparseness_metric())
+m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = SparseMatrix2(m)
+print(&quot;rows&quot;, s.rows)
+print(&quot;length of each row&quot;, [len(s.rows[i]) for i in list(s.rows.keys())])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = SparseMatrix2(None)
+s.shape
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>registra tu solución en linea<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_02&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-3">
+<h2>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permalink to this headline">¶</a></h2>
+<p>implementa el método <code class="docutils literal notranslate"><span class="pre">to_dense</span></code> y el método <code class="docutils literal notranslate"><span class="pre">T</span></code> (por transpuesta).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">to_dense</span></code>: debe de devolver una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code> equivalente a la propia matriz dispersa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code> ha de devolver una matriz dispersa nueva (una instancia nueva de la misma clase) con los índices de <code class="docutils literal notranslate"><span class="pre">self.rows</span></code> invertidos.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix3(m=None, **kwargs):
+    
+    import itertools
+    import numpy as np
+
+    def add_to_dict(d, key1, key2, val):
+        &lt;... TU CODIGO AQUI ...&gt;
+        return d
+
+    class SparseMatrix3_class:
+
+        def __init__(self, m=m, **kwargs):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def to_dense(self):
+            r = np.zeros(self.shape)
+            &lt;... TU CODIGO AQUI ...&gt;
+            return r
+
+        def T(self):
+            r = self.__class__(m=None)
+            &lt;... TU CODIGO AQUI ...&gt;
+            return r
+    return SparseMatrix3_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+def random_sparse_matrix(size):
+    m = np.random.randint(2, size=size)
+    m = m * np.random.randint(10,size=size)
+    return m
+
+m = random_sparse_matrix((5,3))
+s = SparseMatrix3(m)
+
+print(m)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>registra tu solución en línea<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_03&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-4">
+<h2>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> para que devuelva un elemento de la matriz dispersa con la misma notación que una matriz <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Ten en cuanta que:</p>
+<ul class="simple">
+<li><p>si <code class="docutils literal notranslate"><span class="pre">i</span></code> o <code class="docutils literal notranslate"><span class="pre">j</span></code> están fuera del tamaño de la matriz has de emitir un <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code></p></li>
+<li><p>si el elemento <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> existe en el diccionario interno (<code class="docutils literal notranslate"><span class="pre">self.rows</span></code>) se ha de devolver el valor almacenado</p></li>
+<li><p>si no existe, se ha de devolver el valor 0</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix4(m=None, **kwargs):
+    
+    import itertools
+
+    def add_to_dict(d, key1, key2, val):
+        &lt;... TU CODIGO AQUI ...&gt;
+        return d
+
+    class SparseMatrix4_class:
+
+        def __init__(self, m=m, **kwargs):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __getitem__(self, pos):
+            i,j = pos
+            assert &lt;... TU CODIGO AQUI ...&gt;
+            return &lt;... TU CODIGO AQUI ...&gt;
+        
+    return SparseMatrix4_class (**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba tu código manualmente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def random_sparse_matrix(size):
+    m = np.random.randint(2, size=size)
+    m = m * np.random.randint(10,size=size)
+    return m
+
+m = random_sparse_matrix((5,3))
+
+print(&quot;original matrix shape&quot;, m.shape)
+print(m)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import itertools
+
+s = SparseMatrix4(m)
+
+print(&quot;inner dict&quot;, s.rows)
+print(&quot;\ncoord   value_in_m       value_in_s&quot;)
+for i,j in itertools.product(list(range(m.shape[0])), list(range(m.shape[1]))):                
+    print(&quot;(%d,%d)   %5d        %5d&quot;%(i,j, m[i,j], s[i,j]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>registra tu solución en línea<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_04&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-5">
+<h2>Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> de forma que:</p>
+<ul class="simple">
+<li><p>si el valor del elemento es 0, no se haga nada</p></li>
+<li><p>si las coordenadas <code class="docutils literal notranslate"><span class="pre">i,j</span></code> exceden el tamaño actual de la matriz, se inserte el elemento, pero que se actualice el tamaño (<code class="docutils literal notranslate"><span class="pre">self.shape</span></code>) de manera acorde.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix5(m=None,**kwargs):
+    
+    import itertools 
+    import numpy as np
+
+    def add_to_dict(d, key1, key2, val):
+        &lt;... TU CODIGO AQUI ...&gt;
+
+    class SparseMatrix5_class:
+
+        def __init__(self, m=m, **kwargs):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __setitem__(self, pos, val):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __getitem__(self, pos):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def to_dense(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+            
+    return SparseMatrix5_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def random_sparse_matrix(size):
+    m = np.random.randint(2, size=size)
+    m = m * np.random.randint(10,size=size)
+    return m
+
+m = random_sparse_matrix((5,3))
+s = SparseMatrix5(m)
+print(&quot;initial&quot;)
+print(s.rows)
+print(s.to_dense().astype(int))
+s[4,2] = m[4,2]*2+3
+print(&quot;\nafter __setitem__&quot;)
+print(s.rows)
+print(s.to_dense().astype(int))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>registra tu solución en línea<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_05&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-6">
+<h2>Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método <code class="docutils literal notranslate"><span class="pre">__add__</span></code></p>
+<p>Sugerencia de implementación:</p>
+<ol class="simple">
+<li><p>verifique con un <code class="docutils literal notranslate"><span class="pre">assert</span></code> que ambas matrices son del mismo tamaño</p></li>
+<li><p>crea una nueva matriz vacía</p></li>
+<li><p>copie <code class="docutils literal notranslate"><span class="pre">self.shape</span></code> en el <code class="docutils literal notranslate"><span class="pre">shape</span></code> de la matriz nueva</p></li>
+<li><p>recorra todos los elementos de <code class="docutils literal notranslate"><span class="pre">self.rows</span></code> y llame al <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> de la matriz nueva por cada uno de ellos</p></li>
+<li><p>recorra todos los elementos de <code class="docutils literal notranslate"><span class="pre">q</span></code> y haga un get/set sobre la nueva matriz para añadirlos</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix6(m=None,**kwargs):
+    
+    import itertools 
+    import numpy as np
+    def add_to_dict(d, key1, key2, val):
+        &lt;... TU CODIGO AQUI ...&gt;
+
+    class SparseMatrix6_class:
+
+        def __init__(self, m=m, **kwargs):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def to_dense(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __getitem__(self, pos):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __setitem__(self, pos, val):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __add__ (self, q):
+            assert &lt;... TU CODIGO AQUI ...&gt;
+
+            r = self.__class__(m=None)
+            &lt;... TU CODIGO AQUI ...&gt;
+            return r
+        
+    return SparseMatrix6_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+m1, m2 = random_sparse_matrix((5,3)), random_sparse_matrix((5,3))
+sm1 = SparseMatrix6(m1)
+sm2 = SparseMatrix6(m2)
+print(sm1.to_dense().astype(int))
+print(&quot;--&quot;)
+print(sm2.to_dense().astype(int))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print((sm1+sm2).to_dense().astype(int))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(m1+m2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>registra tu solución en línea<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_06&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-7">
+<h2>Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permalink to this headline">¶</a></h2>
+<p>Implementa <code class="docutils literal notranslate"><span class="pre">dot</span></code> en nuestra clase de matrices dispersas representadas con un diccionario de diccionarios.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def SparseMatrix7(m=None,**kwargs):
+
+    import itertools
+    import numpy as np
+    def add_to_dict(d, key1, key2, val):
+        &lt;... TU CODIGO AQUI ...&gt;
+
+    class SparseMatrix7_class:
+
+        def __init__(self, m=m. **kwargs):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def to_dense(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __getitem__(self, pos):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __setitem__(self, pos, val):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def __add__ (self, q):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def dot(self, q):
+            r = self.__class__(m=None)
+            &lt;... TU CODIGO AQUI ...&gt;
+            return r
+
+        def sparseness_metric(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def T(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+            
+    return SparseMatrix7_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba tu código manualmente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+m1 = np.random.randint(10, size=(3,2))
+print (m1)
+m2 = np.random.randint(10, size=(2,3))
+print (m2)
+print (&quot;-- &quot;)
+print (m1.dot(m2))
+
+s1 = SparseMatrix7(m1)
+
+s2 = SparseMatrix7(m2)
+
+
+print (s1.dot(s2).to_dense().astype(int))
+print (&quot;--&quot;)
+print (m2.dot(m1))
+print (s2.dot(s1).to_dense().astype(int))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>registra tu solución en línea<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_07&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-8">
+<h2>Ejercicio 8<a class="headerlink" href="#ejercicio-8" title="Permalink to this headline">¶</a></h2>
+<p>Realiza un algoritmo que devuelva el valor máximo de cada fila. Deberá de devolver una lista de tuplas <code class="docutils literal notranslate"><span class="pre">(row_nb,</span> <span class="pre">max_value)</span></code> solamente de las filas que contengan algún elemento. P.ej. de la siguiente matriz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[[4 0 0 0]
+ [0 2 0 5]
+ [0 2 0 0]
+ [0 0 0 0]
+ [0 6 0 0]
+ [0 0 0 0]
+ [0 0 0 6]
+ [0 0 7 7]
+ [0 0 2 7]
+ [4 8 0 2]]
+</pre></div>
+</div>
+<p>debe de devolver:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> [(0, 4), (1, 5), (2, 2), (4, 6), (6, 6), (7, 7), (8, 7), (9, 8)]
+</pre></div>
+</div>
+<p>Este ejercicio debe de funcionar <strong>con <code class="docutils literal notranslate"><span class="pre">SparseMatrix</span></code> de tu solución del ejercicio 3 anterior</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def max_per_row(m):
+    import numpy as np
+    return &lt;... TU CODIGO AQUI ...&gt;
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = random_sparse_matrix((10,4))
+s = SparseMatrix3(m)
+print(m)
+print(max_per_row(s))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mm = m.max(axis=1)
+w = np.argwhere(mm!=0)[:,0]
+np.allclose(np.r_[[(i,j) for i,j in zip(w, mm[w])]], np.r_[max_per_row(s)])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>registra tu solución en línea<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_08&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-9">
+<h2>Ejercicio 9<a class="headerlink" href="#ejercicio-9" title="Permalink to this headline">¶</a></h2>
+<p>Realiza un algoritmo que devuelva el valor máximo de cada columna. Deberá de devolver una lista de tuplas <code class="docutils literal notranslate"><span class="pre">(col_nb,</span> <span class="pre">max_value)</span></code> solamente de las columnas que contengan algún elemento. P.ej. de la siguiente matriz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    [[0 0 2 0 0 1 0 0 0 1]
+     [5 3 0 4 0 0 0 5 0 2]
+     [9 0 0 4 0 0 0 0 0 0]]
+</pre></div>
+</div>
+<p>deberá devolver el siguiente resultado:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    [(0, 9), (1, 3), (2, 2), (3, 4), (5, 1), (7, 5), (9, 2)]
+</pre></div>
+</div>
+<p>Este ejercicio debe de funcionar <strong>con <code class="docutils literal notranslate"><span class="pre">SparseMatrix</span></code> de tu solución del ejercicio 3 anterior</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def max_per_col(m):
+    import numpy as np
+    return &lt;... TU CODIGO AQUI ...&gt;
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = SparseMatrix3(random_sparse_matrix((3,10)))
+print (m.to_dense().astype(int))
+print (max_per_col(m))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>registra tu solución en línea<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_09&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analisis-de-complejidad-computacional">
+<h2>Análisis de complejidad computacional<a class="headerlink" href="#analisis-de-complejidad-computacional" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def xrandom_sparse_matrix(max_rows, max_cols, n_items):
+    import numpy as np
+    m = SparseMatrix7()
+    for _ in range(n_items):
+        i = np.random.randint(max_rows)
+        j = np.random.randint(max_cols)
+        v = np.random.randint(100)
+        m[i,j] = v
+    return m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k=xrandom_sparse_matrix(1000,1000,1000)
+k.shape, k.sparseness_metric()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+%matplotlib inline
+def plot_times(n_set, r, xlabel, ylabel):
+    from scipy.optimize import minimize
+
+    n_set = np.array(n_set)
+    # fit to scaled for numerical stability
+    x_ticks = n_set/1e3
+    r     = np.array(r)
+    cfunc = lambda k, x: k[0]+k[1]*x+k[2]*x**2+k[3]*x**3
+    qfunc = lambda k, x: k[0]+k[1]*x+k[2]*x**2
+    lfunc = lambda k, x: k[0]+k[1]*x
+    ccost = lambda k: np.mean( (r-cfunc(k, x_ticks))**2)
+    qcost = lambda k: np.mean( (r-qfunc(k, x_ticks))**2)
+    lcost = lambda k: np.mean( (r-lfunc(k, x_ticks))**2)
+    cx    = minimize(ccost, [0,0,0,0], method=&quot;BFGS&quot;).x
+    qx    = minimize(qcost, [0,0,0], method=&quot;BFGS&quot;).x
+    lx    = minimize(lcost, [0,0], method=&quot;BFGS&quot;).x
+    
+    plt.plot(x_ticks*1e3, cfunc(cx, x_ticks), label=&quot;cubic fit&quot;, color=&quot;black&quot;)
+    plt.plot(x_ticks*1e3, qfunc(qx, x_ticks), label=&quot;quadratic fit&quot;, color=&quot;black&quot;, ls=&quot;--&quot;)
+    plt.plot(x_ticks*1e3, lfunc(lx, x_ticks), label=&quot;linear fit&quot;, color=&quot;black&quot;, ls=&quot;:&quot;)
+    plt.plot(x_ticks*1e3, r, label=&quot;data&quot;, lw=10, alpha=.5, color=&quot;red&quot;)
+    plt.legend()
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.grid()  
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="setitem">
+<h2><code class="docutils literal notranslate"><span class="pre">__setitem__</span></code><a class="headerlink" href="#setitem" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+r2 = []
+n2 = range(50,3000,100)
+for n in n2:
+    print (n)
+    k = %timeit -o -q -r 3 -n 3 xrandom_sparse_matrix(200,200,n)
+    r2.append(k.best)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n2, r2, xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getitem">
+<h2><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code><a class="headerlink" href="#getitem" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r1 = []
+n1 = range(50,3000,100)
+def getn(m,n):
+    for i in m.rows.keys():
+        for j in m.rows[i].keys():
+            m[i,j]
+    
+for n in n1:
+    print (n)
+    m = xrandom_sparse_matrix(200,200,n)
+    k = %timeit -o -q -r 3 -n 3 getn(m,n)
+    r1.append(k.best)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n1, r1, xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="add">
+<h2><code class="docutils literal notranslate"><span class="pre">__add__</span></code><a class="headerlink" href="#add" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r3 = []
+n3 = range(50,3000,100)
+for n in n3:
+    print (n)
+    m1 = xrandom_sparse_matrix(200,200,n)
+    m2 = xrandom_sparse_matrix(200,200,n)
+    m1[200,200]=1
+    m2[200,200]=1
+    k = %timeit -o -q -r 3 -n 3 m1+m2
+    r3.append(k.best)
+plot_times(n3, r3,xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dot">
+<h2><code class="docutils literal notranslate"><span class="pre">dot</span></code><a class="headerlink" href="#dot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r4 = []
+n4 = range(50,3000,200)
+for n in n4:
+    print (n)
+    m = xrandom_sparse_matrix(200,200,n)
+    k = %timeit -o -q -r 3 -n 3 m.dot(m.T())
+    r4.append(k.best)
+plot_times(n4, r4,xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="LAB%2002%20-%20Polinomios.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">LAB Polinomios</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2004%20-%20Representacion%20en%20memoria.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB 04 - Representación en memoria</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

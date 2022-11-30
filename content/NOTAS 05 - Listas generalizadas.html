@@ -1,0 +1,1223 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listas generalizadas &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arboles" href="NOTAS%2006%20-%20Arboles.html" />
+    <link rel="prev" title="C. Listas y árboles" href="M03.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 05 - Listas generalizadas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 05 - Listas generalizadas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#polinomios">
+     polinomios
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Listas generalizadas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#polinomios">
+     polinomios
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="listas-generalizadas">
+<h1>Listas generalizadas<a class="headerlink" href="#listas-generalizadas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivos-del-modulo">
+<h2>Objetivos del módulo<a class="headerlink" href="#objetivos-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Entender el concepto de lista generalizada, sus posibles representaciones, su manipulación y su uso</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿Qué es una lista generalizada?</p></li>
+<li><p>¿Cómo se define y se implementa?</p></li>
+<li><p>¿Qué consecuencias tienen las decisiones de implementación sobre complejidad en las operaciones de la lista?</p></li>
+</ul>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Una lista generalizada es un conjunto finito de <span class="math notranslate nohighlight">\(n\)</span>  elementos (<span class="math notranslate nohighlight">\(n\ge 0\)</span>) cada uno de los cuales es un átomo u otra lista generalizada. La lista generalizada es una estructura recursiva por definición ya que se define en términos de si mismo. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>	W = (a, (b, c), d, (e, (f, g)), h)      
+</pre></div>
+</div>
+<p>Los átomos se presentan separados por comas, y cuando un elemento sea otra lista, ésta irá entre paréntesis.</p>
+<p>Una lista generalizada se puede representar como una lista ligada. La configuración de cada nodo usa 3 campos:</p>
+<ul class="simple">
+<li><p>Marca: <code class="docutils literal notranslate"><span class="pre">0</span></code> si el nodo es un átomo o <code class="docutils literal notranslate"><span class="pre">1</span></code> si es una sublista</p></li>
+<li><p>Dato: el átomo o una referencia a una sublista.</p></li>
+<li><p>Siguiente: Referencia al siguiente nodo o <code class="docutils literal notranslate"><span class="pre">None</span></code> si no hay más nodos.</p></li>
+</ul>
+<p>Por ejemplo, la lista anterior se representaría de la siguiente manera.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/lista_generalizada.jpg&#39;, width=700)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 05 - Listas generalizadas_3_0.jpg" src="../_images/NOTAS 05 - Listas generalizadas_3_0.jpg" />
+</div>
+</div>
+<p>Esta lista se representaría en Python de la siguiente manera</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a,b,c,d,e,f,g,h = list(range(8))
+W = [a, [b,c], d, [e, [f,g]], h]
+print(W)
+print(len(W))
+print(W[3], &quot;:&quot;, W[3][0], &quot;:&quot;, W[3][1][0])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, [1, 2], 3, [4, [5, 6]], 7]
+5
+[4, [5, 6]] : 4 : 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Realicemos nosotros nuestra propia implementación. Para ello definimos una clase para representar cualquier nodo. Observa que no usamos un campo explícito para diferenciar si tenemos un átomo o una nueva lista. Esto lo resolveremos llamando a <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Node:
+    def __init__(self, value, next=None):
+        assert next is None or isinstance(next,Node), &quot;next must be Node, not %s&quot;%(type(next))
+        self.value = value
+        self.next  = next
+        
+    def __repr__(self):
+        return str(self.value)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n = Node(10, Node(20, Node(30)))
+
+k=n
+print(k, end=&#39; &#39;)
+while (k.next is not None):
+    print(&quot;--&gt; %s&quot;%k.next, end=&#39; &#39;)
+    k = k.next
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 --&gt; 20 --&gt; 30 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y definimos una clase para una lista generalizada. Fíjate que <strong>no usamos ninguna <code class="docutils literal notranslate"><span class="pre">list</span></code> de python</strong> ya que precisamente es lo que estamos implementando.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class L(object):
+    def __init__ (self, first_node=None):
+        assert first_node is None or isinstance(first_node,Node), &quot;first must be Node, not %s&quot;%(type(first_node))
+        self.first_node = first_node
+        
+    def __getitem__(self, idx):
+        k = self.first_node
+        for i in range(idx):
+            assert k.next is not None, &quot;index %s out of range&quot;%(str(idx))
+            k = k.next  
+        return k.value
+    
+    def __len__(self):
+        k = self.first_node
+        if k is None:
+            return 0
+        i=1
+        while k.next is not None:
+            i+=1
+            k = k.next
+        return i
+            
+    def __repr__ (self):
+        if self.first_node is None:
+            return &quot;[]&quot;
+        
+        s = &quot;[ %s&quot;%self.first_node
+        k=self.first_node
+        while (k.next is not None):
+            s += &quot;, %s&quot;%k.next
+            k = k.next
+    
+        return s+&quot; ]&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fíjate cómo creamos una lista sólo con átomos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L(Node(10, Node(20, Node(30))))
+print(W)
+print(&quot;len =&quot;, len(W))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 10, 20, 30 ]
+len = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Y una lista con sublistas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W=L(Node(10, Node(L(Node(14, Node(18))), Node(20, Node(30)))))
+print(W)
+print(&quot;len =&quot;, len(W))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 10, [ 14, 18 ], 20, 30 ]
+len = 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>En este caso una sublista va encapsulada dentro de un nodo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(Node(L(Node(14, Node(18)))))
+print(W[1])
+print(&quot;len sublista =&quot;, len(W[1]))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 14, 18 ]
+[ 14, 18 ]
+len sublista = 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observa la implementación del método <code class="docutils literal notranslate"><span class="pre">getitem</span></code> y cómo de manera natural soporta el indexado de sublistas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W=L(Node(10, Node(L(Node(14, Node(18))), Node(20, Node(30)))))
+print(&quot;the list:          &quot;, W)
+print(&quot;element at 1:      &quot;, W[1])
+print(&quot;element at 2:      &quot;, W[2])
+print(&quot;element of sublist:&quot;, W[1][0])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the list:           [ 10, [ 14, 18 ], 20, 30 ]
+element at 1:       [ 14, 18 ]
+element at 2:       20
+element of sublist: 14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Por supuesto, también soportamos la lista vacía</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L()
+print(W)
+print(&quot;len = &quot;, len(W))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+len =  0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Añadimos un método suma que me concatene dos listas generalizadas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class L(L):
+    
+    def __add__(self, M):
+        # obtiene el ultimo elemento de esta lista
+        k = self.first_node
+        
+        # si la lista actual no tiene elementos
+        if k is None:
+            self.first_node = M.first_node
+            return self
+        
+        # en caso contrario la agregamos al ultimo nodo
+        while k.next is not None:
+            k = k.next
+        
+        k.next = M.first_node
+        return self
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L(Node(10, Node(20, Node(30))))
+Z = L(Node(3, Node(2)))
+print(W)
+print(Z)
+print(W + Z + L())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 10, 20, 30 ]
+[ 3, 2 ]
+[ 10, 20, 30, 3, 2 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>pero observa que esta implementación <strong>modifica</strong> la lista del primer argumento de la adición</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L(Node(10, Node(20, Node(30))))
+Z = L(Node(3, Node(2)))
+print(&quot;antes de sumar&quot;)
+print(&quot;W&quot;, W)
+print(&quot;Z&quot;, Z)
+X = W + Z
+print(&quot;después de sumar&quot;)
+print(&quot;W&quot;, W)
+print(&quot;Z&quot;, Z)
+print(&quot;X&quot;, X)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>antes de sumar
+W [ 10, 20, 30 ]
+Z [ 3, 2 ]
+después de sumar
+W [ 10, 20, 30, 3, 2 ]
+Z [ 3, 2 ]
+X [ 10, 20, 30, 3, 2 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>esto induce una recursividad infinita cuando hacemos algo como esto:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = W + Z + W
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-16-e59663523402&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">X</span> <span class="o">=</span> <span class="n">W</span> <span class="o">+</span> <span class="n">Z</span> <span class="o">+</span> <span class="n">W</span>
+
+<span class="nn">&lt;ipython-input-13-1923da9137ce&gt;</span> in <span class="ni">__add__</span><span class="nt">(self, M)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="c1"># en caso contrario la agregamos al ultimo nodo</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="k">while</span> <span class="n">k</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>             <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">next</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">k</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">first_node</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>en los ejercicios reparás este problema</p>
+<div class="section" id="polinomios">
+<h3>polinomios<a class="headerlink" href="#polinomios" title="Permalink to this headline">¶</a></h3>
+<p>usemos listas para representar el siguiente polinomio</p>
+<div class="math notranslate nohighlight">
+\[ 2x^3y^2z^2 + 5x^3yz^2 + 7xy^2z^2 + 5x^2yz + 4xz + 4x^3y^2 + 8y + 9\]</div>
+<p>primero definimos una clase para los términos y luego una subclase de <code class="docutils literal notranslate"><span class="pre">L</span></code> para representar los polinomios</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Math
+
+class Term(object):
+     pass
+
+class XYZTerm(Term):
+    
+    def __init__(self, coef, ex, ey, ez):
+        assert (isinstance(coef, float) or isinstance(coef,int)) and \
+                isinstance(ex, int) and \
+                isinstance(ey, int) and \
+                isinstance(ez, int) , &quot;coef/exp must be float/int&quot;
+                
+        self.coef = coef
+        self.ex   = ex
+        self.ey   = ey
+        self.ez   = ez
+
+    def get_math_representation(self):
+        s = &quot;&quot; if self.coef==0 else \
+            (&quot;%s&quot;%str(self.coef) if self.coef!=1 else &quot;&quot;) +\
+            (&quot; x&quot; if self.ex==1 else (&quot; x^%d&quot;%self.ex if self.ex!=0 else &quot;&quot;)) +\
+            (&quot; y&quot; if self.ey==1 else (&quot; y^%d&quot;%self.ey if self.ey!=0 else &quot;&quot;)) +\
+            (&quot; z&quot; if self.ez==1 else (&quot; z^%d&quot;%self.ez if self.ez!=0 else &quot;&quot;))
+        return s
+        
+    def show(self):
+        from IPython.display import Math, HTML, display
+        display(HTML(&quot;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default&#39;&gt;&lt;/script&gt;&quot;))          
+        return Math(self.get_math_representation())
+       
+    def __repr__(self):
+        return self.get_math_representation()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = XYZTerm(2,4,1,0)
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 x^4 y
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[2 x^4 y\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = XYZTerm(1,4,1,0)
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x^4 y
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Pol(L):
+    def get_math_representation(self):
+        if self.first_node is None:
+            return Math(&quot;&quot;)
+        
+        k = self.first_node
+        s = k.value.get_math_representation()
+        
+        while (k.next is not None):
+            s += &quot;+&quot;+k.next.value.get_math_representation()
+            k = k.next
+    
+        s = s.replace(&quot;+-&quot;, &quot;-&quot;)
+        return s
+    
+    def show(self):
+        from IPython.display import Math, HTML, display
+        display(HTML(&quot;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default&#39;&gt;&lt;/script&gt;&quot;))          
+        return Math(self.get_math_representation())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pol = Pol(Node(XYZTerm(2,3,2,2), Node(XYZTerm(5,3,1,2), Node(XYZTerm(7,1,2,2), \
+          Node(XYZTerm(5,2,1,1), Node(XYZTerm(4,1,0,1), Node(XYZTerm(4,3,2,0),\
+          Node(XYZTerm(8,0,1,0), Node(XYZTerm(9,0,0,0) )) )  )  ) ))))
+pol
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 2 x^3 y^2 z^2, 5 x^3 y z^2, 7 x y^2 z^2, 5 x^2 y z, 4 x z, 4 x^3 y^2, 8 y, 9 ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pol.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[2 x^3 y^2 z^2+5 x^3 y z^2+7 x y^2 z^2+5 x^2 y z+4 x z+4 x^3 y^2+8 y+9\]</div>
+</div>
+</div>
+<p>Pero esta implementación está muy atada a esta forma concreta de polinomios con tres variables, llamadas <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(z\)</span>. Creemos una representación más flexible, observando que en el polinomio anterior podemos sacar términos comunes por cada variable.</p>
+<div class="math notranslate nohighlight">
+\[ 2x^3y^2z^2 + 5x^3yz^2 + 7xy^2z^2 + 5x^2yz + 4xz + 4x^3y^2 + 8y + 9\]</div>
+<div class="math notranslate nohighlight">
+\[=\]</div>
+<div class="math notranslate nohighlight">
+\[((2y^2 + 5y)x^3 + 7y^2x)z^2 + (5yx^2+ 4x)z + (4y^2x^3 + (8y +9))\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class VarTerm(Term):
+    def __init__(self, coef, var, exp=1):
+        assert (isinstance(coef, float) or isinstance(coef,int)) and \
+                isinstance(exp, int) and isinstance(var, str) and len(var)==1
+        self.coef = coef
+        self.var  = var
+        self.exp  = exp
+        
+    def get_math_representation(self):
+        s = &quot;&quot; if self.coef==0 else \
+            (&quot;%s&quot;%str(self.coef) if self.coef!=1 else &quot;&quot;) +\
+            (&quot; %s&quot;%self.var if self.exp==1 else (&quot; %s^%d&quot;%(self.var, self.exp) if self.exp!=0 else &quot;&quot;)) 
+        return s
+    
+    def show(self):
+        from IPython.display import Math, HTML, display
+        display(HTML(&quot;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default&#39;&gt;&lt;/script&gt;&quot;))          
+        return Math(self.get_math_representation())
+       
+    def __repr__(self):
+        return self.get_math_representation()        
+
+    
+class VarPol(Pol):
+    def __init__(self, first_node, vterm=VarTerm(1,&quot;k&quot;,0)):
+        super(VarPol, self).__init__(first_node)
+        assert vterm is not None and isinstance(vterm, VarTerm), &quot;must specify a VarTerm&quot; 
+        self.vterm = vterm
+        
+    def get_math_representation(self):
+        return self.vterm.get_math_representation()+&quot;(&quot;+super(VarPol, self).get_math_representation()+&quot;)&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = VarTerm(2, &quot;x&quot;, 3)
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 x^3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[2 x^3\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p1 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(2,&quot;y&quot;, 2), Node(VarTerm(5,&quot;y&quot;))))
+p1.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ x^3(2 y^2+5 y)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p2 = VarPol(first_node=Node(VarTerm(7,&quot;y&quot;,2)), vterm=VarTerm(1,&quot;x&quot;,1))
+p2.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ x(7 y^2)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p3 = VarPol(first_node=Node(p1, Node(p2)), vterm=VarTerm(1,&quot;z&quot;, 2))
+p3.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ z^2( x^3(2 y^2+5 y)+ x(7 y^2))\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p4 = VarPol( vterm=VarTerm(1,&quot;x&quot;,2), first_node=Node(VarTerm(5,&quot;y&quot;, 1)))
+p4.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ x^2(5 y)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p5 = VarPol( first_node=Node(p4, Node(VarTerm(4,&quot;x&quot;,1))), vterm=VarTerm(1,&quot;z&quot;,1))
+p5.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ z( x^2(5 y)+4 x)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p6 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(4,&quot;y&quot;, 2)))
+p6.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ x^3(4 y^2)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p7 = VarPol(first_node=Node(VarTerm(9,&quot;y&quot;, 0), Node(VarTerm(8,&quot;y&quot;,1))))
+p7.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[(9+8 y)\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p8 = VarPol(first_node=Node(p3, Node(p5, Node(p6, Node(p7)))))
+p8.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[( z^2( x^3(2 y^2+5 y)+ x(7 y^2))+ z( x^2(5 y)+4 x)+ x^3(4 y^2)+(9+8 y))\]</div>
+</div>
+</div>
+<p>inspeccionemos el polinomio resultante</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(p8)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(p8.vterm.get_math_representation())
+for i in range(len(p8)):
+    print(&quot;term %d %s&quot;%(i, p8[i].get_math_representation()))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>term 0  z^2( x^3(2 y^2+5 y)+ x(7 y^2))
+term 1  z( x^2(5 y)+4 x)
+term 2  x^3(4 y^2)
+term 3 (9+8 y)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = p8[0]
+print(&quot;vterm:&quot;, k.vterm.get_math_representation())
+print(&quot;len:   &quot;, len(k))
+
+for i in range(len(k)):
+    print(&quot;term %d %s&quot;%(i, k[i].get_math_representation()))
+
+k.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vterm:  z^2
+len:    2
+term 0  x^3(2 y^2+5 y)
+term 1  x(7 y^2)
+</pre></div>
+</div>
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ z^2( x^3(2 y^2+5 y)+ x(7 y^2))\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = p8[0][0]
+print(&quot;vterm:&quot;, k.vterm.get_math_representation())
+print(&quot;len:   &quot;, len(k))
+
+for i in range(len(k)):
+    print(&quot;term %d %s&quot;%(i, k[i].get_math_representation()))
+
+k.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vterm:  x^3
+len:    2
+term 0 2 y^2
+term 1 5 y
+</pre></div>
+</div>
+<div class="output text_html"><script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'></script></div><div class="output text_latex math notranslate nohighlight">
+\[ x^3(2 y^2+5 y)\]</div>
+</div>
+</div>
+<p>## Ejercicios propuestos</p>
+<ul class="simple">
+<li><p>obtén experimentalmente la complejidad computacional de cada método y arguméntalo.</p></li>
+<li><p>implementa la suma de polinomios <code class="docutils literal notranslate"><span class="pre">VarPol</span></code></p></li>
+<li><p>después de hacer los ejercicios, cómo modificarías <code class="docutils literal notranslate"><span class="pre">Node</span></code> para facilitar el acceso a índices negativos?</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="M03.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">C. Listas y árboles</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2006%20-%20Arboles.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Arboles</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

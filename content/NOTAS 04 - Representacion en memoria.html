@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Representación en memoria &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB Polinomios" href="LAB%2002%20-%20Polinomios.html" />
+    <link rel="prev" title="Matrices dispersas" href="NOTAS%2003%20-%20Matrices%20dispersas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 04 - Representacion en memoria.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 04 - Representacion en memoria.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memoria-y-datos">
+   1. Memoria y datos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-gestion-de-la-memoria">
+     Python: gestión de la memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alineamiento-de-datos-y-rendimiento">
+   2. Alineamiento de datos y rendimiento
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#especificacion-del-orden-de-almacenamiento">
+     Especificación del orden de almacenamiento
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-en-python">
+     Slicing en Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Representación en memoria</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memoria-y-datos">
+   1. Memoria y datos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-gestion-de-la-memoria">
+     Python: gestión de la memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alineamiento-de-datos-y-rendimiento">
+   2. Alineamiento de datos y rendimiento
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#especificacion-del-orden-de-almacenamiento">
+     Especificación del orden de almacenamiento
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-en-python">
+     Slicing en Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="representacion-en-memoria">
+<h1>Representación en memoria<a class="headerlink" href="#representacion-en-memoria" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivos-del-modulo">
+<h2>Objetivos del módulo<a class="headerlink" href="#objetivos-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer cómo se representan las estructuras de datos en la memoria de la máquina y las decisiones y compromisos que realizan los distintos lenguajes de progamación.</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿Cómo se hace corresponder la información de una estructura de datos a memoria de la máquina?</p></li>
+<li><p>¿Qué decisiones y compromisos adquieren los distintos lenguajes y entornos de programación?</p></li>
+<li><p>¿Cómo afecta esto al rendimiento de nuestros algoritmos?</p></li>
+<li><p>¿Qué es una fórmula de direccionamiento?</p></li>
+</ul>
+</div>
+<div class="section" id="memoria-y-datos">
+<h2>1. Memoria y datos<a class="headerlink" href="#memoria-y-datos" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-gestion-de-la-memoria">
+<h3>Python: gestión de la memoria<a class="headerlink" href="#python-gestion-de-la-memoria" title="Permalink to this headline">¶</a></h3>
+<p>Python realiza una gestión completa de la memoria, como en otros lenguajes (Java, etc.). No hay punteros y ciertas libererías de Python gestionan el uso de la memoria para sus estructuras. Por ejemplo <code class="docutils literal notranslate"><span class="pre">numpy</span></code> implementa muchas funciones en C y nos las ofrece con la sintaxis limpia de Python. Si usamos <code class="docutils literal notranslate"><span class="pre">numpy</span></code> podemos al menos ver las direcciones de memoria de los arrays.</p>
+<p>Ejecuta el siguiente código y prueba con distintos tipos de datos en <code class="docutils literal notranslate"><span class="pre">dtype</span></code>: <code class="docutils literal notranslate"><span class="pre">np.int32</span></code>, <code class="docutils literal notranslate"><span class="pre">np.int64</span></code>, <code class="docutils literal notranslate"><span class="pre">np.float32</span></code>, <code class="docutils literal notranslate"><span class="pre">np.float64</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+a = np.array([1,2,3], dtype=np.float64)
+print(&quot;array                    &quot;, a)
+print(&quot;tipo de datos            &quot;, a.dtype)
+print(&quot;memory positino a o a[0] &quot;, a.ctypes.data)
+print(&quot;memory position a[1]     &quot;, a[1:].ctypes.data)
+print(&quot;bytes delta de posiciones&quot;, a[1:].ctypes.data - a.ctypes.data)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array                     [1. 2. 3.]
+tipo de datos             float64
+memory positino a o a[0]  94072038473760
+memory position a[1]      94072038473768
+bytes delta de posiciones 8
+</pre></div>
+</div>
+</div>
+</div>
+<p>En general, la función <code class="docutils literal notranslate"><span class="pre">id</span></code> da un identificador único de cualquier objeto de Python, aunque no necesariamente es su posición de memoria (depende de la implementación de tu instalación de Python). Nos sirve para ver si dos variables apuntan al mismo contenido.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 2
+print(type(a), id(a))
+b = a
+print(type(b), id(b))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt; 94072006972480
+&lt;class &#39;int&#39;&gt; 94072006972480
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate como un mismo dato puede tener varias <em>etiquetas</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xx = [1,2,3]
+print(id(xx), xx)
+bb = xx
+print(id(bb), bb)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677573928136 [1, 2, 3]
+140677573928136 [1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>del(bb)
+print(id(bb), bb)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">2</span><span class="n">ef731d4f814</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">del</span><span class="p">(</span><span class="n">bb</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">bb</span><span class="p">),</span> <span class="n">bb</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;bb&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(id(xx), xx)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677573928136 [1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate en la siguiente lógica de Python. Reutiliza las cadenas pequeñas aunque explícitamente no hagamos <code class="docutils literal notranslate"><span class="pre">a=b</span></code>, pero no las cadenas largas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &quot;hola&quot;
+print(type(a), id(a))
+b = &quot;hola&quot;
+print(type(b), id(b))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt; 140677574459264
+&lt;class &#39;str&#39;&gt; 140677574459264
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &quot;hola como estas&quot;
+print(type(a), id(a))
+b = &quot;hola como estas&quot;
+print(type(b), id(b))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt; 140677173882096
+&lt;class &#39;str&#39;&gt; 140677173356528
+</pre></div>
+</div>
+</div>
+</div>
+<p>observa que el concepto de <strong>igualdad</strong> puede ser definido de dos formas:</p>
+<ul class="simple">
+<li><p>el contenido referido por una variable es igual al contenido referido por otra variable: <strong>=</strong></p></li>
+<li><p>dos variables se refieren a la misma posición de memoria: <strong>is</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &quot;hola que tal&quot;
+b = &quot;hola que tal&quot;
+print(id(a))
+print(id(b))
+print(a==b, a is b)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677173357424
+140677173354672
+True False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &quot;hola que tal&quot;
+b = a
+print(id(a))
+print(id(b))
+print(a==b, a is b)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677173358512
+140677173358512
+True True
+</pre></div>
+</div>
+</div>
+</div>
+<p>observa además la semántica de <code class="docutils literal notranslate"><span class="pre">a+=...</span></code>, que actualiza la propia memoria sin crear nuevos objetos <code class="docutils literal notranslate"><span class="pre">a=a+...</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1,2,3]
+print(id(a), a)
+a = a + [4]
+print(id(a), a)
+a += [5]
+print(id(a), a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677174428168 [1, 2, 3]
+140677174428360 [1, 2, 3, 4]
+140677174428360 [1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python tiene una semántica fija para el paso de parámetros: <strong>siempre se pasan las referencias a los objetos.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x):
+    print(id(x), x)
+    x = 2
+    print(id(x), x)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 29
+print(id(a), a)
+f(a)
+print(id(a), a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>94072006973344 29
+94072006973344 29
+94072006972480 2
+94072006973344 29
+</pre></div>
+</div>
+</div>
+</div>
+<p>observa cómo el siguiente código se ejecuta en <a class="reference external" href="http://www.pythontutor.com/visualize.html#code=def%20f%28x%29%3A%0A%20%20%20%20print%20id%28x%29,%20x%0A%20%20%20%20x.append%2832%29%0A%20%20%20%20print%20id%28x%29,%20x%0A%20%20%20%20%0Aa%20%3D%20%5B%22hola%22,%2010,%20%2220%22%5D%0Aprint%20id%28a%29,%20a%0Af%28a%29%0Aprint%20id%28a%29,%20a&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=2&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Python Tutor</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x):
+    print(id(x), x)
+    x.append(32)
+    print(id(x), x)
+    
+a = [&quot;hola&quot;, 10, &quot;20&quot;]
+print(id(a), a)
+f(a)
+print(id(a), a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140677574373960 [&#39;hola&#39;, 10, &#39;20&#39;]
+140677574373960 [&#39;hola&#39;, 10, &#39;20&#39;]
+140677574373960 [&#39;hola&#39;, 10, &#39;20&#39;, 32]
+140677574373960 [&#39;hola&#39;, 10, &#39;20&#39;, 32]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="alineamiento-de-datos-y-rendimiento">
+<h2>2. Alineamiento de datos y rendimiento<a class="headerlink" href="#alineamiento-de-datos-y-rendimiento" title="Permalink to this headline">¶</a></h2>
+<p>La memoria de un computador es lineal. El lenguaje de programación (compilado o interpretado) es el que la maneja y decide la organización de los datos cuando tenemos estructuras complejas. Es decir, decide cómo <strong>linearizar</strong> cualquier estructura de datos.</p>
+<p>Pero <strong>físicamente</strong> la manera más eficiente de recorrer la memoria de una máquina también es linealmente, por tanto nuestra aplicación será más o menos eficiente en función de cómo recorra una estructura de datos en relación a cómo se linearizó.</p>
+<p>Por tanto, <strong>es fundamental entender las decisiones que toma nuestro entorno de programación respecto al almacenaje de estructuras en memoria</strong>. Los siguientes experimentos están diseñados para que te familiarices con esto.</p>
+<p>Fíjate cómo lineariza <code class="docutils literal notranslate"><span class="pre">numpy</span></code> una matriz 2D en memoria. Prueba con distintos tipos de datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(3,5)).astype(np.int32)
+a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[98, 68, 19, 14,  1],
+       [30, 47,  0,  4,  0],
+       [71, 52, 75, 28,  9]], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import itertools
+def get_mempositions(a, relative=False):
+    m = np.zeros(a.shape, dtype=np.int64)
+    for ii in itertools.product(*[list(range(i)) for i in a.shape]):
+        m[ii] = a[tuple([slice(i, None, None) for i in ii])].ctypes.data
+    return m if not relative else m-np.min(m)
+print(&quot;memory positions of each element of a&quot;)
+print(get_mempositions(a))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>memory positions of each element of a
+[[94072037346320 94072037346324 94072037346328 94072037346332
+  94072037346336]
+ [94072037346340 94072037346344 94072037346348 94072037346352
+  94072037346356]
+ [94072037346360 94072037346364 94072037346368 94072037346372
+  94072037346376]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;memory positions of each element of a, relative to init&quot;)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>memory positions of each element of a, relative to init
+[[ 0  4  8 12 16]
+ [20 24 28 32 36]
+ [40 44 48 52 56]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este es un orden en el que se <strong>recorre primero las columnas</strong> y <strong>luego las filas</strong></p>
+<p>la fórmula de direccionamiento en este caso es:</p>
+<div class="math notranslate nohighlight">
+\[addr(i,j) = k + (i\times n\_cols + j)\times size\]</div>
+<p>donde</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k\)</span> es la posición de inicio del array</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\_cols\)</span> es en número de columnas del array</p></li>
+<li><p><span class="math notranslate nohighlight">\(size\)</span> es el tamaño en bytes del tipo de dato que almacena el array.</p></li>
+<li><p><span class="math notranslate nohighlight">\(i,j\)</span> es la <span class="math notranslate nohighlight">\(fila\)</span>, <span class="math notranslate nohighlight">\(columna\)</span> de la cual se quiere obtener la posición en memoria</p></li>
+</ul>
+<p>y lo comprobamos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = np.zeros(a.shape, dtype=int)
+size = a.dtype.itemsize
+for i in range(a.shape[0]):
+    for j in range(a.shape[1]):
+        m[i,j] = (i*a.shape[1] + j)*size
+m
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  4,  8, 12, 16],
+       [20, 24, 28, 32, 36],
+       [40, 44, 48, 52, 56]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>con <code class="docutils literal notranslate"><span class="pre">numpy</span></code> también podemos especificar que queremos el orden inverso. Es decir, recorriendo primero las filas y luego las columnas. Esto es típico de FORTRAN. En cambio en C el orden es por filas como anteriormente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(3,5)).astype(np.int32)
+a = np.asfortranarray(a)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0 12 24 36 48]
+ [ 4 16 28 40 52]
+ [ 8 20 32 44 56]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>la fórmula de direccionamiento en este caso es:</p>
+<div class="math notranslate nohighlight">
+\[addr(i,j) = k + (i + j\times n\_rows)\times size\]</div>
+<p>y lo comprobamos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = np.zeros(a.shape, dtype=int)
+size = a.dtype.itemsize
+for i in range(a.shape[0]):
+    for j in range(a.shape[1]):
+        m[i,j] = (i + j*a.shape[0])*size
+m
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, 12, 24, 36, 48],
+       [ 4, 16, 28, 40, 52],
+       [ 8, 20, 32, 44, 56]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate ahora en el siguiente experimento, en el que recorremos las columnas para sumar</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a.sum(axis=1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([298, 341, 421])
+</pre></div>
+</div>
+</div>
+</div>
+<p>o recorremos las filas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a.sum(axis=0)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([222, 232, 218, 151, 237])
+</pre></div>
+</div>
+</div>
+</div>
+<p>y medimos el tiempo en realizar cada operación. Observa que realizamos los experimentos con una matriz cuadrada <span class="math notranslate nohighlight">\((n,n)\)</span> con lo que el número de operaciones en todos los casos es el mismo.</p>
+<p><strong>Con el almacenamiento recorriendo por columnas</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+%matplotlib inline
+
+dtype = np.int32
+trows, tcols = [], []
+n_set = [100,500,1000,1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+for n in n_set:
+    print (n, end=&quot; &quot;) 
+    k = np.zeros ((n,n)).astype(dtype)
+
+    t = %timeit -o -q -r 3 -n 3 k.sum(axis=0)
+    trows.append(t.best)
+
+    t = %timeit -o -q -r 3 -n 3 k.sum(axis=1)
+    tcols.append(t.best)
+
+plt.plot(n_set, trows, label=&quot;rows&quot;)
+plt.plot(n_set, tcols, label=&quot;cols&quot;)
+plt.xlabel(&quot;size of array&quot;)
+plt.ylabel(&quot;time&quot;)
+plt.grid()
+plt.legend()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff216c69e48&gt;
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 04 - Representacion en memoria_37_2.png" src="../_images/NOTAS 04 - Representacion en memoria_37_2.png" />
+</div>
+</div>
+<p><strong>Con el almacenamiento recorriendo por filas</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dtype = np.int32
+trows, tcols = [], []
+n_set = [100,500,1000,1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
+for n in n_set:
+    print (n, end=&quot; &quot;) 
+    k = np.zeros ((n,n)).astype(dtype)
+    k = np.asfortranarray(k)
+
+    t = %timeit -o -q -r 3 -n 3 k.sum(axis=0)
+    trows.append(t.best)
+
+    t = %timeit -o -q -r 3 -n 3 k.sum(axis=1)
+    tcols.append(t.best)
+
+plt.plot(n_set, trows, label=&quot;rows&quot;)
+plt.plot(n_set, tcols, label=&quot;cols&quot;)
+plt.xlabel(&quot;size of array&quot;)
+plt.ylabel(&quot;time&quot;)
+plt.grid()
+plt.legend()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 500 1000 1500 2000 2500 3000 3500 4000 4500 5000 
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff216ba6d68&gt;
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 04 - Representacion en memoria_39_2.png" src="../_images/NOTAS 04 - Representacion en memoria_39_2.png" />
+</div>
+</div>
+<div class="section" id="especificacion-del-orden-de-almacenamiento">
+<h3>Especificación del orden de almacenamiento<a class="headerlink" href="#especificacion-del-orden-de-almacenamiento" title="Permalink to this headline">¶</a></h3>
+<p>Cuando el almacenamiento en memoria de un array es con la con convención de C, se recorren primero las columnas (eje 1) y luego las filas (eje 0). <strong>En este caso se describe con la tupla (1,0)</strong>, indicando qué eje se recorre primero para almacenar en memoria.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(2,2)).astype(np.int32)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  4]
+ [ 8 12]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate cómo al recorrer el eje 1 se llena una matriz</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.zeros((4,5)).astype(int)
+for i in range(a.shape[1]):
+    a[0,i] = i
+print(a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2 3 4]
+ [0 0 0 0 0]
+ [0 0 0 0 0]
+ [0 0 0 0 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>en cambio cuando se usa la convención de FORTRAN para almacenar en memoria, <strong>el orden es al reves y se describe con la tupla (0,1)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(2,2)).astype(np.int32)
+a = np.asfortranarray(a)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  8]
+ [ 4 12]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate en este caso cómo sucede al recorrer por el eje 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.zeros((4,5)).astype(int)
+for i in range(a.shape[0]):
+    a[i,0] = i
+print(a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 0 0 0]
+ [1 0 0 0 0]
+ [2 0 0 0 0]
+ [3 0 0 0 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate en el caso de <span class="math notranslate nohighlight">\(n=3\)</span> con matrices de tres dimensiones. Con la convención de C, el orden de ejes es <strong>(2,1,0)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(2,3,4)).astype(np.int32)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[ 0  4  8 12]
+  [16 20 24 28]
+  [32 36 40 44]]
+
+ [[48 52 56 60]
+  [64 68 72 76]
+  [80 84 88 92]]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>En este caso no es obvio identificar cada eje. Usa el siguiente código para visualizar cual es cada eje</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;eje 0&quot;)
+a = np.zeros((2,3,4)).astype(int)
+for i in range(a.shape[0]):
+    a[i,0,0] = i
+print(a)
+
+print(&quot;\neje 1&quot;)
+a = np.zeros((2,3,4)).astype(int)
+for i in range(a.shape[1]):
+    a[0,i,0] = i
+print(a)
+
+print(&quot;\neje 2&quot;)
+a = np.zeros((2,3,4)).astype(int)
+for i in range(a.shape[2]):
+    a[0,0,i] = i
+print(a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eje 0
+[[[0 0 0 0]
+  [0 0 0 0]
+  [0 0 0 0]]
+
+ [[1 0 0 0]
+  [0 0 0 0]
+  [0 0 0 0]]]
+
+eje 1
+[[[0 0 0 0]
+  [1 0 0 0]
+  [2 0 0 0]]
+
+ [[0 0 0 0]
+  [0 0 0 0]
+  [0 0 0 0]]]
+
+eje 2
+[[[0 1 2 3]
+  [0 0 0 0]
+  [0 0 0 0]]
+
+ [[0 0 0 0]
+  [0 0 0 0]
+  [0 0 0 0]]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>pero con la convención de FORTRAN, el orden es <strong>(0,1,2)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(100, size=(2,3,4)).astype(np.int32)
+a = np.asfortranarray(a)
+print(get_mempositions(a, relative=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[ 0 24 48 72]
+  [ 8 32 56 80]
+  [16 40 64 88]]
+
+ [[ 4 28 52 76]
+  [12 36 60 84]
+  [20 44 68 92]]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>juega igualmente para entender cual es cada eje como en el ejemplo anterior</p>
+</div>
+<div class="section" id="slicing-en-python">
+<h3>Slicing en Python<a class="headerlink" href="#slicing-en-python" title="Permalink to this headline">¶</a></h3>
+<p>Fíjate cómo podemos indexar de manera genérica cualquier estructura de Python a través de objetos <code class="docutils literal notranslate"><span class="pre">slice</span></code> (<a class="reference external" href="https://www.programiz.com/python-programming/methods/built-in/slice">ejemplos</a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(10, size=(3,10))
+a
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 4, 9, 8, 1, 1, 4, 4, 6, 8],
+       [1, 8, 6, 2, 7, 0, 7, 8, 2, 5],
+       [5, 5, 6, 1, 7, 0, 5, 8, 4, 6]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>estas dos operaciones son equivalentes</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[:, 3:8])
+print(a[slice(None, None, None), slice(3,8,None)])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[8 1 1 4 4]
+ [2 7 0 7 8]
+ [1 7 0 5 8]]
+[[8 1 1 4 4]
+ [2 7 0 7 8]
+ [1 7 0 5 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>y podemos construir especificaciones de <code class="docutils literal notranslate"><span class="pre">slices</span></code> programáticamente y usarlas como cualquier otra variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>slices = tuple([slice(2,5,None) if i==len(a.shape)-1 else slice(None, None, None)  for i in range(len(a.shape))])
+print(a[slices])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[9 8 1]
+ [6 2 7]
+ [6 1 7]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate que la expresión anterior funciona si tenemos más dimensiones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(10, size=(2,3,8))
+print(a)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[2 3 2 5 6 4 8 7]
+  [7 7 8 3 0 3 7 5]
+  [4 4 0 5 0 5 5 6]]
+
+ [[3 7 2 3 9 3 4 4]
+  [3 9 5 4 5 7 0 2]
+  [7 2 3 1 2 4 8 9]]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>slices = tuple([slice(2,5,None) if i==len(a.shape)-1 else slice(None, None, None)  for i in range(len(a.shape))])
+print(a[slices])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[2 5 6]
+  [8 3 0]
+  [0 5 0]]
+
+ [[2 3 9]
+  [5 4 5]
+  [3 1 2]]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios-propuestos">
+<h2>Ejercicios propuestos:<a class="headerlink" href="#ejercicios-propuestos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Determine una fórmula de direccionamiento para representar un arreglo de tres dimensiones en memoria.</p></li>
+<li><p>Determina una fórmula de direccionamiento para un arreglo de <span class="math notranslate nohighlight">\(n\)</span> dimensiones en memoria.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2003%20-%20Matrices%20dispersas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Matrices dispersas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2002%20-%20Polinomios.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB Polinomios</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1509 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 07 Árboles de búsqueda &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="D. Grafos" href="M04.html" />
+    <link rel="prev" title="LAB 06 - Árboles" href="LAB%2006%20-%20Arboles.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 07 - Arboles de busqueda.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 07 - Arboles de busqueda.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-avl">
+   Árboles AVL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB 07 Árboles de búsqueda</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-avl">
+   Árboles AVL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="lab-07-arboles-de-busqueda">
+<h1>LAB 07 Árboles de búsqueda<a class="headerlink" href="#lab-07-arboles-de-busqueda" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import init
+from local.lib.rlxmoocapi import submit, session
+import inspect
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_07&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+class BTNode(object):
+
+        def __init__(self, value, left=None, right=None):
+            
+            self.value = value
+            self.left  = None
+            self.right = None
+            self.parent = None
+            if left is not None:
+                self.add_left(left)
+            if right is not None:
+                self.add_right(right)
+
+        def add_left(self, value):
+            assert self.left is None, &quot;node already has left child&quot;
+            self.left  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.left.parent = self
+            return self
+
+        def add_right(self, value):
+            assert self.right is None, &quot;node already has right child&quot;
+            self.right  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.right.parent = self
+            return self
+
+        def swap_children(self):
+            tmp = self.left
+            self.left = self.right
+            self.right = self.left
+            return self
+
+        def insert_ordered(self, new_value):
+            if new_value &lt; self.value:
+                if self.left is None:
+                    self.add_left(new_value)
+                    return self.left
+                else:
+                    return self.left.insert_ordered(new_value)
+            else:
+                if self.right is None:
+                    self.add_right(new_value)
+                    return self.right
+                else:
+                    return self.right.insert_ordered(new_value)
+
+        def ird(self):
+            if self.value==None:
+                return []
+            s1 = self.left.ird() if self.left is not None else []
+            s2 = self.right.ird() if self.right is not None else []
+            return s1+[self.value]+s2    
+
+        def to_indented_string(self, level, prefix=&quot;&quot;):
+            s = (&quot; &quot;*2*level + prefix + str(self.value) + &quot;\n&quot;) if self.value is not None else &quot;&quot;
+            s += self.left.to_indented_string(level+1, prefix=&quot;L: &quot;) if self.left is not None else &quot;&quot;
+            s += self.right.to_indented_string(level+1, prefix=&quot;R: &quot;) if self.right is not None else &quot;&quot;
+            return s       
+
+        def __repr__(self):
+            return self.to_indented_string(0, prefix=&quot;root: &quot;)
+
+        def clone(self):
+            r = self.__class__(self.value)
+
+            if self.left is not None:
+                r.left = self.left.clone()
+                r.left.parent = r
+            if self.right is not None:
+                r.right = self.right.clone()
+                r.right.parent = r
+
+            return r
+
+        @classmethod
+        def from_list(cls, a_list):
+            r = cls(a_list[0])
+            for i in a_list[1:]:
+                r.insert_ordered(i)
+            return r
+
+        @classmethod
+        def sort_list(cls, a_list):
+            r = cls.from_list(a_list)
+            return np.r_[r.ird()]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode.from_list([10,2,12,1,4])
+k.ird()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.clone().ird()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arboles-avl">
+<h2>Árboles AVL<a class="headerlink" href="#arboles-avl" title="Permalink to this headline">¶</a></h2>
+<p>Un árbol binario de búsqueda  se cumple que para cualquier nodo x, todos los datos de los nodos a la izquierda de x son menores que el dato de x y todos los datos de los nodos a la derecha de x son mayores que el dato de x.</p>
+<p>Esto nos permite realizar <strong>búsquedas binarias</strong> sobre el árbol de manera eficiente. Si el árbol no está balanceado, la búsqueda se vuelve menos eficiente, con lo que nos interesa que, según insertamos nuevos nodos, el árbol se mantenga <strong>binario de búsqueda</strong> y <strong>balanceado</strong>.</p>
+<p>P.ej. el siguiente árbol no es balanceado porque tiene todos los nodos colgando siempre de la rama derecha.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode.from_list([10,12,14,18,20])
+print(k)
+k.ird()
+</pre></div>
+</div>
+</div>
+</div>
+<p>en cambio el siguiente tiene los nodos más balencados y produce el mismo IRD</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode.from_list([14,10,20,18,12])
+print(k)
+k.ird()
+</pre></div>
+</div>
+</div>
+</div>
+<p>dado un nodo cualquiera, el <strong>factor de balance</strong> se define como la diferencia de la altura de su hijo izquierda y la de su hijo derecho.</p>
+<p>Un árbol AVL (por  los soviéticos Adelsson-Velski y Landis, que lo inventaron) es un árbol en el que el factor de balance de cualquier nodo es <strong>estrictamente menor</strong> que 2.</p>
+<p>En los siguientes ejercicios desarrollarás métodos que ayudan a convertir un árbol binario de búsqueda en un árbol AVL, rebalanceando los nodos, sin perder sus propiedades para la búsqueda binaria.</p>
+</div>
+<div class="section" id="ejercicio-1">
+<h2>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permalink to this headline">¶</a></h2>
+<p>completa el método <code class="docutils literal notranslate"><span class="pre">height</span></code> para que devuelva la altura de un nodo y el método <code class="docutils literal notranslate"><span class="pre">balance_factor</span></code> para que calcule el factor de balanceo de cada nodo del árbol.</p>
+<p>Ha de retornar un árbol nuevo con la misma estructura cuyos valores es el factor de balanceo de cada nodo correspondiente del árbol original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class BTNode(object):
+
+        def __init__(self, value, left=None, right=None):
+            
+            self.value = value
+            self.left  = None
+            self.right = None
+            self.parent = None
+            if left is not None:
+                self.add_left(left)
+            if right is not None:
+                self.add_right(right)
+
+        def add_left(self, value):
+            assert self.left is None, &quot;node already has left child&quot;
+            self.left  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.left.parent = self
+            return self
+
+        def add_right(self, value):
+            assert self.right is None, &quot;node already has right child&quot;
+            self.right  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.right.parent = self
+            return self
+
+        def swap_children(self):
+            tmp = self.left
+            self.left = self.right
+            self.right = self.left
+            return self
+
+        def insert_ordered(self, new_value):
+            if new_value &lt; self.value:
+                if self.left is None:
+                    self.add_left(new_value)
+                    return self.left
+                else:
+                    return self.left.insert_ordered(new_value)
+            else:
+                if self.right is None:
+                    self.add_right(new_value)
+                    return self.right
+                else:
+                    return self.right.insert_ordered(new_value)
+
+        def ird(self):
+            if self.value==None:
+                return []
+            s1 = self.left.ird() if self.left is not None else []
+            s2 = self.right.ird() if self.right is not None else []
+            return s1+[self.value]+s2    
+
+        def to_indented_string(self, level, prefix=&quot;&quot;):
+            s = (&quot; &quot;*2*level + prefix + str(self.value) + &quot;\n&quot;) if self.value is not None else &quot;&quot;
+            s += self.left.to_indented_string(level+1, prefix=&quot;L: &quot;) if self.left is not None else &quot;&quot;
+            s += self.right.to_indented_string(level+1, prefix=&quot;R: &quot;) if self.right is not None else &quot;&quot;
+            return s       
+
+        def __repr__(self):
+            return self.to_indented_string(0, prefix=&quot;root: &quot;)
+
+        def clone(self):
+            r = self.__class__(self.value)
+
+            if self.left is not None:
+                r.left = self.left.clone()
+                r.left.parent = r
+            if self.right is not None:
+                r.right = self.right.clone()
+                r.right.parent = r
+
+            return r
+
+        @classmethod
+        def from_list(cls, a_list):
+            r = cls(a_list[0])
+            for i in a_list[1:]:
+                r.insert_ordered(i)
+            return r
+
+        @classmethod
+        def sort_list(cls, a_list):
+            r = cls.from_list(a_list)
+            return np.r_[r.ird()]
+
+def BTNode1(*args,**kwargs):
+    
+    import numpy as np
+    
+    class BTNode1_class(BTNode):
+
+        def height(self):
+
+            result = # TU CODIGO AQUI
+
+            return result
+
+        def balance_factor(self):
+            
+            result = # TU CODIGO AQUI        
+            return result
+
+        def balance_factor_tree(self):
+            r = self.__class__(self.balance_factor(), \
+                               left=self.left.balance_factor_tree() if self.left is not None else None,
+                               right=self.right.balance_factor_tree() if self.right is not None else None,
+                              )
+            return r
+    if &quot;return_class&quot; in kwargs.keys() and kwargs[&quot;return_class&quot;]:
+        return BTNode1_class
+    else:
+        return BTNode1_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = BTNode1(value=&quot;x&quot;)
+z = BTNode1(value=&quot;z&quot;, left=x)
+y = BTNode1(value=&quot;y&quot;, left=z)
+y
+</pre></div>
+</div>
+</div>
+</div>
+<p>por ejemplo, para el siguiente árbol</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>k = BTNode1.from_list([2,1,12,-11,4,3,6,5,1])
+
+---
+2
+  L: 1
+    L: -11
+    R: 1
+  R: 12
+    L: 4
+      L: 3
+      R: 6
+        L: 5    
+</pre></div>
+</div>
+<ul>
+<li><p>su altura es 4</p></li>
+<li><p>su factor de balanceo (el del nodo raíz) es -2</p></li>
+<li><p>el árbol de factores de balanceo de todos los nodos es</p>
+<p>root: -2
+L: 0
+L: 0
+R: 0
+R: 3
+L: -1
+L: 0
+R: 1
+L: 0</p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode1(return_class=True).from_list([2,1,12,-11,4,3,6,5,1])
+k
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.height()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.balance_factor()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.balance_factor_tree()
+</pre></div>
+</div>
+</div>
+</div>
+<p>y para el siguiente árbol</p>
+<ul class="simple">
+<li><p>su factor de balance es 2</p></li>
+<li><p>su altura es 2</p></li>
+</ul>
+<div class="section" id="registra-tu-solucion-en-linea">
+<h3>registra tu solución en línea<a class="headerlink" href="#registra-tu-solucion-en-linea" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_01&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permalink to this headline">¶</a></h2>
+<p>Una operación de balanceo consiste en reacomodar los registros de un árbol binario de tal forma que los factores de balance de todos los registros sean -1, 0, ó +1 y que <strong>el recorrido INORDEN sea el mismo que antes del reacomodo</strong>.</p>
+<p>Operaciones de Rebalanceo:</p>
+<ol class="simple">
+<li><p>Una rotación a la derecha.</p></li>
+<li><p>Una rotación a la izquierda.</p></li>
+<li><p>Doble rotación a la derecha.</p></li>
+<li><p>Doble rotación a la izquierda.</p></li>
+</ol>
+<p>Para explicar lo referente a las rotaciones asumamos la siguiente convención:</p>
+<p>Sea <strong>Fb(P)</strong> el factor de balance de un nodo.</p>
+<p>Sea <strong>P</strong> un nodo con factor de balance no permitido.(p.ej. <strong>Fb(P)=+2</strong> ó <strong>Fb(P)=-2</strong>).</p>
+<p>Sea <strong>Q</strong> la dirección del hijo izquierdo o del hijo derecho de <strong>P</strong>, dependiendo de si <strong>Fb(P)=+2</strong>  ó  <strong>Fb(P)= - 2</strong>, es decir, si factor de balance de <strong>P</strong> es +2 entonces <strong>Q</strong> es el hijo izquierdo de <strong>P</strong> y si factor de balance de <strong>P</strong> es -2 entonces <strong>Q</strong> es el hijo derecho de <strong>P</strong>.</p>
+<p><strong>Rotación a la derecha</strong></p>
+<p>Se realiza cuando <strong>Fb(P)=+2</strong> y <strong>Fb(Q)=+1</strong>, y consiste en girar, en sentido de las manecillas del reloj, el registro P alrededor del registro Q.  Con lo que:</p>
+<ul class="simple">
+<li><p>P pasará a ser el nuevo hijo derecho de Q.</p></li>
+<li><p>El anterior hijo derecho de Q será el nuevo hijo izquierdo de P.</p></li>
+<li><p>Q será la nueva raíz del árbol balanceado.</p></li>
+<li><p>Los nuevos factores de balance de P y Q serán cero.</p></li>
+<li><p>La altura del árbol balanceado disminuye en uno.</p></li>
+</ul>
+<p>La siguiente figura ilustra esto</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/AVL-rotright.jpg&#39;) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>completa el método <code class="docutils literal notranslate"><span class="pre">rotate_right</span></code> para que el nodo realice una rotación a la derecha con si hizo izquierdo.</p>
+<p>realiza un <code class="docutils literal notranslate"><span class="pre">assert</span></code> al principio del método para verificar la condición <strong>Fb(P)=+2</strong> y <strong>Fb(Q)=+1</strong></p>
+<p><strong>ATENCIÓN</strong>: opera sobre <strong>una copia</strong> del propio árbol (usa <code class="docutils literal notranslate"><span class="pre">clone</span></code>), y así no lo modificarás.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class BTNode(object):
+
+        def __init__(self, value, left=None, right=None):
+            
+            self.value = value
+            self.left  = None
+            self.right = None
+            self.parent = None
+            if left is not None:
+                self.add_left(left)
+            if right is not None:
+                self.add_right(right)
+
+        def add_left(self, value):
+            assert self.left is None, &quot;node already has left child&quot;
+            self.left  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.left.parent = self
+            return self
+
+        def add_right(self, value):
+            assert self.right is None, &quot;node already has right child&quot;
+            self.right  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.right.parent = self
+            return self
+
+        def swap_children(self):
+            tmp = self.left
+            self.left = self.right
+            self.right = self.left
+            return self
+
+        def insert_ordered(self, new_value):
+            if new_value &lt; self.value:
+                if self.left is None:
+                    self.add_left(new_value)
+                    return self.left
+                else:
+                    return self.left.insert_ordered(new_value)
+            else:
+                if self.right is None:
+                    self.add_right(new_value)
+                    return self.right
+                else:
+                    return self.right.insert_ordered(new_value)
+
+        def ird(self):
+            if self.value==None:
+                return []
+            s1 = self.left.ird() if self.left is not None else []
+            s2 = self.right.ird() if self.right is not None else []
+            return s1+[self.value]+s2    
+
+        def to_indented_string(self, level, prefix=&quot;&quot;):
+            s = (&quot; &quot;*2*level + prefix + str(self.value) + &quot;\n&quot;) if self.value is not None else &quot;&quot;
+            s += self.left.to_indented_string(level+1, prefix=&quot;L: &quot;) if self.left is not None else &quot;&quot;
+            s += self.right.to_indented_string(level+1, prefix=&quot;R: &quot;) if self.right is not None else &quot;&quot;
+            return s       
+
+        def __repr__(self):
+            return self.to_indented_string(0, prefix=&quot;root: &quot;)
+
+        def clone(self):
+            r = self.__class__(self.value)
+
+            if self.left is not None:
+                r.left = self.left.clone()
+                r.left.parent = r
+            if self.right is not None:
+                r.right = self.right.clone()
+                r.right.parent = r
+
+            return r
+
+        @classmethod
+        def from_list(cls, a_list):
+            r = cls(a_list[0])
+            for i in a_list[1:]:
+                r.insert_ordered(i)
+            return r
+
+        @classmethod
+        def sort_list(cls, a_list):
+            r = cls.from_list(a_list)
+            return np.r_[r.ird()]
+
+def BTNode2(*args,**kwargs):
+    
+    
+    
+    class BTNode2_class(BTNode):
+
+        def height(self):
+
+            result = # TU CODIGO AQUI
+
+            return result
+
+        def balance_factor(self):
+            height_r = 0 if self.right is None else self.right.height()+1
+            height_l = 0 if self.left is None else self.left.height()+1
+            return height_l - height_r
+
+        def balance_factor_tree(self):
+            r = self.__class__(self.balance_factor(), \
+                               left=self.left.balance_factor_tree() if self.left is not None else None,
+                               right=self.right.balance_factor_tree() if self.right is not None else None,
+                              )
+            return r
+
+        def rotate_right(self):
+            assert # TU CODIGO AQUI
+                
+            result = # TU CODIGO AQUI
+
+            return result
+        
+    if &quot;return_class&quot; in kwargs.keys() and kwargs[&quot;return_class&quot;]:
+        return BTNode2_class
+    else:
+        return BTNode2_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>prueba tu código. una rotación derecha con el siguiente nodo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode2(&quot;c&quot;, left=BTNode2(&quot;b&quot;, left=BTNode2(&quot;a&quot;)))
+k
+</pre></div>
+</div>
+</div>
+</div>
+<p>debería de dar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>b
+  L: a
+  R: c
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.rotate_right()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode2(&quot;c&quot;, left=BTNode2(&quot;b&quot;, left=BTNode2(&quot;a&quot;)))
+print(k.ird())
+print(k.rotate_right().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<p>y con el siguiente nodo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode2(&quot;e&quot;, left=BTNode2(&quot;c&quot;, left=BTNode2(&quot;b&quot;, left=&quot;a&quot;), right=&quot;d&quot;), right=&quot;f&quot;)
+k
+</pre></div>
+</div>
+</div>
+</div>
+<p>debería de dar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    c
+      L: b
+        L: a
+      R: e
+        L: d
+        R: f
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(k)
+print(k.ird())
+print(k.rotate_right())
+print(k.rotate_right().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>registra tu solución en línea<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_02&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-3">
+<h2>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permalink to this headline">¶</a></h2>
+<p>Haremos ahora una <strong>rotación a la izquierda</strong>. Se realiza cuando <strong>Fb(P)=-2</strong> y <strong>Fb(Q)=-1</strong> y, por tanto, <strong>Q</strong> es el hijo derecho de <strong>P</strong></p>
+<ul class="simple">
+<li><p>P será el nuevo hijo izquierdo de Q.</p></li>
+<li><p>El nuevo hijo derecho de P será el anterior hijo izquierdo Q.</p></li>
+<li><p>Q será la nueva raíz del árbol balanceado.</p></li>
+<li><p>Los factores de balance P y Q quedarán en cero.</p></li>
+<li><p>La altura del árbol balanceado disminuye en uno (1).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class BTNode(object):
+
+        def __init__(self, value, left=None, right=None):
+            
+            self.value = value
+            self.left  = None
+            self.right = None
+            self.parent = None
+            if left is not None:
+                self.add_left(left)
+            if right is not None:
+                self.add_right(right)
+
+        def add_left(self, value):
+            assert self.left is None, &quot;node already has left child&quot;
+            self.left  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.left.parent = self
+            return self
+
+        def add_right(self, value):
+            assert self.right is None, &quot;node already has right child&quot;
+            self.right  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.right.parent = self
+            return self
+
+        def swap_children(self):
+            tmp = self.left
+            self.left = self.right
+            self.right = self.left
+            return self
+
+        def insert_ordered(self, new_value):
+            if new_value &lt; self.value:
+                if self.left is None:
+                    self.add_left(new_value)
+                    return self.left
+                else:
+                    return self.left.insert_ordered(new_value)
+            else:
+                if self.right is None:
+                    self.add_right(new_value)
+                    return self.right
+                else:
+                    return self.right.insert_ordered(new_value)
+
+        def ird(self):
+            if self.value==None:
+                return []
+            s1 = self.left.ird() if self.left is not None else []
+            s2 = self.right.ird() if self.right is not None else []
+            return s1+[self.value]+s2    
+
+        def to_indented_string(self, level, prefix=&quot;&quot;):
+            s = (&quot; &quot;*2*level + prefix + str(self.value) + &quot;\n&quot;) if self.value is not None else &quot;&quot;
+            s += self.left.to_indented_string(level+1, prefix=&quot;L: &quot;) if self.left is not None else &quot;&quot;
+            s += self.right.to_indented_string(level+1, prefix=&quot;R: &quot;) if self.right is not None else &quot;&quot;
+            return s       
+
+        def __repr__(self):
+            return self.to_indented_string(0, prefix=&quot;root: &quot;)
+
+        def clone(self):
+            r = self.__class__(self.value)
+
+            if self.left is not None:
+                r.left = self.left.clone()
+                r.left.parent = r
+            if self.right is not None:
+                r.right = self.right.clone()
+                r.right.parent = r
+
+            return r
+
+        @classmethod
+        def from_list(cls, a_list):
+            r = cls(a_list[0])
+            for i in a_list[1:]:
+                r.insert_ordered(i)
+            return r
+
+        @classmethod
+        def sort_list(cls, a_list):
+            r = cls.from_list(a_list)
+            return np.r_[r.ird()]
+
+def BTNode3(*args,**kwargs):
+    
+    class BTNode3_class(BTNode):
+
+        def height(self):
+
+            result = # TU CODIGO AQUI
+        
+            return result
+
+        def balance_factor(self):
+            result = # TU CODIGO AQUI
+        
+            return result
+
+        def balance_factor_tree(self):
+            r = self.__class__(self.balance_factor(), \
+                               left=self.left.balance_factor_tree() if self.left is not None else None,
+                               right=self.right.balance_factor_tree() if self.right is not None else None,
+                              )
+            return r
+
+
+        def rotate_left(self):
+            assert # TU CODIGO AQUI
+                
+            result = # TU CODIGO AQUI
+
+            return result
+        
+    if &quot;return_class&quot; in kwargs.keys() and kwargs[&quot;return_class&quot;]:
+        return BTNode3_class
+    else:
+        return BTNode3_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>prueba tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode3(&quot;b&quot;, right=BTNode3(&quot;d&quot;, right=BTNode3(&quot;e&quot;, right=&quot;f&quot;), left=&quot;c&quot;), left=&quot;a&quot;)
+print(k)
+print(k.ird())
+print(k.rotate_left())
+print(k.rotate_left().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>registra tu solución en línea<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_03&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-4">
+<h2>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permalink to this headline">¶</a></h2>
+<p>Haremos ahora una <strong>doble rotación a la derecha</strong>. Se realiza cuando <strong>Fb(P)=+2</strong> y <strong>Fb(Q)=-1</strong> y, por tanto, <strong>Q</strong> es el hijo derecho de <strong>P</strong></p>
+<p>En este caso consideramos <strong>R</strong> el nodo que representa el hijo izquierdo o el hijo derecho de <strong>Q</strong> dependiendo de si el factor de balance de <strong>Q</strong> es +1 ó -1. Es decir, si el factor de balance del registro Q es +1, el registro R es el hijo izquierdo del registro Q, y si el factor de balance de Q es -1, R es el hijo derecho del registro Q.</p>
+<p>Esta rotación consiste en una rotación a la izquierda de <strong>Q</strong> alrededor de <strong>R</strong> seguida de una rotación a la derecha de <strong>P</strong> alrededor de <strong>R</strong>, de forma que:</p>
+<ul class="simple">
+<li><p>P será el nuevo hijo izquierdo de Q.</p></li>
+<li><p>El nuevo hijo derecho de P será el anterior hijo izquierdo Q.</p></li>
+<li><p>Q será la nueva raíz del árbol balanceado.</p></li>
+<li><p>Los factores de balance P y Q quedarán en cero.</p></li>
+<li><p>La altura del árbol balanceado disminuye en uno (1).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class BTNode(object):
+
+        def __init__(self, value, left=None, right=None):
+            
+            self.value = value
+            self.left  = None
+            self.right = None
+            self.parent = None
+            if left is not None:
+                self.add_left(left)
+            if right is not None:
+                self.add_right(right)
+
+        def add_left(self, value):
+            assert self.left is None, &quot;node already has left child&quot;
+            self.left  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.left.parent = self
+            return self
+
+        def add_right(self, value):
+            assert self.right is None, &quot;node already has right child&quot;
+            self.right  = self.__class__(value) if value.__class__.__name__!=self.__class__.__name__ else value
+            self.right.parent = self
+            return self
+
+        def swap_children(self):
+            tmp = self.left
+            self.left = self.right
+            self.right = self.left
+            return self
+
+        def insert_ordered(self, new_value):
+            if new_value &lt; self.value:
+                if self.left is None:
+                    self.add_left(new_value)
+                    return self.left
+                else:
+                    return self.left.insert_ordered(new_value)
+            else:
+                if self.right is None:
+                    self.add_right(new_value)
+                    return self.right
+                else:
+                    return self.right.insert_ordered(new_value)
+
+        def ird(self):
+            if self.value==None:
+                return []
+            s1 = self.left.ird() if self.left is not None else []
+            s2 = self.right.ird() if self.right is not None else []
+            return s1+[self.value]+s2    
+
+        def to_indented_string(self, level, prefix=&quot;&quot;):
+            s = (&quot; &quot;*2*level + prefix + str(self.value) + &quot;\n&quot;) if self.value is not None else &quot;&quot;
+            s += self.left.to_indented_string(level+1, prefix=&quot;L: &quot;) if self.left is not None else &quot;&quot;
+            s += self.right.to_indented_string(level+1, prefix=&quot;R: &quot;) if self.right is not None else &quot;&quot;
+            return s       
+
+        def __repr__(self):
+            return self.to_indented_string(0, prefix=&quot;root: &quot;)
+
+        def clone(self):
+            r = self.__class__(self.value)
+
+            if self.left is not None:
+                r.left = self.left.clone()
+                r.left.parent = r
+            if self.right is not None:
+                r.right = self.right.clone()
+                r.right.parent = r
+
+            return r
+
+        @classmethod
+        def from_list(cls, a_list):
+            r = cls(a_list[0])
+            for i in a_list[1:]:
+                r.insert_ordered(i)
+            return r
+
+        @classmethod
+        def sort_list(cls, a_list):
+            r = cls.from_list(a_list)
+            return np.r_[r.ird()]
+
+def BTNode4(*args,**kwargs):
+    
+    class BTNode4_class(BTNode):
+
+        def height(self):
+
+            result = # TU CODIGO AQUI
+        
+            return result
+
+        def balance_factor(self):
+            result = # TU CODIGO AQUI
+        
+            return result
+
+        def balance_factor_tree(self):
+            r = self.__class__(self.balance_factor(), \
+                               left=self.left.balance_factor_tree() if self.left is not None else None,
+                               right=self.right.balance_factor_tree() if self.right is not None else None,
+                              )
+            return r
+
+        def double_rotate_right(self):
+            assert # TU CODIGO AQUI
+
+            result = # TU CODIGO AQUI
+
+            return result
+        
+        
+        
+    if &quot;return_class&quot; in kwargs.keys() and kwargs[&quot;return_class&quot;]:
+        return BTNode4_class
+    else:
+        return BTNode4_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode4(&quot;c&quot;, left=BTNode4(&quot;a&quot;, right=&quot;b&quot;))
+print(k)
+print(k.ird())
+print(k.double_rotate_right())
+print(k.double_rotate_right().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode4(&quot;e&quot;, left=BTNode4(&quot;b&quot;, left=&quot;a&quot;, right=BTNode4(&quot;d&quot;, left=&quot;c&quot;)), right=&quot;f&quot;)
+print(k)
+print(k.ird())
+print(k.double_rotate_right())
+print(k.double_rotate_right().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = BTNode4(&quot;e&quot;, left=BTNode4(&quot;b&quot;, left=&quot;c&quot;, right=BTNode4(&quot;a&quot;, right=&quot;d&quot;)), right=&quot;f&quot;)
+print(k)
+print(k.ird())
+print(k.double_rotate_right())
+print(k.double_rotate_right().ird())
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>registra tu solución en línea<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_04&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="LAB%2006%20-%20Arboles.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">LAB 06 - Árboles</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="M04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">D. Grafos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

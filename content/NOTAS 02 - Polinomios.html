@@ -1,0 +1,1019 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polinomios &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matrices dispersas" href="NOTAS%2003%20-%20Matrices%20dispersas.html" />
+    <link rel="prev" title="B. Estructuras y memoria" href="M02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 02 - Polinomios.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 02 - Polinomios.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Polinomios</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="polinomios">
+<h1>Polinomios<a class="headerlink" href="#polinomios" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivo-del-modulo">
+<h2>Objetivo del módulo<a class="headerlink" href="#objetivo-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer el TAD polinomio y entender las implicaciones de las decisiones para su implementación.</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>¿Cómo se define un TAD polinomio?</p></li>
+<li><p>¿Qué decisiones hay que tomar para su implementación?</p></li>
+<li><p>¿Cómo se combinan polinomios (sumas, multiplicaciones) según la representación escogida?</p></li>
+<li><p>¿Qué compromisos de uso de memoria y rendimiento de CPU se adquieren?</p></li>
+</ol>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Un polinomio viene definido por una sumatoria de términos y exponentes de la siguiente manera:</p>
+<div class="math notranslate nohighlight">
+\[P = \sum_{i=0}^{n-1} c_i x^{e_i}\]</div>
+<p>Y el grado del mismo es el mayor <span class="math notranslate nohighlight">\(e_i\)</span> tal que <span class="math notranslate nohighlight">\(c_i\ne 0\)</span></p>
+<p>Por ejemplo, el polinomio:</p>
+<div class="math notranslate nohighlight">
+\[4x^3 + 2x^5 + x^2\]</div>
+<p>tiene grado 5 y tiene coeficientes y exponentes:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C=[4,2,1]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(E=[3,5,2]\)</span></p></li>
+</ul>
+<p>observa que, a priori, no hacemos ninguna suposición sobre si los exponentes han de estar ordenados o han de ser únicos (sin repetidos).</p>
+<p><strong>TAD</strong> <span class="math notranslate nohighlight">\(Polynom\)</span></p>
+<p><span class="math notranslate nohighlight">\(\forall P,Q,R \in Polynom;\;\; c,d \in \mathbb{R};\;\; e,f\in\mathbb{N}\)</span></p>
+<p><strong>signatures</strong>:
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d87380b2-9ebc-4a91-9863-783cbe9eee0e">
+<span class="eqno">(6)<a class="headerlink" href="#equation-d87380b2-9ebc-4a91-9863-783cbe9eee0e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+new() &amp;\rightarrow Polynom\\
+P.add\_term(c,e) &amp;\rightarrow Polynom\\
+P.is\_empty() &amp;\rightarrow Bool\\
+P.is\_zero() &amp;\rightarrow Bool\\
+P.sum(Q)  &amp;\rightarrow Polynom\;\;\text{suma dos polinomios}\\
+P.smult(c,e) &amp;\rightarrow Polynom \;\;\text{multiplica un polinomio por un término}\\
+P.mult(Q) &amp;\rightarrow Polynom\;\;\text{multiplica dos polinomios}\\
+P.coef(f) &amp;\rightarrow \mathbb{R}\;\; \text{suma de coeficientes de términos con exponente }f\\
+P.grade() &amp;\rightarrow \mathbb{N}\;\; \text{exponente más alto}
+\end{align}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+**axioms**:\\- **axiom 1**: $new().is\_empty() ::= True $
+- **axiom 2**: $P.is\_empty() ::= |C|=|E|=0$
+- **axiom 3**: $P.is\_zero() ::= \forall i |  \sum_{j|e_i=e_j} c_j=0$\\
+- **axiom 4**: $new().sum(Q) ::= Q$
+- **axiom 5**: $P.add\_term(c,e).sum(Q) ::= P.sum(Q).add\_term(c,e)$\\**práctica**:\\usa los axiomas anteriores para sumar los siguientes dos polinomios:\\$$P=3x^5 + 4x^2 \;\;\;\;\;\; Q=2x + 7x^2\end{aligned}\end{align} \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(3x^5 + 4x^2\)</span> ::= <span class="math notranslate nohighlight">\(new().add\_term(4,2).add\_term(3,5)\)</span></p></li>
+<li><p>usando el axioma de suma varias veces:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P.sum(Q) ::=new().add\_term(4,2).add\_term(3,5).sum(Q)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::= new().add\_term(4,2).sum(Q).add\_term(3,5)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::= new().sum(Q).add\_term(4,2).add\_term(3,5)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::= new().add\_term(4,2).sum(Q).add\_term(3,5)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::= sum(Q).add\_term(4,2).add\_term(3,5)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>observación</strong>:</p>
+<p>Fïjate que el axioma de suma lo podríamos haber definido también de la siguiente forma:</p>
+<ul class="simple">
+<li><p><strong>axiom 6</strong>: <span class="math notranslate nohighlight">\(P.sum(Q) ::= R | C_R = C_P + C_Q;\;E_R = E_P + E_Q\;\;\;\)</span> siendo <span class="math notranslate nohighlight">\(+\)</span> la operación de concatenación de listas</p></li>
+</ul>
+<p>esta última definición es <strong>más operativa</strong> ya que implica dos estructuras de almacenamiento <span class="math notranslate nohighlight">\(C\)</span> y <span class="math notranslate nohighlight">\(E\)</span> para cada polinomio, y sugiere una implementación concreta. En cambio la definición anterior, en los axiomas 4 y 5, <strong>es más abstracta</strong> e independiente de implementación.</p>
+<p><strong>implementación</strong>:</p>
+<p>La siguiente clase implementa estas definiciones. Observa el <strong>constructor</strong>, usamos <code class="docutils literal notranslate"><span class="pre">list</span></code> para <strong>copiar</strong> la lista pasada como argumento (si no, sería una referencia y se modificaría el original cuando hagamos operaciones).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Math
+import numpy as np
+import numbers
+
+class Pol:
+    
+    def __init__(self, elements=[]):
+        self.elements = list(elements)
+        
+    def isEmpty(self):
+        return len(self.elements==0)
+        
+    def add_term(self, coef, exp):
+        assert (isinstance(coef, numbers.Real) or isinstance(coef,numbers.Integral)) and isinstance(exp, numbers.Integral), \
+                &quot;coef/exp must be float/int&quot;
+        self.elements.append((coef,exp))
+        return self
+        
+    def sum(self, q):
+        r = self.__class__()
+        for c,e in self.elements+q.elements:
+            r.add_term(c,e)
+        return r
+    
+    def show(self):
+        s = &quot;+&quot;.join([&quot;%s^{%s}&quot;%(str(c) if e==0 else str(c)+&quot;x&quot; if c!=1 else &quot;x&quot;, str(e) if e not in [0,1] else &quot;&quot;) for c,e in self.elements if c!=0])
+        s = s.replace(&quot;+-&quot;, &quot;-&quot;)
+        return Math(s)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol().add_term(3,5).add_term(4,2).add_term(3,0).add_term(5,10)
+print(p.elements)
+p.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(3, 5), (4, 2), (3, 0), (5, 10)]
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{2}+3^{}+5x^{10}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>q = Pol().add_term(2,1).add_term(7,2)
+print(q.elements)
+q.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(2, 1), (7, 2)]
+</pre></div>
+</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2x^{}+7x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.sum(q).show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{2}+3^{}+5x^{10}+2x^{}+7x^{2}\]</div>
+</div>
+</div>
+<p>seguimos definiendo axiomas</p>
+<ul class="simple">
+<li><p><strong>axiom 7</strong>: <span class="math notranslate nohighlight">\(new().smult(d, f) ::= new()\)</span></p></li>
+<li><p><strong>axiom 8</strong>: <span class="math notranslate nohighlight">\(P.add\_term(c,e).smult(d,f) ::= P.smult(d,f).add\_term(c*d, e+f)\)</span></p></li>
+</ul>
+<p><strong>práctica</strong>:</p>
+<p>usa los axiomas anteriores para multiplicar</p>
+<div class="math notranslate nohighlight">
+\[P=3x^5 + 4x^2 \;\;\;\;\;\text{con el término}\;\;9x^3\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P.smult(9,3) ::=new().add\_term(4,2).add\_term(3,5).smult(9,3)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().add\_term(4,2).smult(9,3).add\_term(27,8)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().smult(9,3).add\_term(36,5).add\_term(27,8)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().add\_term(36,5).add\_term(27,8)\)</span></p></li>
+</ul>
+<p>o sea <span class="math notranslate nohighlight">\(27x^8 + 36x^5\)</span></p>
+<p>y pensamos una definición más operativa</p>
+<ul class="simple">
+<li><p><strong>axiom 9</strong>: <span class="math notranslate nohighlight">\(P.smult(d,f)::=R|C_R = [c*d, \;\;\forall c\in C_P], E_R = [e+f,  \;\;\forall e\in E_P]\)</span></p></li>
+</ul>
+<p>y ampliamos nuestra definición de polinomio (observa que usamos <strong>herencia de clases</strong>). Fíjate que la sintaxis de Python está diseñada para que se parezca lo más posible a la notación matemática anterior. Observa el uso de <code class="docutils literal notranslate"><span class="pre">clone</span></code> para evitar modificar el propio objeto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numbers
+class Pol2(Pol):
+    
+    def clone(self):
+        return Pol2(list(self.elements))
+    
+    def smult(self, d,f):
+        assert (isinstance(d, numbers.Real) or isinstance(d,numbers.Integral)) and isinstance(f, numbers.Integral), &quot;coef/exp must be float/int&quot;
+        r = self.__class__()
+        r.elements = [(c*d, e+f) for c,e in self.elements]
+        return r
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol2().add_term(3,5).add_term(4,2)
+p.clone().show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.smult(9,3).show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 27x^{8}+36x^{5}\]</div>
+</div>
+</div>
+<p>más axiomas</p>
+<ul class="simple">
+<li><p><strong>axiom 10</strong>: <span class="math notranslate nohighlight">\(new().mult(Q) ::= new()\)</span></p></li>
+<li><p><strong>axiom 11</strong>: <span class="math notranslate nohighlight">\(P.add\_term(c,e).mult(Q) ::= P.mult(Q).sum(Q.smult(c,e))\)</span></p></li>
+</ul>
+<p><strong>práctica</strong>:</p>
+<p>multipliquemos:</p>
+<div class="math notranslate nohighlight">
+\[P=3x^5 + 4x^2 \;\;\;\;\;\; Q=2x + 7x^2\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P.mult(Q) ::=new().add\_term(4,2).add\_term(3,5).mult(Q)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().add\_term(4,2).mult(Q).sum(Q.smult(3,5))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().mult(Q).sum(Q.smult(4,2)).sum(Q.smult(3,5))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(::=new().sum(Q.smult(4,2)).sum(Q.smult(3,5))\)</span></p></li>
+</ul>
+<p>implementemos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Pol3(Pol2):
+    
+    def mult(self, q):
+        terms = [q.smult(c,e) for c,e in self.elements]
+        r = terms[0]
+        for t in terms[1:]:
+            r = r.sum(t)
+        
+        return r
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol3().add_term(3,5).add_term(4,2)
+q = Pol3().add_term(2,1).add_term(7,2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>q.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2x^{}+7x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.mult(q).show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6x^{6}+21x^{7}+8x^{3}+28x^{4}\]</div>
+</div>
+</div>
+<p>más axiomas:</p>
+<ul class="simple">
+<li><p><strong>axiom 12</strong>: <span class="math notranslate nohighlight">\(new().grade() ::= error\)</span></p></li>
+<li><p><strong>axiom 13</strong>: <span class="math notranslate nohighlight">\(new().add\_term(c,e).grade() ::= e\)</span></p></li>
+<li><p><strong>axiom 14</strong>: <span class="math notranslate nohighlight">\(P.add\_term(c,e).add\_term(d,f).grade() ::= P.add\_term(c,e).grade()\)</span> if <span class="math notranslate nohighlight">\(e&gt;f\)</span> else <span class="math notranslate nohighlight">\(P.add\_term(d,f).grade()\)</span></p></li>
+<li><p><strong>axiom 15</strong>: <span class="math notranslate nohighlight">\(new().coef(f) ::= 0\)</span></p></li>
+<li><p><strong>axiom 16</strong>: <span class="math notranslate nohighlight">\(P.add\_term(c,e).coef(f) ::= c+P.coef(f)\)</span> if <span class="math notranslate nohighlight">\(e=f\)</span> else <span class="math notranslate nohighlight">\(P.coef(f)\)</span></p></li>
+</ul>
+<p>y su implementación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Pol4(Pol3):
+    
+    def grade(self):
+        return np.max([e for c,e in self.elements])
+    
+    def coef(self,f):
+        return np.sum([c for c,e in self.elements if e==f])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol4().add_term(3,5).add_term(4,8).add_term(7,5)
+p.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{8}+7x^{5}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.grade()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.coef(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.coef(8)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.coef(2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>¿Cómo sería la definición axiomática más operativa de esta implementación?</p>
+<ul class="simple">
+<li><p><strong>axiom 17</strong>: <span class="math notranslate nohighlight">\(P.grade() ::== max(E)\)</span></p></li>
+<li><p><strong>axiom 18</strong>: <span class="math notranslate nohighlight">\(P.coef(f) ::= \sum_{j|e_j=f} c_j\)</span></p></li>
+</ul>
+<p>finalmente añadimos un método para simplificar un polinomio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Pol5(Pol4):
+    
+    def simplify(self):
+        exps  = np.sort(np.unique([e for c,e in self.elements]))
+        coefs = [self.coef(f) for f in exps]
+        return Pol5 ([(c,e) for c,e in zip(coefs, exps)])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol5().add_term(3,5).add_term(4,8).add_term(7,5).add_term(-2,8).add_term(2.87, 3)
+p.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{8}+7x^{5}-2x^{8}+2.87x^{3}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.simplify().show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2.87x^{3}+10x^{5}+2x^{8}\]</div>
+</div>
+</div>
+<p>y verficamos propiedades</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = Pol5().add_term(3,5).add_term(4,8).add_term(7,5).add_term(-2,8).add_term(2.87, 3)
+q = Pol5().add_term(2,1).add_term(7,2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 3x^{5}+4x^{8}+7x^{5}-2x^{8}+2.87x^{3}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>q.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 2x^{}+7x^{2}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.mult(q).show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 6x^{6}+21x^{7}+8x^{9}+28x^{10}+14x^{6}+49x^{7}-4x^{9}-14x^{10}+5.74x^{4}+20.09x^{5}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.mult(q).simplify().show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 5.74x^{4}+20.09x^{5}+20x^{6}+70x^{7}+4x^{9}+14x^{10}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p.simplify().mult(q).show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 5.74x^{4}+20.09x^{5}+20x^{6}+70x^{7}+4x^{9}+14x^{10}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios-propuestos">
+<h2>Ejercicios propuestos<a class="headerlink" href="#ejercicios-propuestos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Modifica <code class="docutils literal notranslate"><span class="pre">add_term</span></code> para ignorar términos con coeficiente 0. Esto repararía el comportamiento del método <code class="docutils literal notranslate"><span class="pre">grade</span></code></p></li>
+</ul>
+<p><strong>Polinomios con restricciones</strong></p>
+<p>Define axiomas para un polinomio con restricciones en el que sólo hay un término por exponente y los términos deben de estar ordenados de manera descendente por exponente.</p>
+<p>P.ej. si tenemos el polinomio <span class="math notranslate nohighlight">\(4x^8 + 5x^6 – 4x^3 + 2x\)</span> la forma como se representa según nuestra definición de polinomio con restricciones es:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(new().add\_term(2,1).add\_term(-4,3).add\_term(5,6).add\_term(4,8)\)</span></p></li>
+</ul>
+<p>el término con menor exponente será el más interno y el término con mayor exponente será el más externo, es decir, el término con mayor exponente es el correspondiente a <span class="math notranslate nohighlight">\(c\)</span> y <span class="math notranslate nohighlight">\(e\)</span> de acuerdo a la forma general definida.</p>
+<p>Con base en esta decisión, las definiciones de los axiomas correspondientes a las funciones grado y suma se facilitan respecto al polinomio sin restricciones.</p>
+<ul>
+<li><p><strong>axiom</strong>: <span class="math notranslate nohighlight">\(new.grade() ::= error\)</span></p></li>
+<li><p><strong>axiom</strong>: <span class="math notranslate nohighlight">\(new().add\_term(c,e).grade() ::= e\)</span></p></li>
+<li><p><strong>axioms</strong>:</p>
+<p>new().sum(Q) ::= Q</p>
+<p>P.sum(new()) ::= P</p>
+<p>P.add_term(c,e).sum(Q.add_term(d,f)) ::=</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  P.sum(Q.add_term(d,f)).add_term(c,e) if e&gt;f else:
+
+  P.add_term(c,e).sum(Q).add_term(d,f) if e&lt;f else:
+  
+  P.sum(Q) if (c+d)==0 else P.sum(Q).add_term(c+d,e)
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Después de realizar el laboratorio</strong></p>
+<ul class="simple">
+<li><p>implementa la multiplicación para la implementación <strong>v1</strong></p></li>
+<li><p>implementa la resta y la división para ambas implementaciones</p></li>
+<li><p>mide y compara los rendimientos de <code class="docutils literal notranslate"><span class="pre">add_term</span></code> de la implementación <strong>v1</strong> y <strong>v2</strong></p></li>
+<li><p>mide y compara los rendimientos de <code class="docutils literal notranslate"><span class="pre">sum</span></code> de la implementación <strong>v1</strong> y <strong>v2</strong></p></li>
+<li><p>¿qué equilibrio hay entre rendimiendo de CPU y de memoria?</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="M02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">B. Estructuras y memoria</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2003%20-%20Matrices%20dispersas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrices dispersas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

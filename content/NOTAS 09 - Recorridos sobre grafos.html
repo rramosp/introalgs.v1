@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recorridos sobre grafos &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Algoritmos sobre grafos" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html" />
+    <link rel="prev" title="Grafos" href="NOTAS%2008%20-%20Grafos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 09 - Recorridos sobre grafos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 09 - Recorridos sobre grafos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo">
+   Objetivo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-uso-e-implementacion">
+   Ejemplo de uso e implementación
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recorridos-sobre-un-laberinto">
+     Recorridos sobre un laberinto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breath-first-search">
+   Breath First Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#depth-first-search">
+   Depth First Search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-shorten-the-answer-of-dfs">
+     let’s shorten the answer of DFS
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Recorridos sobre grafos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo">
+   Objetivo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-de-uso-e-implementacion">
+   Ejemplo de uso e implementación
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recorridos-sobre-un-laberinto">
+     Recorridos sobre un laberinto
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breath-first-search">
+   Breath First Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#depth-first-search">
+   Depth First Search
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-shorten-the-answer-of-dfs">
+     let’s shorten the answer of DFS
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="recorridos-sobre-grafos">
+<h1>Recorridos sobre grafos<a class="headerlink" href="#recorridos-sobre-grafos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivo">
+<h2>Objetivo<a class="headerlink" href="#objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Aprender las diferentes formas de recorrer un grafo y construir los algoritmos correspondientes.</p>
+<p>## Preguntas básicas</p>
+<ol class="simple">
+<li><p>¿En qué consiste el recorrido DFS sobre un grafo?</p></li>
+<li><p>¿En qué consiste el recorrido BFS sobre un grafo?</p></li>
+</ol>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Al igual que en los árboles, los grafos son estructuras en las cuales una de las principales operaciones es el recorrido sobre ellas. Trataremos en este módulo las diferentes formas en que se recorren los árboles.</p>
+<p><strong>Recorrido DFS</strong>. Recibe este nombre porque son las iniciales de las palabras en inglés <strong>Depth First Search</strong>:  búsqueda primero en profundidad. El recorrido DFS consiste en: estando ubicados en un vértice i cualquiera, determinar los vértices adyacentes, de esos vértices adyacentes elegir uno que no haya sido visitado y a partir de ahí iniciar nuevamente recorrido DFS. Observe que estamos planteando una definición recursiva para el recorrido.</p>
+<p><strong>Recorrido BFS</strong>. Recibe este nombre porque son las iniciales de las palabras en inglés <strong>Breadth First Search</strong>: búsqueda primero a lo ancho. Hay una diferencia sustancial entre este recorrido y el DFS: mientras que en el recorrido DFS no se visitan de una vez todos los adyacentes a un vértice dado, aquí hay que visitar primero todos los vértices adyacentes a un vértice dado antes de continuar el recorrido</p>
+</div>
+<div class="section" id="ejemplo-de-uso-e-implementacion">
+<h2>Ejemplo de uso e implementación<a class="headerlink" href="#ejemplo-de-uso-e-implementacion" title="Permalink to this headline">¶</a></h2>
+<p>usaremos <strong>colas</strong> para controlar y determinar un recorrido BFS o BFS. Observa el uso de <a class="reference external" href="https://docs.python.org/2/library/collections.html"><code class="docutils literal notranslate"><span class="pre">deque</span></code></a> en Python</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from collections import deque
+import numpy as np
+x = np.random.randint(100, size=10)
+print(&quot;int list  &quot;, x)
+queue = deque()
+for i in x:
+    queue.append(i)
+print(&quot;pop       &quot;, end=&#39; &#39;)
+while len(queue)&gt;0:
+    print(queue.pop(), end=&#39; &#39;)
+
+    
+queue = deque()
+for i in x:
+    queue.append(i)
+print(&quot;\npop left  &quot;, end=&#39; &#39;)
+while len(queue)&gt;0:
+    print(queue.popleft(), end=&#39; &#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int list   [17  9 36 40 76 79 86 25 65 15]
+pop        15 65 25 86 79 76 40 36 9 17 
+pop left   17 9 36 40 76 79 86 25 65 15 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recorridos-sobre-un-laberinto">
+<h3>Recorridos sobre un laberinto<a class="headerlink" href="#recorridos-sobre-un-laberinto" title="Permalink to this headline">¶</a></h3>
+<p>Observa cómo implemnetamos un recorrido con obstáculos:</p>
+<ul class="simple">
+<li><p>cómo <strong>describrimos</strong> el laberinto</p></li>
+<li><p>cómo el laberinto es equivalente a un grafo</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+%matplotlib inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>EMPTY, WALL, TARGET, USED = &quot;.&quot;,&quot;X&quot;,&quot;T&quot;,&quot;o&quot;
+c  = pd.Series({&quot;EMPTY&quot;: &quot;.&quot;, &quot;WALL&quot;:&quot;X&quot;, &quot;TARGET&quot;:&quot;T&quot;, &quot;USED&quot;:&quot;o&quot;})
+ci = pd.Series({&quot;.&quot;: 0, &quot;X&quot;: 255, &quot;T&quot;:100, &quot;o&quot;:200})
+
+def plot_map(grid,p=[]):
+    img = np.r_[[[ci[i] for i in j] for j in grid]]
+    plt.imshow(img, alpha=.5)
+    if(len(p)&gt;0):
+        for i in range(len(p)-1):
+            plt.plot([p[i][1],p[i+1][1]],[p[i][0],p[i+1][0]], color=&quot;black&quot;, lw=4)    
+        plt.title(&quot;path length = %d&quot;%len(p))
+        
+    plt.xticks(list(range(img.shape[1])), list(range(img.shape[1])))
+    plt.yticks(list(range(img.shape[0])), list(range(img.shape[0])))
+    
+def possible_moves(grid, y,x):
+    moves = [ [y,x+1], [y-1,x], [y,x-1], [y+1,x]]
+    
+    moves = [(my,mx) for my,mx in moves if mx&gt;=0 and mx&lt;len(grid[0]) and \
+                                           my&gt;=0 and my&lt;len(grid) and grid[my][mx]!=c.WALL]    
+    return moves
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = [&quot;...XX&quot;,
+        &quot;....X&quot;,
+        &quot;.X..T&quot;]
+
+plot_map(grid)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_6_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_6_0.png" />
+</div>
+</div>
+<p>este laberinto  es equivalente al siguiente grafo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import networkx as nx
+import itertools
+def draw_graph(grid, path=None, node_size=900, font_color=&quot;white&quot;):
+    g = nx.Graph()
+    g.add_nodes_from([(i,j) for i,j in itertools.product(list(range(len(grid))), list(range(len(grid[0])))) if grid[i][j]!=&quot;X&quot;])
+    for i,j in g.nodes:
+        for ni,nj in possible_moves(grid, i,j):
+            g.add_edge((i,j), (ni,nj))
+            
+    if path is None:
+        c = &quot;blue&quot;
+    else:
+        c = [1 if i in p else 0 for i in g.nodes.keys()]
+    nx.drawing.draw(g, with_labels=True, 
+                    node_alpha=.2, node_color=c, 
+                    node_size=node_size, font_color=font_color)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>draw_graph(grid)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_9_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_9_0.png" />
+</div>
+</div>
+<p>preuba con distintos laberintos para construir tu intuición del grafo asociado</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = [&quot;.....X&quot;,
+        &quot;XX...X&quot;,
+        &quot;...X..&quot;,
+        &quot;.XX..X&quot;,
+        &quot;.X...T&quot;]
+
+plot_map(grid)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_11_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>draw_graph(grid)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_12_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_12_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="breath-first-search">
+<h2>Breath First Search<a class="headerlink" href="#breath-first-search" title="Permalink to this headline">¶</a></h2>
+<p>This is <strong>breadth first</strong>. We put the initial node into the queue. Then repeat this procedure until visit the goal node or visit all available nodes: take the first from the queue, check if it was visited or not, check if it’s the goal, put all neighbours in the end of the queue, repeat. For each step we track not only the nodes, but directions and the path for the current node too.</p>
+<ul class="simple">
+<li><p>does it give the best answer?</p></li>
+</ul>
+<p>See <a class="reference external" href="http://bryukh.com/labyrinth-algorithms/">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from collections import deque
+
+def bfs_search(grid, verbose=True):
+    n_iterations   = 0
+    max_queue_len  = 0
+    start = (0, 0)
+    queue = deque([([], start)])
+    visited = set()
+    while queue:
+        n_iterations += 1
+        max_queue_len = max_queue_len if len(queue) &lt; max_queue_len else len(queue)
+        path, (y,x) = queue.popleft()
+        if grid[y][x] == c.TARGET:
+            if verbose:
+                print(&quot;n_iterations %d, max_queue_len %d&quot;%(n_iterations, max_queue_len))
+            return path+[(y,x)]
+        if (y,x) in visited:
+            continue
+        visited.add((y,x))
+        for move in possible_moves(grid,y,x):
+            queue.append((path + [(y,x)], move))
+
+    return []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p=bfs_search(grid)
+print(&quot;success&quot;, len(p)&gt;0)
+plot_map(grid, p)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_iterations 39, max_queue_len 8
+success True
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_15_1.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_15_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(p)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (1, 4), (2, 4), (3, 4), (4, 4), (4, 5)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>draw_graph(grid, path=p)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_17_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="depth-first-search">
+<h2>Depth First Search<a class="headerlink" href="#depth-first-search" title="Permalink to this headline">¶</a></h2>
+<p>This is <strong>depth first</strong>. We simply use the other way around.</p>
+<ul class="simple">
+<li><p>Does it give the best answer?</p></li>
+<li><p>How is its computational complexity as compared with  BFS?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from collections import deque
+
+def dfs_search(grid, verbose=True):
+    n_iterations   = 0
+    max_queue_len  = 0
+    start = (0, 0)
+    queue = deque([([], start)])
+    visited = set()
+    while queue:
+        n_iterations += 1
+        max_queue_len = max_queue_len if len(queue) &lt; max_queue_len else len(queue)
+        path, (y,x) = queue.pop()
+        if grid[y][x] == c.TARGET:
+            if verbose:
+                print(&quot;n_iterations %d, max_queue_len %d&quot;%(n_iterations, max_queue_len))
+            return path+[(y,x)]
+        if (y,x) in visited:
+            continue
+        visited.add((y,x))
+        for move in possible_moves(grid,y,x):
+            queue.append((path + [(y,x)], move))
+    return []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def generate_maze(size, prob=.7):
+    grid = (np.random.random(size=size)&gt;prob)*1
+    grid = [[c.WALL if grid[x,y] else c.EMPTY for y in range(grid.shape[1])] for x in range(grid.shape[0])]
+    grid[-1][-1]=c.TARGET
+    return grid
+
+grid = generate_maze(size=(10,20))
+plot_map(grid)
+print(possible_moves(grid, 1,1))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 2), (0, 1), (1, 0), (2, 1)]
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_20_1.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_20_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(14,7))
+draw_graph(grid, node_size=500, font_color=&quot;black&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_21_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p=dfs_search(grid)
+print(&quot;success&quot;, len(p)&gt;0)
+plot_map(grid, p)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>success False
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_22_1.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_22_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure(figsize=(14,7))
+draw_graph(grid, node_size=400, font_color=&quot;black&quot;, path=p)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_23_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_23_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = generate_maze(size=(30,50), prob=.8)
+plot_map(grid)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_24_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_bfs = bfs_search(grid)
+print (&quot;success&quot;, len(p_bfs)&gt;0)
+%timeit bfs_search(grid, verbose=False)
+plot_map(grid, p_bfs)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_iterations 3890, max_queue_len 117
+success True
+10 loops, best of 3: 110 ms per loop
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_25_1.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p_dfs = dfs_search(grid)
+print (&quot;success&quot;, len(p_dfs)&gt;0)
+%timeit dfs_search(grid, verbose=False)
+plot_map(grid, p_dfs)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n_iterations 1868, max_queue_len 1125
+success True
+10 loops, best of 3: 79.9 ms per loop
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_26_1.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_26_1.png" />
+</div>
+</div>
+<div class="section" id="let-s-shorten-the-answer-of-dfs">
+<h3>let’s shorten the answer of DFS<a class="headerlink" href="#let-s-shorten-the-answer-of-dfs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>is it now the best answer?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pp = np.r_[p_dfs]
+i=0
+while i&lt;len(pp):
+    for k in range(i+2, len(pp)):
+        if np.sum(np.abs(pp[i]-pp[k]))==1:
+            pp = np.concatenate((pp[:i+1], list(pp[k:])))
+            break
+    i+=1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_map(grid, pp)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 09 - Recorridos sobre grafos_29_0.png" src="../_images/NOTAS 09 - Recorridos sobre grafos_29_0.png" />
+</div>
+</div>
+<p>observe computing times. larger mazes makes DFS more iterations (but slower due to data structures which should be improved)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = generate_maze(size=(10,20), prob=.8)
+%timeit bfs_search(grid, verbose=False)
+%timeit dfs_search(grid, verbose=False)
+
+print (&quot;bfs solution len&quot;, len(bfs_search(grid)))
+print (&quot;dfs solution len&quot;, len(dfs_search(grid)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 loops, best of 3: 13.5 ms per loop
+100 loops, best of 3: 10.4 ms per loop
+n_iterations 485, max_queue_len 59
+bfs solution len 29
+n_iterations 314, max_queue_len 115
+dfs solution len 85
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = generate_maze(size=(20,30))
+%timeit bfs_search(grid, verbose=False)
+%timeit dfs_search(grid, verbose=False)
+
+print (&quot;bfs solution len&quot;, len(bfs_search(grid)))
+print (&quot;dfs solution len&quot;, len(dfs_search(grid)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 loops, best of 3: 23.7 ms per loop
+10 loops, best of 3: 23.8 ms per loop
+bfs solution len 0
+dfs solution len 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grid = generate_maze(size=(50,50))
+%timeit bfs_search(grid, verbose=False)
+%timeit dfs_search(grid, verbose=False)
+
+print (&quot;bfs solution len&quot;, len(bfs_search(grid)))
+print (&quot;dfs solution len&quot;, len(dfs_search(grid)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 loops, best of 3: 151 ms per loop
+10 loops, best of 3: 107 ms per loop
+n_iterations 4901, max_queue_len 151
+bfs solution len 101
+n_iterations 2785, max_queue_len 785
+dfs solution len 589
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2008%20-%20Grafos.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Grafos</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Algoritmos sobre grafos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1469 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introducción a Python &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tipos abstractos de datos" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html" />
+    <link rel="prev" title="A. Introducción" href="M01.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 00 - Introduccion Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 00 - Introduccion Python.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asignacion-automatica-de-tipos-de-variables">
+   Asignación automatica de tipos de variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#listas">
+   Listas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices-y-vectores">
+   Matrices y vectores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generacion-de-matrices-y-vectores">
+   Generación de matrices y vectores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operaciones-vectorizadas">
+   Operaciones vectorizadas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones-y-estructuras">
+   Funciones y estructuras
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diccionarios">
+   Diccionarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expresiones-compactas">
+   Expresiones compactas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parte-1">
+   Parte 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos">
+   Gráficos
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción a Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#asignacion-automatica-de-tipos-de-variables">
+   Asignación automatica de tipos de variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#listas">
+   Listas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrices-y-vectores">
+   Matrices y vectores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generacion-de-matrices-y-vectores">
+   Generación de matrices y vectores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operaciones-vectorizadas">
+   Operaciones vectorizadas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funciones-y-estructuras">
+   Funciones y estructuras
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diccionarios">
+   Diccionarios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expresiones-compactas">
+   Expresiones compactas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parte-1">
+   Parte 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graficos">
+   Gráficos
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduccion-a-python">
+<h1>Introducción a Python<a class="headerlink" href="#introduccion-a-python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="asignacion-automatica-de-tipos-de-variables">
+<h2>Asignación automatica de tipos de variables<a class="headerlink" href="#asignacion-automatica-de-tipos-de-variables" title="Permalink to this headline">¶</a></h2>
+<p>En Python no es necesario declarar explícitamente el tipo de las variables. El intérprete trata de inferir el tipo de las variables según se usan. Igualmente, las operaciones tienen semántica distinta para distintos tipos de datos. Fíjate en el ejemplo siguiente. ¿Por qué el resultado de las dos últimas divisiones no es el mismo?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 10
+b = 3
+c = 3.
+d = &quot;hola&quot;
+print(type(a), type(b), type(c), type(d))
+
+print(&quot;a =&quot;,a,&quot;; b =&quot;,b, &quot;; c =&quot;,c)
+print(&quot;a/b =&quot;, a/b)
+print(&quot;a/c =&quot;, a/c)
+print(&quot;a/b =&quot;, a//b)
+print(&quot;a/c =&quot;, a//c)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt; &lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt; &lt;class &#39;str&#39;&gt;
+a = 10 ; b = 3 ; c = 3.0
+a/b = 3.3333333333333335
+a/c = 3.3333333333333335
+a/b = 3
+a/c = 3.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="listas">
+<h2>Listas<a class="headerlink" href="#listas" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1,2,&quot;hola&quot;, 3, 2.03, [9,10,11], &quot;adios&quot;]
+print(a)
+print(len(a))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;hola&#39;, 3, 2.03, [9, 10, 11], &#39;adios&#39;]
+7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[2])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hola
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[5])
+print(a[5][1])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9, 10, 11]
+10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[-1])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>adios
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[2:5])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;hola&#39;, 3, 2.03]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[:3])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;hola&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a[:-2])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;hola&#39;, 3, 2.03]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = [78, &quot;casa&quot;, 23]
+print(a+b)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;hola&#39;, 3, 2.03, [9, 10, 11], &#39;adios&#39;, 78, &#39;casa&#39;, 23]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(a*2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;hola&#39;, 3, 2.03, [9, 10, 11], &#39;adios&#39;, 1, 2, &#39;hola&#39;, 3, 2.03, [9, 10, 11], &#39;adios&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="matrices-y-vectores">
+<h2>Matrices y vectores<a class="headerlink" href="#matrices-y-vectores" title="Permalink to this headline">¶</a></h2>
+<p>Con la librería <code class="docutils literal notranslate"><span class="pre">numpy</span></code> se trabaja con matrices de forma natural. Fíjate cómo se declaran y cómo descubrimos sus dimensiones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+a = np.array([[1,2,3,4,5],
+              [5,4,3,2,1],
+              [9,8,7,6,5],
+              [7,6,5,6,7],
+              [2,2,2,3,3],
+              [4,3,4,3,4],
+              [5,1,1,4,1]])
+print(&quot;a shape&quot;, a.shape)
+print(&quot;a rows&quot;, a.shape[0])
+print(&quot;a cols&quot;, a.shape[1])
+
+v = np.array([2,3,4,5,6,7,3,12])
+print(&quot;v shape&quot;, v.shape)
+print(&quot;v elems&quot;, v.shape[0])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a shape (7, 5)
+a rows 7
+a cols 5
+v shape (8,)
+v elems 8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>len(a.shape)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con la notación de índices accedemos a columas o filas enteras, rangos de columnas o filas, elementos individuales o porciones de una matriz o un vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;una fila        &quot; ,a[2])
+print(&quot;una fila        &quot;,a[2,:])
+print(&quot;una columna     &quot;,a[:,2])
+print(&quot;un elemento     &quot;,a[2,2])
+print(&quot;varias filas    \n&quot;,a[2:5])
+print(&quot;varias columnas \n&quot;,a[:,1:3])
+print(&quot;una porcion     \n&quot;,a[2:5,1:3])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>una fila         [9 8 7 6 5]
+una fila         [9 8 7 6 5]
+una columna      [3 3 7 5 2 4 1]
+un elemento      7
+varias filas    
+ [[9 8 7 6 5]
+ [7 6 5 6 7]
+ [2 2 2 3 3]]
+varias columnas 
+ [[2 3]
+ [4 3]
+ [8 7]
+ [6 5]
+ [2 2]
+ [3 4]
+ [1 1]]
+una porcion     
+ [[8 7]
+ [6 5]
+ [2 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Muchas funciones de la librería <code class="docutils literal notranslate"><span class="pre">numpy</span></code> operan sobre una matriz completa, o de forma separada por columnas o filas según el valor del argumento <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;suma total&quot;, np.sum(a))
+print(&quot;suma eje 0&quot;, np.sum(a, axis=0))
+print(&quot;suma eje 1&quot;, np.sum(a, axis=1))
+print(&quot;promedio total&quot;, np.mean(a))
+print(&quot;promedio eje 0&quot;, np.mean(a, axis=0))
+print(&quot;promedio eje 1&quot;, np.mean(a, axis=1))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>suma total 138
+suma eje 0 [33 26 25 28 26]
+suma eje 1 [15 15 35 31 12 18 12]
+promedio total 3.942857142857143
+promedio eje 0 [4.71428571 3.71428571 3.57142857 4.         3.71428571]
+promedio eje 1 [3.  3.  7.  6.2 2.4 3.6 2.4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las matrices en Python pueden tener un número arbitrario de dimensiones y podemos acceder a submatrices en la dirección o dimensión que queramos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>z = np.random.randint(100, size=(3,4))
+print(z)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[16 58 68 82]
+ [ 9 57 25  4]
+ [41 41 28 25]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.sum(z, axis=1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([224,  95, 135])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = np.random.randint(10, size=(3,3,3))
+print(&quot;Matrix 3D completa\n&quot;, m)
+print(&quot;---\n&quot;, m[0,:,:])
+print(&quot;---\n&quot;, m[1,:,:])
+print(&quot;---\n&quot;, m[:,0,:])
+print(&quot;---\n&quot;, m[:,0,0])
+print(&quot;---\n&quot;, np.mean(m, axis=2))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix 3D completa
+ [[[8 3 4]
+  [1 6 4]
+  [2 3 6]]
+
+ [[2 1 3]
+  [6 1 5]
+  [0 0 0]]
+
+ [[6 1 0]
+  [6 7 9]
+  [9 2 0]]]
+---
+ [[8 3 4]
+ [1 6 4]
+ [2 3 6]]
+---
+ [[2 1 3]
+ [6 1 5]
+ [0 0 0]]
+---
+ [[8 3 4]
+ [2 1 3]
+ [6 1 0]]
+---
+ [8 2 6]
+---
+ [[5.         3.66666667 3.66666667]
+ [2.         4.         0.        ]
+ [2.33333333 7.33333333 3.66666667]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="generacion-de-matrices-y-vectores">
+<h2>Generación de matrices y vectores<a class="headerlink" href="#generacion-de-matrices-y-vectores" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;matrix identidad\n&quot;, np.eye(3))
+print(&quot;vector de ceros&quot;, np.zeros(4))
+print(&quot;matriz de ceros\n&quot;, np.zeros((3,2)))
+print(&quot;matriz de unos\n&quot;, np.ones((2,3)))
+print(&quot;vector rango&quot;, np.arange(10))
+print(&quot;vector rango&quot;, np.arange(5,10))
+print(&quot;vector espacio lineal&quot;, np.linspace(-10,5,7))
+print(&quot;matriz aleatoria según distribución uniforme [0,1]\n&quot;, np.random.random(size=(3,5)))
+print(&quot;vector aleatorio de enteros entre 0 y 5&quot;, np.random.randint(5, size=10))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matrix identidad
+ [[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+vector de ceros [0. 0. 0. 0.]
+matriz de ceros
+ [[0. 0.]
+ [0. 0.]
+ [0. 0.]]
+matriz de unos
+ [[1. 1. 1.]
+ [1. 1. 1.]]
+vector rango [0 1 2 3 4 5 6 7 8 9]
+vector rango [5 6 7 8 9]
+vector espacio lineal [-10.   -7.5  -5.   -2.5   0.    2.5   5. ]
+matriz aleatoria según distribución uniforme [0,1]
+ [[0.27561038 0.60018936 0.10123643 0.21804175 0.05370778]
+ [0.24593263 0.86958971 0.64622179 0.41606127 0.10039678]
+ [0.09037743 0.68950826 0.51467489 0.96948585 0.70842397]]
+vector aleatorio de enteros entre 0 y 5 [3 1 0 2 4 2 2 0 2 4]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operaciones-vectorizadas">
+<h2>Operaciones vectorizadas<a class="headerlink" href="#operaciones-vectorizadas" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = np.array([10,12,13,15,20])
+print(v)
+print(v+1)
+print(v*2)
+print(v.dot(v))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10 12 13 15 20]
+[11 13 14 16 21]
+[20 24 26 30 40]
+1038
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.array([[1,2,3],[4,5,6]])
+b = np.array([[6,5,4],[3,2,1]])
+c = np.array([[1,2],[4,5]])
+print(a)
+print(b)
+print(&quot;--&quot;)
+print(a.T.dot(a))
+print(a*b)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]]
+[[6 5 4]
+ [3 2 1]]
+--
+[[17 22 27]
+ [22 29 36]
+ [27 36 45]]
+[[ 6 10 12]
+ [12 10  6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.array([[1,2,3],[4,5,6]])
+b = np.array([[6,5,4],[3,2,1]])
+
+print(a)
+print(b)
+print(&quot;--&quot;)
+
+print(&quot;a+b\n&quot;,a+b)
+print(&quot;a**2\n&quot;, a**2)
+print(&quot;a*b\n&quot;,a*b)
+print(&quot;a x b&#39;\n&quot;,a.dot(b.T))
+print(&quot;a&#39; x b\n&quot;,a.T.dot(b))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]]
+[[6 5 4]
+ [3 2 1]]
+--
+a+b
+ [[7 7 7]
+ [7 7 7]]
+a**2
+ [[ 1  4  9]
+ [16 25 36]]
+a*b
+ [[ 6 10 12]
+ [12 10  6]]
+a x b&#39;
+ [[28 10]
+ [73 28]]
+a&#39; x b
+ [[18 13  8]
+ [27 20 13]
+ [36 27 18]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.array([1,8,4,10,-4,5])
+print(a)
+print(a&gt;4)
+i = np.array([False, True, False, True, False, True])
+print(i)
+
+a[a&gt;4]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  8  4 10 -4  5]
+[False  True False  True False  True]
+[False  True False  True False  True]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 8, 10,  5])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Las operaciones vectorizadas también funcionan con expresiones <em>booleanas</em>. Fíjate cómo se indexa un vector con una expresión booleana para seleccionar un conjunto de elementos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.array([1,8,4,10,-4,5])
+print(&quot;posiciones en a &gt;4:&quot;, a&gt;4)
+print(&quot;elementos de a &gt;4:&quot;,a[a&gt;4])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>posiciones en a &gt;4: [False  True False  True False  True]
+elementos de a &gt;4: [ 8 10  5]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="funciones-y-estructuras">
+<h2>Funciones y estructuras<a class="headerlink" href="#funciones-y-estructuras" title="Permalink to this headline">¶</a></h2>
+<p>Python es un lenguaje <strong>indentado</strong>, no usa corchetes para delimitar el alcance de las estructuras de programación sino que se fija en los <strong>cambios de indentación</strong>.</p>
+<p>No se declara el tipo de los argumentos de las funciones. La semática de la implementación ha de estar preparada para funcionar con los tipos de datos que quieres.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def funcion_1(a,b):
+    r = a**2
+    return r+b
+    
+def greatest(a,b):
+    if a&gt;b:
+        return a
+    else:
+        return b
+
+m1 = np.array([[3,4],[1,1]])
+m2 = np.array([[5,6],[0,0]])
+print(funcion_1 (10.4,2))
+print(funcion_1 (10.4, np.array([2,4])))
+print(funcion_1 (m1,m2))
+print(greatest(10,2))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>110.16000000000001
+[110.16 112.16]
+[[14 22]
+ [ 1  1]]
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos definir valores por defecto para los argumentos de las funciones y llamarlas usando explícitamente el nombre de los argumentos. Además, las funciones pueden devolver varios valores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f_power(x, p=2):
+    return x**p
+
+print(f_power(x=3))
+print(f_power(p=4, x=3))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+81
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f_power(x, p=2):
+    return x**p, x*p
+
+r = f_power(p=4, x=3)
+print(r[1])
+
+r1, r2 = f_power(p=4, x=3)
+print(r1)
+print(r2)
+
+
+a,b = 10, np.array([10,4,-3])
+print(a)
+print(b)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+81
+12
+10
+[10  4 -3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f_power(x, p=2):
+    return x**p
+
+def f_powers(x, p1=2, p2=3):
+    return x**p1, x**p2
+
+print(f_power(4))
+print(f_power(4,3))
+print(f_powers(4, p1=3))
+xp1, xp2 = f_powers(4, p2=4, p1=3)
+print(&quot;power1&quot;,xp1, &quot;power2&quot;, xp2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+64
+(64, 64)
+power1 64 power2 256
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m = [3,10,&quot;hola&quot;, -23]
+
+for i in m:
+    print(&quot;el elemento es &quot;, i)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>el elemento es  3
+el elemento es  10
+el elemento es  hola
+el elemento es  -23
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#range(len(b))
+
+print(b)
+print(len(b))
+
+for i in  range(len(b)):
+    print(&quot;indice&quot;, i, &quot;tiene el valor&quot;, b[i])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10  4 -3]
+3
+indice 0 tiene el valor 10
+indice 1 tiene el valor 4
+indice 2 tiene el valor -3
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="diccionarios">
+<h2>Diccionarios<a class="headerlink" href="#diccionarios" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d = {&quot;i1&quot;: 16, &quot;nombre&quot;: &quot;haskel&quot;, &quot;edad&quot;: 32}
+
+r10 = list(range(10))
+rr  = np.random.randint(10, size=10)
+print(r10)
+print(rr)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[9 8 6 9 7 8 9 2 4 7]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in list(d.keys()):
+    print(&quot;la clave&quot;, i, &quot;tiene el valor&quot;, d[i])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>la clave i1 tiene el valor 16
+la clave nombre tiene el valor haskel
+la clave edad tiene el valor 32
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(len(rr)):
+    print(&quot;el indice&quot;, i, &quot;tiene el valor&quot;, rr[i])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>el indice 0 tiene el valor 9
+el indice 1 tiene el valor 8
+el indice 2 tiene el valor 6
+el indice 3 tiene el valor 9
+el indice 4 tiene el valor 7
+el indice 5 tiene el valor 8
+el indice 6 tiene el valor 9
+el indice 7 tiene el valor 2
+el indice 8 tiene el valor 4
+el indice 9 tiene el valor 7
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los diccionarios son listas de asociaciones entre objetos (como <em>hashes</em> en Java)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d = {&quot;i1&quot;: 16, &quot;nombre&quot;: &quot;haskel&quot;, &quot;edad&quot;: 32}
+print(d)
+print(list(d.keys()))
+print(d[&quot;nombre&quot;], d[&quot;edad&quot;])
+for k in list(d.keys()):
+    print(d[k])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;i1&#39;: 16, &#39;nombre&#39;: &#39;haskel&#39;, &#39;edad&#39;: 32}
+[&#39;i1&#39;, &#39;nombre&#39;, &#39;edad&#39;]
+haskel 32
+16
+haskel
+32
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="expresiones-compactas">
+<h2>Expresiones compactas<a class="headerlink" href="#expresiones-compactas" title="Permalink to this headline">¶</a></h2>
+<p>Fíjate cómo las siguientes expresiones son equivalentes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a=15
+if a &gt; 10:
+    s = &quot;mayor que 10&quot;
+else:
+    s = &quot;menor que 10&quot;
+
+print(s)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mayor que 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 5
+s = &quot;mayor que 10&quot; if a &gt; 10 else &quot;menor que 10&quot;
+print(s)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>menor que 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [10, -4, 20, 5]
+
+o = [&quot;10A&quot;, &quot;-4B&quot;, &quot;20A&quot;, &quot;5A&quot;]
+
+o = []
+for i in a:
+    if i&lt;0:
+        o.append(str(i)+&quot;B&quot;)
+    else:
+        o.append(str(i)+&quot;A&quot;)
+
+print(o)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;10A&#39;, &#39;-4B&#39;, &#39;20A&#39;, &#39;5A&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def convert(x):
+    return str(x)+&quot;B&quot; if x&lt;0 else str(x)+&quot;A&quot; 
+
+o = [convert(i) for i in a]
+print(o)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;10A&#39;, &#39;-4B&#39;, &#39;20A&#39;, &#39;5A&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r = []
+for i in range(10):
+    r.append(&quot;el numero &quot;+str(i))
+print(r)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;el numero 0&#39;, &#39;el numero 1&#39;, &#39;el numero 2&#39;, &#39;el numero 3&#39;, &#39;el numero 4&#39;, &#39;el numero 5&#39;, &#39;el numero 6&#39;, &#39;el numero 7&#39;, &#39;el numero 8&#39;, &#39;el numero 9&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r = [&quot;el numero &quot;+str(i) for i in range(10)]
+print(r)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;el numero 0&#39;, &#39;el numero 1&#39;, &#39;el numero 2&#39;, &#39;el numero 3&#39;, &#39;el numero 4&#39;, &#39;el numero 5&#39;, &#39;el numero 6&#39;, &#39;el numero 7&#39;, &#39;el numero 8&#39;, &#39;el numero 9&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parte-1">
+<h2>Parte 1<a class="headerlink" href="#parte-1" title="Permalink to this headline">¶</a></h2>
+<p>esto es una lista:</p>
+<ul class="simple">
+<li><p>uno</p></li>
+<li><p>dos</p></li>
+<li><p>tres</p></li>
+</ul>
+<p>mira esta fórmula:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=0}^{n-1} x^n \)</span></p>
+</div>
+<div class="section" id="graficos">
+<h2>Gráficos<a class="headerlink" href="#graficos" title="Permalink to this headline">¶</a></h2>
+<p>Con <strong>plt.plot</strong> pintamos puntos conectados, con **plt.scatter” pintamos puntos sueltos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+%matplotlib inline
+
+x = np.linspace(-4,4,20)
+plt.plot(x, x**2, label=&quot;x^2 plot&quot;)
+plt.scatter(x, x**2, label=&quot;muestras&quot;)
+plt.plot(x, x**3, label=&quot;$x^3$&quot;, color=&quot;red&quot;)
+plt.xlim([-2,2])
+plt.ylim([-20, 20])
+plt.legend()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f629b3d8eb8&gt;
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 00 - Introduccion Python_64_1.png" src="../_images/NOTAS 00 - Introduccion Python_64_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+%matplotlib inline
+plt.figure(figsize=(5,3))
+x = np.linspace(-4,4,10)
+plt.plot(x, x**2, color=&quot;black&quot;, linewidth=1)
+plt.scatter(x, x**2, c=&quot;green&quot;, s=50)
+x_r = np.linspace(-4,4,100)
+x_ruido = x_r**2 + (np.random.random(x_r.shape)-0.5)*10
+plt.scatter(x_r,x_ruido, c=&quot;red&quot;, alpha=0.4)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6274eb80f0&gt;
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 00 - Introduccion Python_65_1.png" src="../_images/NOTAS 00 - Introduccion Python_65_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="M01.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">A. Introducción</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tipos abstractos de datos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

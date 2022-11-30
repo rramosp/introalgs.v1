@@ -1,0 +1,1334 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrices dispersas &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Representación en memoria" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html" />
+    <link rel="prev" title="Polinomios" href="NOTAS%2002%20-%20Polinomios.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 03 - Matrices dispersas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 03 - Matrices dispersas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algoritmica-implementada">
+   Algorítmica implementada
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operaciones-basicas">
+     Operaciones básicas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inserccion-y-acceso">
+     Insercción y acceso.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adicion">
+     Adición
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplicacion-de-matrices">
+     Multiplicación de matrices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-de-complejidad-computacional">
+   Análisis de complejidad computacional
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setitem-segun-el-numero-de-elementos-insertados">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __setitem__
+      </span>
+     </code>
+     : según el número de elementos insertados
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getitem-segun-el-numero-de-tripletas">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __getitem__
+      </span>
+     </code>
+     : según el número de tripletas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-segun-el-numero-de-tripletas">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __add__
+      </span>
+     </code>
+     : según el número de tripletas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dot-segun-el-numero-de-triplets">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       dot
+      </span>
+     </code>
+     : según el número de triplets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-y-ejercicios-propuestos">
+   Preguntas y ejercicios propuestos
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matrices dispersas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algoritmica-implementada">
+   Algorítmica implementada
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operaciones-basicas">
+     Operaciones básicas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inserccion-y-acceso">
+     Insercción y acceso.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adicion">
+     Adición
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplicacion-de-matrices">
+     Multiplicación de matrices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-de-complejidad-computacional">
+   Análisis de complejidad computacional
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setitem-segun-el-numero-de-elementos-insertados">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __setitem__
+      </span>
+     </code>
+     : según el número de elementos insertados
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getitem-segun-el-numero-de-tripletas">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __getitem__
+      </span>
+     </code>
+     : según el número de tripletas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-segun-el-numero-de-tripletas">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __add__
+      </span>
+     </code>
+     : según el número de tripletas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dot-segun-el-numero-de-triplets">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       dot
+      </span>
+     </code>
+     : según el número de triplets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-y-ejercicios-propuestos">
+   Preguntas y ejercicios propuestos
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="matrices-dispersas">
+<h1>Matrices dispersas<a class="headerlink" href="#matrices-dispersas" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="section" id="objetivo-del-modulo">
+<h2>Objetivo del módulo<a class="headerlink" href="#objetivo-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer lo que son matrices dispersas (<em><strong>sparse</strong></em>) y su representación y manipulación en tripletas.</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿Qué es una matriz dispersa?</p></li>
+<li><p>¿Qué tupos eficiencia se pueden explotar por su dispersión?</p></li>
+<li><p>¿En qué complejidades computacionales incurrimos en sus distintas operaciones?</p></li>
+<li><p>¿Qué compromisos de eficiencia adquirimos cons distintas representaciones?</p></li>
+</ul>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>En muchas ocasiones se presentan matrices en las cuales una gran cantidad de elementos son 0. Por ejemplo en sistemas de recomendación se usan matrices para representar las preferencias de millones de usuarios a millones de productos. En realidad, normalmente cada usuario valora o usa un conjunto muy pequeño de todos los productos disponibles y la matriz resultante tiene muchos ceros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/recommender_matrix.jpg&#39;, width=400) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_3_0.jpg" src="../_images/NOTAS 03 - Matrices dispersas_3_0.jpg" />
+</div>
+</div>
+<p>Normalmente se busca una economía de memoria en las estructuras de datos para almacenar únicamente las posiciones de la matriz con valor distinto de cero. Pero esto implica adaptar los algoritmos a dichas estructuras de datos.</p>
+<p>Una <strong>métrica de dispersión</strong> (<em>sparness metric</em>) cuantifica el grado de dispersión de una matriz. P.ej.</p>
+<div class="math notranslate nohighlight">
+\[sparsness\_metric(m) = \frac{nb\_elements \ne 0}{n\_rows \times n\_cols}\]</div>
+<p>en el caso de la figura anterior: <span class="math notranslate nohighlight">\(17/36 = 0.47\)</span></p>
+<p>Usaremos la siguiente clase para almacenar cada elemento con sus coordenadas en una matriz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Triplet:
+    
+    def __init__(self, row, col, val):
+        assert isinstance(row, int) and isinstance(col, int) and row&gt;=0 and col&gt;=0
+        
+        self.row = row
+        self.col = col
+        self.val = val
+    
+    def __repr__(self):
+        return &quot;[%d %d] = %s&quot;%(self.row, self.col, str(self.val))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = Triplet(2,4,20.3)
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 4] = 20.3
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>clase <code class="docutils literal notranslate"><span class="pre">SparseMatrix</span></code></strong>: realizamos una clase que representa una matriz como una lista de tripletas, con las operaciones correspondientes sobre dicha lista.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import itertools
+
+class SparseMatrix:
+    
+    def __init__(self, m=None):
+        self.triplets = []
+        self.shape = m.shape if m is not None else (0,0)
+        if m is not None:
+            for i,j in itertools.product(list(range(m.shape[0])), list(range(m.shape[1]))):
+                if m[i,j]!=0:
+                    self.triplets.append(Triplet(i,j,m[i,j]))
+        
+    def to_dense(self):
+        r = np.zeros(self.shape)
+        for t in self.triplets:
+            r[t.row, t.col] = t.val
+        return r
+    
+    def sparseness_metric(self):
+        return len(self.triplets) *1./(self.shape[0]*self.shape[1])
+    
+    def __getitem__(self, pos):
+        i,j = pos
+        for t in self.triplets:
+            if t.row==i and t.col==j:
+                return t.val
+        return 0
+
+    def __setitem__(self, pos, val):
+        i,j = pos
+        if val==0:
+            return
+        
+        for t in self.triplets:
+            if t.row==i and t.col==j:
+                t.val=val
+                return
+        self.triplets.append(Triplet(i,j,val))
+        self.shape = (np.max([self.shape[0], i+1]), np.max([self.shape[1], j+1]))
+
+    def __add__(self, m):
+        r = self.__class__()
+        for t in m.triplets + self.triplets:
+            r[t.row, t.col] = r[t.row, t.col] + t.val
+        return r
+    
+    def dot(self, m):
+        assert self.shape[0]==m.shape[1] and self.shape[1]==m.shape[0], &quot;incorrect dimensions %s x %s&quot;%(str(self.shape), str(m.shape))
+        
+        r = self.__class__()
+        for t1 in self.triplets:
+            for t2 in m.triplets:
+                if t1.col==t2.row:
+                    r[t1.row, t2.col] = r[t1.row, t2.col] + t1.val*t2.val
+        return r
+            
+    def T(self):
+        r = self.__class__()
+        for t in self.triplets:
+            r[t.col, t.row] = t.val
+        return r
+    
+   
+    def __repr__(self):
+        return &quot;shape    = %s\ntriplets = %s&quot;%(self.shape, self.triplets)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="algoritmica-implementada">
+<h2>Algorítmica implementada<a class="headerlink" href="#algoritmica-implementada" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="operaciones-basicas">
+<h3>Operaciones básicas<a class="headerlink" href="#operaciones-basicas" title="Permalink to this headline">¶</a></h3>
+<p>fíjate cómo creamos una matriz dispersa como array de <code class="docutils literal notranslate"><span class="pre">numpy</span></code> de manera aleatoria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+def random_sparse_matrix(size):
+    m = np.random.randint(2, size=size)
+    m = m * np.random.randint(10,size=size)
+    return m
+m = random_sparse_matrix((5,3))
+print(m.shape)
+m
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 3)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 8, 0],
+       [0, 0, 3],
+       [5, 0, 0],
+       [7, 0, 9],
+       [0, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>creamos la matriz dispersa y la inspeccionamos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm = SparseMatrix(m)
+print(sm.sparseness_metric())
+sm
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3333333333333333
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape    = (5, 3)
+triplets = [[0 1] = 8, [1 2] = 3, [2 0] = 5, [3 0] = 7, [3 2] = 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(sm.triplets)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1] = 8, [1 2] = 3, [2 0] = 5, [3 0] = 7, [3 2] = 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm.to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 8, 0],
+       [0, 0, 3],
+       [5, 0, 0],
+       [7, 0, 9],
+       [0, 0, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>y su transpuesta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm.T().to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 5, 7],
+       [8, 0, 0, 0],
+       [0, 3, 0, 9]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inserccion-y-acceso">
+<h3>Insercción y acceso.<a class="headerlink" href="#inserccion-y-acceso" title="Permalink to this headline">¶</a></h3>
+<p>Fíjate como en  Python los métodos <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> y <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> son accesibles a partir de una sintaxis especial</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(sm.__getitem__((4,1)))
+print(sm[4,1])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm.__setitem__((4,1),17)
+print(sm[4,1])
+sm.to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  8,  0],
+       [ 0,  0,  3],
+       [ 5,  0,  0],
+       [ 7,  0,  9],
+       [ 0, 17,  0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm[4,1]=2
+print(sm[4,1])
+sm.to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 8, 0],
+       [0, 0, 3],
+       [5, 0, 0],
+       [7, 0, 9],
+       [0, 2, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>la siguiente operación llama a ambos métodos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm[4,1] = sm[4,1]*2
+sm.to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 8, 0],
+       [0, 0, 3],
+       [5, 0, 0],
+       [7, 0, 9],
+       [0, 4, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adicion">
+<h3>Adición<a class="headerlink" href="#adicion" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(sm+sm).to_dense().astype(int)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0, 16,  0],
+       [ 0,  0,  6],
+       [10,  0,  0],
+       [14,  0, 18],
+       [ 0,  8,  0]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm1 = SparseMatrix(random_sparse_matrix((5,3)))
+sm2 = SparseMatrix(random_sparse_matrix((3,2)))
+print(sm1.to_dense())
+print(sm2.to_dense())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[6. 7. 0.]
+ [0. 0. 2.]
+ [7. 0. 0.]
+ [9. 0. 1.]
+ [0. 0. 0.]]
+[[0. 0.]
+ [8. 0.]
+ [2. 0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(sm1+sm2).to_dense()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6., 7., 0.],
+       [8., 0., 2.],
+       [9., 0., 0.],
+       [9., 0., 1.]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiplicacion-de-matrices">
+<h3>Multiplicación de matrices<a class="headerlink" href="#multiplicacion-de-matrices" title="Permalink to this headline">¶</a></h3>
+<p>Revisa <a class="reference external" href="https://es.wikipedia.org/wiki/Multiplicaci%C3%B3n_de_matrices">Multiplicación de Matrices en Wikipedia</a> si no te acuerdas cómo es esta operación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m1 = np.random.randint(10, size=(3,2))
+print(m1)
+m2 = np.random.randint(10, size=(2,3))
+print(m2)
+print(&quot;--&quot;)
+print(m1.dot(m2))
+print(SparseMatrix(m1).dot(SparseMatrix(m2)).to_dense().astype(int))
+print(&quot;--&quot;)
+print(m2.dot(m1))
+print(SparseMatrix(m2).dot(SparseMatrix(m1)).to_dense().astype(int))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[7 4]
+ [7 0]
+ [7 3]]
+[[7 7 9]
+ [9 8 6]]
+--
+[[85 81 87]
+ [49 49 63]
+ [76 73 81]]
+[[85 81 87]
+ [49 49 63]
+ [76 73 81]]
+--
+[[161  55]
+ [161  54]]
+[[161  55]
+ [161  54]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analisis-de-complejidad-computacional">
+<h2>Análisis de complejidad computacional<a class="headerlink" href="#analisis-de-complejidad-computacional" title="Permalink to this headline">¶</a></h2>
+<p>creamos una función para que nos devuelva una matriz con elementos aleatorios</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def random_sparse_matrix(max_rows, max_cols, n_items):
+    m = SparseMatrix()
+    for _ in range(n_items):
+        i = np.random.randint(max_rows)
+        j = np.random.randint(max_cols)
+        v = np.random.randint(100)
+        m[i,j] = v
+    return m
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k=random_sparse_matrix(1000,1000,1000)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.shape, k.sparseness_metric()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1000, 999), 0.000990990990990991)
+</pre></div>
+</div>
+</div>
+</div>
+<p>### <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>: según el tamaño de las matrices</p>
+<p>Fíjate cómo montamos un experimento con <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>. El experimento sugiere que el tiempo de ejecución no depende del tamaño de las matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r1 = []
+n1 = range(50,1000,50)
+for n in n1:
+    print (n, end=&quot; &quot;)
+    k = %timeit -o -q -r 3 -n 3 random_sparse_matrix(n,n,1000)
+    r1.append(k.best)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+%matplotlib inline
+def plot_times(n_set, r, xlabel, ylabel):
+    from scipy.optimize import minimize
+
+    n_set = np.array(n_set)
+    # fit to scaled for numerical stability
+    x_ticks = n_set/1e3
+    r     = np.array(r)
+    cfunc = lambda k, x: k[0]+k[1]*x+k[2]*x**2+k[3]*x**3
+    qfunc = lambda k, x: k[0]+k[1]*x+k[2]*x**2
+    lfunc = lambda k, x: k[0]+k[1]*x
+    ccost = lambda k: np.mean( (r-cfunc(k, x_ticks))**2)
+    qcost = lambda k: np.mean( (r-qfunc(k, x_ticks))**2)
+    lcost = lambda k: np.mean( (r-lfunc(k, x_ticks))**2)
+    cx    = minimize(ccost, [0,0,0,0], method=&quot;BFGS&quot;).x
+    qx    = minimize(qcost, [0,0,0], method=&quot;BFGS&quot;).x
+    lx    = minimize(lcost, [0,0], method=&quot;BFGS&quot;).x
+    
+    plt.plot(x_ticks*1e3, cfunc(cx, x_ticks), label=&quot;cubic fit&quot;, color=&quot;black&quot;)
+    plt.plot(x_ticks*1e3, qfunc(qx, x_ticks), label=&quot;quadratic fit&quot;, color=&quot;black&quot;, ls=&quot;--&quot;)
+    plt.plot(x_ticks*1e3, lfunc(lx, x_ticks), label=&quot;linear fit&quot;, color=&quot;black&quot;, ls=&quot;:&quot;)
+    plt.plot(x_ticks*1e3, r, label=&quot;data&quot;, lw=10, alpha=.5, color=&quot;red&quot;)
+    plt.legend()
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.grid()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n1, r1, xlabel=&quot;matrix size&quot;, ylabel=&quot;time for 1000 insertions&quot;)
+plt.ylim(np.min(r1)/2, np.max(r1)*3);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_37_0.png" src="../_images/NOTAS 03 - Matrices dispersas_37_0.png" />
+</div>
+</div>
+<div class="section" id="setitem-segun-el-numero-de-elementos-insertados">
+<h3><code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>: según el número de elementos insertados<a class="headerlink" href="#setitem-segun-el-numero-de-elementos-insertados" title="Permalink to this headline">¶</a></h3>
+<p>El experimento sugiere una complejidad <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>. Observa el método <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code>. En el peor de los casos, para insertar un elemento hay que recorrer toda la lista de tripletas. Por tanto, si <span class="math notranslate nohighlight">\(n\)</span> es el número de tripletas, y para insertar cada elemento hay que hacer un bucle (<span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span>),  para <span class="math notranslate nohighlight">\(n\)</span> elementos la complejidad es <span class="math notranslate nohighlight">\(\mathcal{O}(n ^2)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r2 = []
+n2 = range(50,3000,100)
+for n in n2:
+    print (n, end=&quot; &quot;)
+    k = %timeit -o -q -r 3 -n 3 random_sparse_matrix(200,200,n)
+    r2.append(k.best)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50 150 250 350 450 550 650 750 850 950 1050 1150 1250 1350 1450 1550 1650 1750 1850 1950 2050 2150 2250 2350 2450 2550 2650 2750 2850 2950 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n2, r2, xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_40_0.png" src="../_images/NOTAS 03 - Matrices dispersas_40_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="getitem-segun-el-numero-de-tripletas">
+<h3><code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>: según el número de tripletas<a class="headerlink" href="#getitem-segun-el-numero-de-tripletas" title="Permalink to this headline">¶</a></h3>
+<p>El experimento sugiere una complejidad <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>. Analiza el resultado con un argumento similar al anterior. Fíjate que <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> tiene la misma complejidad pero tarda más. Las complejidades tienen el mismo orden de magnitud (<span class="math notranslate nohighlight">\(n^2\)</span>), pero difieren en una constante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r1 = []
+n1 = range(50,1000,50)
+def getn(m,n):
+    for t in m.triplets:
+        m[t.row, t.col]
+    
+for n in n1:
+    print (n, end=&quot; &quot;)
+    m = random_sparse_matrix(200,200,n)
+    k = %timeit -o -q -r 3 -n 3 getn(m,n)
+    r1.append(k.best)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n1, r1, xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_43_0.png" src="../_images/NOTAS 03 - Matrices dispersas_43_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="add-segun-el-numero-de-tripletas">
+<h3><code class="docutils literal notranslate"><span class="pre">__add__</span></code>: según el número de tripletas<a class="headerlink" href="#add-segun-el-numero-de-tripletas" title="Permalink to this headline">¶</a></h3>
+<p>El experimento sugiere una complejidad <span class="math notranslate nohighlight">\(\mathcal{O}(n^2)\)</span>, asumiendo que ambas matrices tienen el mismo número de tripletas. Observa que el método <code class="docutils literal notranslate"><span class="pre">__add__</span></code> realiza un <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> y un <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> por cada elemento de cada matriz:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    for t in m.triplets + self.triplets:
+        r[t.row, t.col] = r[t.row, t.col] + t.val
+</pre></div>
+</div>
+<p>Por tanto, la complejidad es en realidad <span class="math notranslate nohighlight">\(\mathcal{O}( 2n\times (n+n) ) = k \mathcal{O}(n^2)\)</span> en donde:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(2n\)</span> es por el bucle por ambas matrices</p></li>
+<li><p><span class="math notranslate nohighlight">\(n+n\)</span> es por el <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> y por el <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r3 = []
+n3 = range(50,2000,200)
+for n in n3:
+    print (n, end=&quot; &quot;)
+    m1 = random_sparse_matrix(200,200,n)
+    m2 = random_sparse_matrix(200,200,n)
+    k = %timeit -o -q -r 1 -n 1 m1+m2
+    r3.append(k.best)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50 250 450 650 850 1050 1250 1450 1650 1850 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n3, r3,xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_46_0.png" src="../_images/NOTAS 03 - Matrices dispersas_46_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="dot-segun-el-numero-de-triplets">
+<h3><code class="docutils literal notranslate"><span class="pre">dot</span></code>: según el número de triplets<a class="headerlink" href="#dot-segun-el-numero-de-triplets" title="Permalink to this headline">¶</a></h3>
+<p>El experimento sugiere una complejidad <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span>. Observa el método <code class="docutils literal notranslate"><span class="pre">dot</span></code>. De nuevo, en el peor de los casos, por cada elemento tiene que realizar un bucle anidado, es decir <span class="math notranslate nohighlight">\(n^2\)</span> iteraciones. Por tanto, con <span class="math notranslate nohighlight">\(n\)</span> elementos tenemos <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span>. Fíjate que el <em>fit</em> cúbico (<span class="math notranslate nohighlight">\(n^3\)</span>) se ajusta mejor que el cuadrático (<span class="math notranslate nohighlight">\(n^2\)</span>). Igualmente restringimos el valor máximo de <span class="math notranslate nohighlight">\(n\)</span> en el experimento precisamente por que esta complejidad mayor hace que se demore más.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r4 = []
+n4 = range(50,2000,200)
+for n in n4:
+    print (n, end=&quot; &quot;)
+    m = random_sparse_matrix(200,200,n)
+    k = %timeit -o -q -r 1 -n 1 m.dot(m.T())
+    r4.append(k.best)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50 250 450 650 850 1050 1250 1450 1650 1850 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plot_times(n4, r4,xlabel=&quot;number of triplets&quot;, ylabel=&quot;time for 200x200 matrix&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 03 - Matrices dispersas_49_0.png" src="../_images/NOTAS 03 - Matrices dispersas_49_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preguntas-y-ejercicios-propuestos">
+<h2>Preguntas y ejercicios propuestos<a class="headerlink" href="#preguntas-y-ejercicios-propuestos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿cómo hacer la implementación más eficiente en <strong>get</strong>? ¿almacenando las tripletas como un diccionario? ¿almacenando un diccionario de filas y otro de columnas?</p></li>
+<li><p>Python tiene una librería para tratar con matrices dispersas <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html"><code class="docutils literal notranslate"><span class="pre">scipy.sparse</span></code></a>, consúltala y experimenta con ella.</p></li>
+<li><p>Elabore algoritmo para intercambiar dos filas de una matriz representada en tripletas.</p></li>
+<li><p>Elabore algoritmo para intercambiar dos columnas en una matriz representada en tripletas.</p></li>
+<li><p>Elabore algoritmo que multiplique dos matrices representadas en tripletas.</p></li>
+<li><p>Elabore algoritmo que determine si una matriz representada en tripletas tiene punto de silla o no. Su algoritmo debe escribir el punto de silla y retornar verdadero si la matriz tiene punto de silla, de lo contrario debe retornar falso. Si existe, un punto de silla es el elemento (tripleta) que es el menor valor de su fila, y a la vez el mayor de su columna.</p></li>
+<li><p>Elabore algoritmo que determine si una matriz representada en tripletas es simétrica o no. Su algoritmo debe retornar verdadero si la matriz es simétrica, falso de lo contrario.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2002%20-%20Polinomios.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Polinomios</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Representación en memoria</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

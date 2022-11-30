@@ -1,0 +1,1431 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 05 - Listas generalizadas &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB 06 - Árboles" href="LAB%2006%20-%20Arboles.html" />
+    <link rel="prev" title="Árboles de búsqueda" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 05 - Listas generalizadas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 05 - Listas generalizadas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-7">
+   Ejercicio 7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-de-refuerzo-no-obligatorios">
+   Ejercicios de refuerzo (no obligatorios)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-8">
+   Ejercicio 8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   Ejercicios de refuerzo (no obligatorios)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB 05 - Listas generalizadas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1">
+   Ejercicio 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2">
+   Ejercicio 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3">
+   Ejercicio 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-4">
+   Ejercicio 4
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-7">
+   Ejercicio 7
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-de-refuerzo-no-obligatorios">
+   Ejercicios de refuerzo (no obligatorios)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-8">
+   Ejercicio 8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   Ejercicios de refuerzo (no obligatorios)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import init
+from local.lib.rlxmoocapi import submit, session
+import inspect
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_05&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="lab-05-listas-generalizadas">
+<h1>LAB 05 - Listas generalizadas<a class="headerlink" href="#lab-05-listas-generalizadas" title="Permalink to this headline">¶</a></h1>
+<p>En estos ejercicios usaremos las clases <code class="docutils literal notranslate"><span class="pre">Node</span></code> y <code class="docutils literal notranslate"><span class="pre">L</span></code>. Ejecuta la siguiente celda para cargar sus definiciones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Node:
+    def __init__(self, value, next=None):
+        assert next is None or isinstance(next,Node), &quot;next must be Node, not %s&quot;%(type(next))
+        self.value = value
+        self.next  = next
+        
+    def __repr__(self):
+        return str(self.value)
+    
+class L(object):
+    def __init__ (self, first_node=None):
+        assert first_node is None or isinstance(first_node,Node), &quot;first must be Node, not %s&quot;%(type(first_node))
+        self.first_node = first_node
+        
+    def __getitem__(self, idx):
+        k = self.first_node
+        for i in range(idx):
+            assert k.next is not None, &quot;index %s out of range&quot;%(str(idx))
+            k = k.next  
+        return k.value
+    
+    def __len__(self):
+        k = self.first_node
+        if k is None:
+            return 0
+        i=1
+        while k.next is not None:
+            i+=1
+            k = k.next
+        return i
+            
+    def __repr__ (self):
+        if self.first_node is None:
+            return &quot;[]&quot;
+        
+        s = &quot;[ %s&quot;%self.first_node
+        k=self.first_node
+        while (k.next is not None):
+            s += &quot;, %s&quot;%k.next
+            k = k.next
+    
+        return s+&quot; ]&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-1">
+<h2>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> para que funcione con índices positivos y negativos. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; W = L1(Node(10, Node(20, Node(30))))
+&gt; print W
+[ 10, 20, 30 ]
+
+&gt; print W[0], W[1], W[2]
+&gt; print W[-1], W[-2], W[-3]
+10 20 30
+30 20 10
+</pre></div>
+</div>
+<p>Ten en cuenta los casos en los que el índice excede el tamaño de la lista, bien positivo bien negativo. <strong>En estos casos has de generar un assertion error</strong>.</p>
+<p>En el ejemplo anterior, <code class="docutils literal notranslate"><span class="pre">W[3]</span></code> y <code class="docutils literal notranslate"><span class="pre">W[-4]</span></code> deben de generar un <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Node:
+        def __init__(self, value, next=None):
+            assert next is None or isinstance(next,Node), &quot;next must be Node, not %s&quot;%(type(next))
+            self.value = value
+            self.next  = next
+
+        def __repr__(self):
+            return str(self.value)
+        
+class L(object):
+        def __init__ (self, first_node=None):
+            assert first_node is None or isinstance(first_node,Node), &quot;first must be Node, not %s&quot;%(type(first_node))
+            self.first_node = first_node
+            
+
+        def __len__(self):
+            k = self.first_node
+            if k is None:
+                return 0
+            i=1
+            while k.next is not None:
+                i+=1
+                k = k.next
+            return i
+
+        def __repr__ (self):
+            if self.first_node is None:
+                return &quot;[]&quot;
+
+            s = &quot;[ %s&quot;%self.first_node
+            k=self.first_node
+            while (k.next is not None):
+                s += &quot;, %s&quot;%k.next
+                k = k.next
+
+            return s+&quot; ]&quot;
+
+def L1(*args,**kwargs):
+    
+    class L1_class(L):
+        
+        def __getitem__(self, idx):
+            
+            return &lt;... TU CODIGO AQUI ...&gt;
+            
+    return L1_class(*args,**kwargs)
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L1(Node(10, Node(20, Node(30))))
+W = L1(first_node=Node(10, Node(20, Node(30))))
+print(W)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W.first_node == None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(W[0], W[1], W[2])
+print(W[-1], W[-2], W[-3])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(W[3])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print (W[-4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="registra-tu-solucion-en-linea">
+<h3>registra tu solución en línea<a class="headerlink" href="#registra-tu-solucion-en-linea" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_01&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r = teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+from IPython.display import HTML
+print (&quot;grade&quot;, r[0])
+HTML(r[1])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permalink to this headline">¶</a></h2>
+<p>Implementa una función <code class="docutils literal notranslate"><span class="pre">__setitem__</span></code> que también soporte índices negativos. Por ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>W = L2(Node(10, Node(20, Node(30))))
+print W
+[ 10, 20, 30 ]
+
+W[1]=25
+print W
+[ 10, 25, 30 ]
+
+W[-1]=35
+print W
+[ 10, 25, 35 ]
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def L2(*args,**kwargs):
+    
+    class L2_class(L):
+        
+        def __getitem__(self, idx):
+            
+            &lt;... TU CODIGO AQUI ...&gt;
+        
+        def __setitem__(self, idx, value):
+           &lt;... TU CODIGO AQUI ...&gt;
+            
+    return L2_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L2(Node(10, Node(20, Node(30))))
+print(W)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W[1]=25
+print(W)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W[-1]=35
+print(W)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>registra tu solución en línea<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_02&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-3">
+<h2>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permalink to this headline">¶</a></h2>
+<p>Implementa la función <code class="docutils literal notranslate"><span class="pre">clone_node</span></code> que duplica. Si el nodo tiene un <code class="docutils literal notranslate"><span class="pre">next</span></code> también lo duplica</p>
+<p>Sugerencia: implementa el siguiente pseudocódigo <strong>recursivo</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>function clone_node(node)
+ 
+    si node es NULL
+        devuelve NULL
+        
+    devuelve nuevo_nodo(node.value, clone_node(node.next))
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def clone_node(node):
+    r = &lt;... TU CODIGO AQUI ...&gt;
+    return r
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código. Los valores han de ser iguales pero los <code class="docutils literal notranslate"><span class="pre">id</span></code> no, señalando que son verdaderamente objetos distintos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n = Node(10, Node(20, Node(30)))
+print(n, id(n))
+print(n.next, id(n.next))
+print(n.next.next, id(n.next.next))
+print(n.next.next.next, id(n.next.next.next))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = clone_node(n)
+print( k, id(k))
+print( k.next, id(k.next))
+print( k.next.next, id(k.next.next))
+print( k.next.next.next, id(k.next.next.next))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>registra tu solución en línea<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_03&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-4">
+<h2>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permalink to this headline">¶</a></h2>
+<p>Implementa <code class="docutils literal notranslate"><span class="pre">clone</span></code> que duplica una lista. Pon atención, ya que si hay sublistas, éstas han de ser duplicadas también. Entiende la implementación de la siguiente función, que muestra recursivamente los <code class="docutils literal notranslate"><span class="pre">id</span></code> de cada nodo de una lista <strong>según tu propia implementación del ejercicio 2</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def show_ids(M, level=0):
+    k = M.first_node
+    while k is not None:
+        print (&quot; &quot;*2*level, id(k))
+        if (str(k.value.__class__.__name__) == str(M.__class__.__name__)):
+            
+            show_ids(k.value, level+1)
+        k = k.next
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W=L2(Node(10, Node(L2(Node(14, Node(15, Node(L2(Node(16, Node(17))))))), Node(20, Node(30)))))
+show_ids(W)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Desarrolla tu solución de la siguiente manera:</p>
+<ol class="simple">
+<li><p>Primero copia los nodos de la lista actual (<code class="docutils literal notranslate"><span class="pre">self</span></code>)</p></li>
+<li><p>Crea una lista nueva con los nodos copiados</p></li>
+<li><p>Recorre los nodos de la lista nueva verificando el campo <code class="docutils literal notranslate"><span class="pre">value</span></code></p></li>
+<li><p>Si este campo es también una lista (usa <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> como en la función <code class="docutils literal notranslate"><span class="pre">show_ids</span></code>) entonces llama a <code class="docutils literal notranslate"><span class="pre">clone</span></code> de esa lista y sustituye el valor.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def L4(*args,**kwargs):
+    
+    class L4_class(L):
+
+        def clone(self):
+
+            def clone_node(node):
+                return &lt;... TU CODIGO AQUI ...&gt;
+
+            r = &lt;... TU CODIGO AQUI ...&gt;
+            return r
+        
+        
+    return L4_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba tu código, ambas listas han de tener el mismo contenido, pero distintos <code class="docutils literal notranslate"><span class="pre">id</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W=L4(Node(10, Node(L4(Node(14, Node(15, Node(L4(Node(16, Node(17))))))), Node(20, Node(30)))))
+W
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W.__class__.__name__
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>K = W.clone()
+K
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>show_ids(W)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>show_ids(K)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>registra tu solución en línea<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_04&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-5">
+<h2>Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método ´__add__´ para que concatene una lista con otra creando una nueva lista. Usa los métodos desarrollados en los ejercicios anteriores.</p>
+<p><strong>Sugerencia de implementación</strong>: copia primero las dos listas originales y luego concaténalas haciendo apuntar el <code class="docutils literal notranslate"><span class="pre">next</span></code> del último elemento de la copia de la primera lista al primer elemento de la copia de la segunda lista.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def L5(*args,**kwargs):
+    
+    class L5_class(L):
+
+        def clone(self):
+
+            return &lt;... TU CODIGO AQUI ...&gt;
+
+        def __add__(self, M):
+
+            return &lt;... TU CODIGO AQUI ...&gt;  
+        
+    return L5_class(*args,**kwargs)
+              
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W = L5(Node(10, Node(20, Node(30))))
+Z = L5(Node(3, Node(2)))
+print (W)
+print (Z)
+print (W + Z + L5()) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>esto ahora debería de funcionar (recuerda que en las Notas correspondientes existía un problema)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = W + Z + W
+print (X)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>registra tu solución en línea<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_05&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-6">
+<h2>Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permalink to this headline">¶</a></h2>
+<p>Implementa la función de igualdad.</p>
+<p><strong>Sugerencia de implementación</strong>: haz una función que recorra simultáneamente los nodos de ambas listas (<code class="docutils literal notranslate"><span class="pre">self</span></code> y <code class="docutils literal notranslate"><span class="pre">other</span></code>) y devuelva <code class="docutils literal notranslate"><span class="pre">False</span></code> en cuanto encuentre que el campo <code class="docutils literal notranslate"><span class="pre">value</span></code> de los dos nodos sea distinto (<code class="docutils literal notranslate"><span class="pre">!=</span></code>). Pon especial atención a que si <code class="docutils literal notranslate"><span class="pre">value</span></code> es a su vez una lista, el método será recursivo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def L6(*args,**kwargs):
+    
+    
+    class L6_class(L):
+
+        def __eq__(self, other):
+
+            return &lt;... TU CODIGO AQUI ...&gt;
+
+        def __ne__(self, other):
+            return not self==other
+        
+    return L6_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W=L6(Node(10, Node(L6(Node(14, Node(15, Node(L6(Node(16, Node(17))))))), Node(20, Node(30)))))
+Z=L6(Node(10, Node(L6(Node(14, Node(15, Node(L6(Node(16, Node(17))))))), Node(20, Node(30)))))
+Y=L6(Node(10, Node(L6(Node(14, Node(15))), Node(20, Node(30)))))
+print (W)
+print (Z)
+print (Y)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print (W==W)
+print (Z==Z)
+print (Y==Y)
+print (W==Z)
+print (W==Y)
+print (Y==Z)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>registra tu solución en línea<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_06&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-7">
+<h2>Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permalink to this headline">¶</a></h2>
+<p>Realiza una función que evalúe un <code class="docutils literal notranslate"><span class="pre">VarTerm</span></code> dado un diccionario <code class="docutils literal notranslate"><span class="pre">vals</span></code>. Asume que este diccionario contendrá un valor para la variable del término. Por ejemplo</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; vals = {&quot;x&quot;: 1, &quot;y&quot;:2, &quot;z&quot;: 3}
+&gt; vt = VarTerm(9,&quot;y&quot;, 2)
+&gt; print vt, &quot;=&quot;, evaluate_vterm(vt, vals)
+9 y^2 = 36
+
+&gt; vt = VarTerm(2,&quot;z&quot;, 3)
+&gt; print vt, &quot;=&quot;, evaluate_vterm(vt, vals)
+2 z^3 = 54
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def VarTerm7(*args,**kwargs):
+    
+    class VarTerm7_class():
+        def __init__(self, coef, var, exp=1):
+            assert (isinstance(coef, float) or isinstance(coef,int)) and \
+                    isinstance(exp, int) and isinstance(var, str) and len(var)==1
+            self.coef = coef
+            self.var  = var
+            self.exp  = exp
+
+        def get_math_representation(self):
+            s = (&quot;%s&quot;%str(self.coef) if self.coef!=1 else &quot;&quot;) +\
+                (&quot; %s&quot;%self.var if self.exp==1 else (&quot; %s^%d&quot;%(self.var, self.exp) if self.exp!=0 else &quot;&quot;)) 
+            return s
+
+        def __repr__(self):
+            return self.get_math_representation() 
+
+        def evaluate(self, vals):
+            return &lt;... TU CODIGO AQUI ...&gt;
+        
+    return VarTerm_class(*args,**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vals = {&quot;x&quot;: 1, &quot;y&quot;:2, &quot;z&quot;: 3}
+vt = VarTerm7(9,&quot;y&quot;, 2)
+print(vt, &quot;=&quot;, vt.evaluate(vals))
+vt = VarTerm7(2,&quot;z&quot;, 3)
+print(vt, &quot;=&quot;, vt.evaluate(vals))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>registra tu solución en línea<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_07&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios-de-refuerzo-no-obligatorios">
+<h2>Ejercicios de refuerzo (no obligatorios)<a class="headerlink" href="#ejercicios-de-refuerzo-no-obligatorios" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>crea una función que evalúe un <code class="docutils literal notranslate"><span class="pre">VarPol</span></code>, según definido en las notas.</p></li>
+<li><p>analiza la complejidad computacional de tus implementaciones</p></li>
+<li><p>¿Podrías enriqueces <code class="docutils literal notranslate"><span class="pre">Node</span></code> para mejorar la complejidad computacional?</p></li>
+</ul>
+</div>
+<div class="section" id="ejercicio-8">
+<h2>Ejercicio 8<a class="headerlink" href="#ejercicio-8" title="Permalink to this headline">¶</a></h2>
+<p>Realiza una función que evalúe un <code class="docutils literal notranslate"><span class="pre">VarPol</span></code> dado un diccionario <code class="docutils literal notranslate"><span class="pre">vals</span></code>. Asume que <code class="docutils literal notranslate"><span class="pre">vals</span></code> contendrá valores para todas las variables presentes en el polinomio.</p>
+<p><strong>Sugerencia de implementación</strong></p>
+<ol class="simple">
+<li><p>evalua el <code class="docutils literal notranslate"><span class="pre">VarTerm</span></code> asociado con el polinomio.</p></li>
+<li><p>recorre la lista del polinomio (desde <code class="docutils literal notranslate"><span class="pre">self.first_node</span></code>) sumando el valor de cada nodo de forma que:</p>
+<ol class="simple">
+<li><p>si el nodo es un <code class="docutils literal notranslate"><span class="pre">VarTerm</span></code> llama a la función <code class="docutils literal notranslate"><span class="pre">evaluate_vterm</span></code></p></li>
+<li><p>si el nodo es un <code class="docutils literal notranslate"><span class="pre">VarPol</span></code> llama a la función <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> del dicho polinomio</p></li>
+</ol>
+</li>
+</ol>
+<p>Observa que este último paso hace el algoritmo recursivo, por tanto, pon atención al mismo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class Pol(L):
+    def get_math_representation(self):
+        if self.first_node is None:
+            return Math(&quot;&quot;)
+        
+        k = self.first_node
+        s = k.value.get_math_representation()
+        
+        while (k.next is not None):
+            s += &quot;+&quot;+k.next.value.get_math_representation()
+            k = k.next
+    
+        s = s.replace(&quot;+-&quot;, &quot;-&quot;)
+        return s
+    
+    def show(self):
+        from IPython.display import Math, HTML, display
+        display(HTML(&quot;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default&#39;&gt;&lt;/script&gt;&quot;))
+        return Math(self.get_math_representation())
+
+
+class VarTerm():
+    def __init__(self, coef, var, exp=1):
+        assert (isinstance(coef, float) or isinstance(coef,int)) and \
+                isinstance(exp, int) and isinstance(var, str) and len(var)==1
+        self.coef = coef
+        self.var  = var
+        self.exp  = exp
+        
+    def get_math_representation(self):
+        s = &quot;&quot; if self.coef==0 else \
+            (&quot;%s&quot;%str(self.coef) if self.coef!=1 else &quot;&quot;) +\
+            (&quot; %s&quot;%self.var if self.exp==1 else (&quot; %s^%d&quot;%(self.var, self.exp) if self.exp!=0 else &quot;&quot;)) 
+        return s
+    
+    def show(self):
+        from IPython.display import Math, HTML, display
+        display(HTML(&quot;&lt;script src=&#39;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default&#39;&gt;&lt;/script&gt;&quot;))
+        return Math(self.get_math_representation())
+       
+    def __repr__(self):
+        return self.get_math_representation()      
+
+class VarPol(Pol):
+    def __init__(self, first_node, vterm=VarTerm(1,&quot;k&quot;,0)):
+        super(VarPol, self).__init__(first_node)
+        assert vterm is not None and isinstance(vterm, VarTerm), &quot;must specify a VarTerm&quot; 
+        self.vterm = vterm
+        
+    def get_math_representation(self):
+        return self.vterm.get_math_representation()+&quot;(&quot;+super(VarPol, self).get_math_representation()+&quot;)&quot;
+
+
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p1 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(2,&quot;y&quot;, 2), Node(VarTerm(5,&quot;y&quot;))))
+p2 = VarPol(first_node=Node(VarTerm(7,&quot;y&quot;,2)), vterm=VarTerm(1,&quot;x&quot;,1))
+p3 = VarPol(first_node=Node(p1, Node(p2)), vterm=VarTerm(1,&quot;z&quot;, 2))
+p4 = VarPol( vterm=VarTerm(1,&quot;x&quot;,2), first_node=Node(VarTerm(5,&quot;y&quot;, 1)))
+p5 = VarPol( first_node=Node(p4, Node(VarTerm(4,&quot;x&quot;,1))), vterm=VarTerm(1,&quot;z&quot;,1))
+p6 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(4,&quot;y&quot;, 2)))
+p7 = VarPol(first_node=Node(VarTerm(9,&quot;y&quot;, 0), Node(VarTerm(8,&quot;y&quot;,1))))
+p8 = VarPol(first_node=Node(p3, Node(p5, Node(p6, Node(p7)))))
+p8.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class VarPol(Pol):
+    def __init__(self, first_node, vterm=VarTerm(1,&quot;k&quot;,0)):
+        super(VarPol, self).__init__(first_node)
+        assert vterm is not None and isinstance(vterm, VarTerm), &quot;must specify a VarTerm&quot; 
+        self.vterm = vterm
+        
+    def get_math_representation(self):
+        return self.vterm.get_math_representation()+&quot;(&quot;+super(VarPol, self).get_math_representation()+&quot;)&quot;
+    
+    def evaluate(self, vals):
+        
+        def evaluate_vterm(vterm, vals):
+            return vterm.coef*vals[vterm.var]**vterm.exp
+        
+        
+        vt = evaluate_vterm(self.vterm, vals)
+
+        vpol = 0
+        k = self.first_node
+        while k is not None:
+            
+            vpol += evaluate_vterm(k.value, vals) if isinstance(k.value, VarTerm) else \
+                    k.value.evaluate(vals) if isintance(k.value, VarPol) else 0
+            k = k.next
+        
+        return vt*vpol
+            
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p1 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(2,&quot;y&quot;, 2), Node(VarTerm(5,&quot;y&quot;))))
+p2 = VarPol(first_node=Node(VarTerm(7,&quot;y&quot;,2)), vterm=VarTerm(1,&quot;x&quot;,1))
+p3 = VarPol(first_node=Node(p1, Node(p2)), vterm=VarTerm(1,&quot;z&quot;, 2))
+p4 = VarPol( vterm=VarTerm(1,&quot;x&quot;,2), first_node=Node(VarTerm(5,&quot;y&quot;, 1)))
+p5 = VarPol( first_node=Node(p4, Node(VarTerm(4,&quot;x&quot;,1))), vterm=VarTerm(1,&quot;z&quot;,1))
+p6 = VarPol( vterm=VarTerm(1,&quot;x&quot;,3), first_node=Node(VarTerm(4,&quot;y&quot;, 2)))
+p7 = VarPol(first_node=Node(VarTerm(9,&quot;y&quot;, 0), Node(VarTerm(8,&quot;y&quot;,1))))
+p8 = VarPol(first_node=Node(p3, Node(p5, Node(p6, Node(p7)))))
+p8.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vals = {&quot;x&quot;: 1, &quot;y&quot;:2, &quot;z&quot;: 3}
+print (p1.evaluate(vals))
+p1.show()
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Ejercicios de refuerzo (no obligatorios)<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>crea una función que evalúe un <code class="docutils literal notranslate"><span class="pre">VarPol</span></code>, según definido en las notas.</p></li>
+<li><p>analiza la complejidad computacional de tus implementaciones</p></li>
+<li><p>¿Podrías enriqueces <code class="docutils literal notranslate"><span class="pre">Node</span></code> para mejorar la complejidad computacional?</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Árboles de búsqueda</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2006%20-%20Arboles.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB 06 - Árboles</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

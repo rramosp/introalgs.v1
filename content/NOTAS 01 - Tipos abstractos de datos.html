@@ -1,0 +1,1314 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipos abstractos de datos &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ejercicio 1: Suma dos matrices" href="LAB%2000%20-%20Practica-Ejemplo.html" />
+    <link rel="prev" title="Introducción a Python" href="NOTAS%2000%20-%20Introduccion%20Python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 01 - Tipos abstractos de datos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 01 - Tipos abstractos de datos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-1-numeros-naturales">
+   Ejemplo 1. Números naturales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-2-un-diccionario">
+   Ejemplo 2: Un diccionario
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-3-lista-ordenada">
+   Ejemplo 3. Lista Ordenada
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-informal">
+     Definición informal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-por-axiomas">
+     Definición por axiomas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-en-python">
+     Implementación en Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tests-unitarios-con-los-axiomas">
+     tests unitarios con los axiomas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#otra-implementacion-en-python">
+     Otra implementación en Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#verificamos-los-axiomas-que-tenemos-implementados">
+     verificamos los axiomas que tenemos implementados
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#medimos-rendimiento-de-ambas-implementaciones">
+     medimos rendimiento de ambas implementaciones
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tipos abstractos de datos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduccion">
+   Introducción
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-1-numeros-naturales">
+   Ejemplo 1. Números naturales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-2-un-diccionario">
+   Ejemplo 2: Un diccionario
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejemplo-3-lista-ordenada">
+   Ejemplo 3. Lista Ordenada
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-informal">
+     Definición informal
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definicion-por-axiomas">
+     Definición por axiomas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementacion-en-python">
+     Implementación en Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tests-unitarios-con-los-axiomas">
+     tests unitarios con los axiomas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#otra-implementacion-en-python">
+     Otra implementación en Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#verificamos-los-axiomas-que-tenemos-implementados">
+     verificamos los axiomas que tenemos implementados
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#medimos-rendimiento-de-ambas-implementaciones">
+     medimos rendimiento de ambas implementaciones
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicios-propuestos">
+   Ejercicios propuestos:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tipos-abstractos-de-datos">
+<h1>Tipos abstractos de datos<a class="headerlink" href="#tipos-abstractos-de-datos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivos-del-modulo">
+<h2>Objetivos del módulo<a class="headerlink" href="#objetivos-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer el concepto de tipos abstractos de datos y aprender a definir, interpretar e implementar estructuras de datos usando esta técnica.</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>¿Qué es una tipo abstracto de datos (TAD)?</p></li>
+<li><p>¿Qué significa ‘abstracto’?</p></li>
+<li><p>¿Cómo se define un TAD?</p></li>
+<li><p>¿Cómo se implementa un TAD?</p></li>
+<li><p>¿Cómo se mide el rendimiento de una implementación?</p></li>
+</ol>
+</div>
+<div class="section" id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this headline">¶</a></h2>
+<p>Uno de los temas de mayor importancia en el desarrollo de software es la definición de estructuras de datos en abstracto, es decir, independiente de su representación. Dicha definición conduce hacia la programación orientada a objetos (POO) y a una de sus principales características: el encapsulamiento.</p>
+<ul class="simple">
+<li><p><strong>TIPO</strong> (<em>type</em>): es un conjunto de valores. P.ej. [<code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>], <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span></p></li>
+<li><p><strong>TIPO ABSTRACTO DE DATOS (TAD)</strong> (<a class="reference external" href="https://www.wikiwand.com/en/Abstract_data_type"><em>abstract data type</em></a>, <em>ADT</em>): es un tipo de datos, <strong>MÁS</strong> una definición de conjunto de operaciones sobre este tipo de datos, <strong>MÁS</strong> un conjunto de axiomas que definen la semántica de las operaciones.</p></li>
+<li><p><strong>ESTRUCTURA DE DATOS</strong> (<em>data structure</em>): es una realización de un TAD en un lenguaje de programación concreto.</p></li>
+</ul>
+<p>es preciso observar que:</p>
+<ul class="simple">
+<li><p>Un TAD es una <strong>definición abstracta</strong> en algún <em>idioma</em> matemático o informal.</p></li>
+<li><p>Un TAD especifica <strong>QUÉ</strong> hace una operación, pero no <strong>CÓMO</strong>.</p></li>
+<li><p>Los axiomas suelen definir <strong>precondiciones</strong> y <strong>poscondiciones</strong> de las operaciones.</p></li>
+<li><p>Si la definición de un TAD es <strong>totalmente matemática</strong> podríamos en teoría probar formalmente propiedades y algoritmos (i.e. <a class="reference external" href="https://www.wikiwand.com/en/Formal_verification">verificación formal</a>, <a class="reference external" href="https://www.wikiwand.com/en/Program_derivation">derivación de programas</a>, <a class="reference external" href="https://www.wikiwand.com/en/Automatic_bug_fixing">reparación de bugs</a>, etc.).</p></li>
+<li><p>Algunos tipos están ya implementados (<em>built-in</em>) en la base de Java, Python, Haskell, C, …</p></li>
+<li><p>Un TAD suele imlpementarse como una <strong>clase</strong> en distintos lenguajes de programación.</p></li>
+</ul>
+<p>referencias:</p>
+<ul class="simple">
+<li><p>http://www.cs.fsu.edu/~lacher/lectures/Output/adts/index.html</p></li>
+<li><p>http://btechsmartclass.com/DS/U1_T1.html</p></li>
+<li><p>https://ece.uwaterloo.ca/~dwharder/aads/Abstract_data_types/Linear_ordering/Stack/</p></li>
+<li><p>https://www.geeksforgeeks.org/abstract-data-types/</p></li>
+</ul>
+</div>
+<div class="section" id="ejemplo-1-numeros-naturales">
+<h2>Ejemplo 1. Números naturales<a class="headerlink" href="#ejemplo-1-numeros-naturales" title="Permalink to this headline">¶</a></h2>
+<p><strong>TAD: <span class="math notranslate nohighlight">\(NumeroNatural\)</span></strong></p>
+<p><span class="math notranslate nohighlight">\(\forall n,m \in NumeroNatural\)</span></p>
+<ul class="simple">
+<li><p>signatures:
+$$</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-f30adad8-40d1-45cf-bbdc-06c8b0cbe3c4">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f30adad8-40d1-45cf-bbdc-06c8b0cbe3c4" title="Permalink to this equation">¶</a></span>\[\begin{align}
+cero() &amp;\rightarrow NumeroNatural\\
+sucesor(n) &amp;\rightarrow NumeroNatural\\
+esCero(n) &amp;\rightarrow Bool\\
+suma(n,m) &amp;\rightarrow NumeroNatural\\
+resta(n,m) &amp;\rightarrow NumeroNatural\\
+multiplica(n,m) &amp;\rightarrow NumeroNatural\\
+divide(n,m) &amp;\rightarrow NumeroNatural\\
+igual(n,m) &amp;\rightarrow Bool\\
+\end{align}\]</div>
+<p>$$</p>
+<ul>
+<li><p>axioms:</p>
+<p><span class="math notranslate nohighlight">\(esCero(cero()) := \)</span><code class="docutils literal notranslate"><span class="pre">True</span></code><br/>
+<span class="math notranslate nohighlight">\(esCero(sucesor(x)) := \)</span><code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p><span class="math notranslate nohighlight">\(suma(cero(), y) := y\)</span><br/>
+<span class="math notranslate nohighlight">\(sum(sucesor(x),y) := sucesor(suma(x,y))\)</span></p>
+<p><span class="math notranslate nohighlight">\(resta(x, cero()) ::= x\)</span><br/>
+<span class="math notranslate nohighlight">\(resta(cero(), y) ::= \)</span> if <span class="math notranslate nohighlight">\( esCero(y)\)</span> then <span class="math notranslate nohighlight">\(cero()\)</span> else <span class="math notranslate nohighlight">\(error\)</span><br/>
+<span class="math notranslate nohighlight">\(resta(sucesor(x), sucesor(y)):=resta(x,y)\)</span></p>
+<p><span class="math notranslate nohighlight">\(multiplica(x, cero()) ::= cero()\)</span><br/>
+<span class="math notranslate nohighlight">\(multiplica(x, sucesor(y)) ::= suma(x, multiplica(x, y))\)</span></p>
+<p><span class="math notranslate nohighlight">\(divide(cero(), y) ::= cero()\)</span><br/>
+<span class="math notranslate nohighlight">\(divide(x, cero()) ::= error\)</span><br/>
+<span class="math notranslate nohighlight">\(divide(x, y) ::=\)</span> if <span class="math notranslate nohighlight">\(menor(x, y) \)</span> then <span class="math notranslate nohighlight">\( cero()\)</span> else  <span class="math notranslate nohighlight">\(sucesor(divide(resta(x, y), y))\)</span></p>
+<p><span class="math notranslate nohighlight">\(igual(Cero(), x) ::= esCero(x)\)</span><br/>
+<span class="math notranslate nohighlight">\(igual(sucesor(x), cero()) ::= False\)</span> <br/>
+<span class="math notranslate nohighlight">\(igual(sucesor(x), sucesor(y)) ::= igual(x, y)\)</span></p>
+</li>
+</ul>
+<p><strong>Observa que</strong>:</p>
+<ol class="simple">
+<li><p>En la parte de axiomas se utiliza el símbolo <code class="docutils literal notranslate"><span class="pre">::=</span></code>, el cual se lee <em>se define como</em> y se conoce como la notación <strong>BNF</strong> (Backus Naur Form).</p></li>
+<li><p>En la parte correspondiente a las funciones se definen las operaciones que se pueden realizar, su sintaxis y el resultado que se obtiene al efectuar alguna de ellas.</p></li>
+<li><p>En la definición de funciones siempre se debe incluir:</p>
+<ul class="simple">
+<li><p>Una función que cree la estructura vacía. En nuestro ejemplo es la función <span class="math notranslate nohighlight">\(cero()\)</span> la cual crea la estructura <span class="math notranslate nohighlight">\(NumeroNatural\)</span> vacía.</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>Una función que genere o que permita incluir los  elementos o datos objeto que conformarán la estructura a definir. En nuestro ejemplo es la función <span class="math notranslate nohighlight">\(sucesor()\)</span></p></li>
+</ul>
+<ol class="simple">
+<li><p>En la parte de axiomas se describe la forma como trabajan las funciones. Se omiten en esta parte las dos funciones básicas, (creación y generación) definidas anteriormente, ya que su forma de operación está implícita en la definición de la función.</p></li>
+</ol>
+<p>La función cero() crea la estructura número natural vacía.
+sucesor(cero()) generará el primer número natural, el 1.
+sucesor(sucesor(cero())) representa el número natural 2 y así sucesivamente.
+En general, si sucesor(x) es un número natural i, entonces x representa el número natural i – 1.</p>
+<p><strong>Preguntas</strong></p>
+<p>Realiza las siguientes operaciones usando las funciones y axiomas definidos</p>
+<ul class="simple">
+<li><p>2+3</p></li>
+<li><p>5-2</p></li>
+<li><p>4*5</p></li>
+<li><p>12/4</p></li>
+<li><p>12/5</p></li>
+</ul>
+</div>
+<div class="section" id="ejemplo-2-un-diccionario">
+<h2>Ejemplo 2: Un diccionario<a class="headerlink" href="#ejemplo-2-un-diccionario" title="Permalink to this headline">¶</a></h2>
+<p><strong>TAD: <span class="math notranslate nohighlight">\(Diccionario\)</span></strong></p>
+<p><span class="math notranslate nohighlight">\(\forall\; A \in Diccionario \;\;\; i,j,v \in AnyType\)</span></p>
+<ul class="simple">
+<li><p>signatures:
+$$</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-962f3a87-9425-4614-84fd-000024c199f7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-962f3a87-9425-4614-84fd-000024c199f7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+crear() &amp;\rightarrow Diccionario\\
+A.almacena(v) &amp;\rightarrow Diccionario\\
+A.esVacio() &amp;\rightarrow Bool\\
+A.recupera(i) &amp;\rightarrow AnyType\\
+\end{align}\]</div>
+<p>$$</p>
+<ul>
+<li><p>axioms:</p>
+<p><span class="math notranslate nohighlight">\(crear().esVacio() := \)</span> <code class="docutils literal notranslate"><span class="pre">True</span></code><br/>
+<span class="math notranslate nohighlight">\(A.almacena(i,v).esVacio() :=\)</span> <code class="docutils literal notranslate"><span class="pre">False</span></code><br/>
+<span class="math notranslate nohighlight">\(crear().recupera(i) := error\)</span> <br/>
+<span class="math notranslate nohighlight">\(A.almacenar(i,v).recupera(j) := v\)</span> if <span class="math notranslate nohighlight">\(i==j\)</span> else <span class="math notranslate nohighlight">\(A.recupera(j)\)</span></p>
+</li>
+</ul>
+<p><strong>Observa</strong>:</p>
+<ul class="simple">
+<li><p>que siempre tenemos que tener alguna función que nos cree una instancia de un TAD</p></li>
+<li><p>Python tiene una estructura <code class="docutils literal notranslate"><span class="pre">dict</span></code> con una semántica similar y con las funciones de almacenar y recuperar accesibles indirectamente a través de una sintaxis dedicada.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>A = {&quot;uno&quot;: &quot;el primer elemento&quot;, &quot;zapato&quot;: &quot;para el pie&quot;, 3: &quot;el numero 3&quot;, &quot;dos&quot;: 2 }
+for k,v in A.items():
+    print(&quot;%10s&quot;%str(k),&quot;::&quot;, v)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       uno :: el primer elemento
+    zapato :: para el pie
+         3 :: el numero 3
+       dos :: 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(A[&quot;uno&quot;])
+print(A[3])
+print(A[&quot;dos&quot;])
+print(A[&quot;zapato&quot;])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>el primer elemento
+el numero 3
+2
+para el pie
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>A[&quot;dos&quot;] = &quot;el numero dos&quot;
+A[&quot;comer&quot;] = &quot;verbo transitivo&quot;
+
+for k,v in A.items():
+    print(&quot;%10s&quot;%str(k),&quot;::&quot;, v)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       uno :: el primer elemento
+    zapato :: para el pie
+         3 :: el numero 3
+       dos :: el numero dos
+     comer :: verbo transitivo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>A[&quot;dos&quot;]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;el numero dos&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-3-lista-ordenada">
+<h2>Ejemplo 3. Lista Ordenada<a class="headerlink" href="#ejemplo-3-lista-ordenada" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definicion-informal">
+<h3>Definición informal<a class="headerlink" href="#definicion-informal" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>tipo de datos</strong>:</p>
+<ul>
+<li><p>los elementos de una lista ordenada son de un determinado tipo (p.ej. <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>, o <code class="docutils literal notranslate"><span class="pre">string</span></code>) que <strong>admite una función de comparación</strong> (1 <strong>&lt;</strong> 2, “albert” <strong>&lt;</strong> “arbol”).</p></li>
+</ul>
+</li>
+<li><p><strong>funciones</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OrderedList(tipo)</span></code>: crea una lista ordenada vacía para elementos de tipo de datos <code class="docutils literal notranslate"><span class="pre">tipo</span></code>. <strong>Precondición</strong>: El tipo de datos ha de admitir comparación.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add(item)</span></code>: añade un nuevo ítem a la lista preservando el orden de la misma. Si el ítem ya existe en la lista la operación no modifica la lista. <strong>Precondición</strong>: El ítem ha de ser del tipo de la lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove(item)</span></code>: elimina un ítem de la lista preservando el orden de la misma. <strong>Precondición</strong>: El ítem ha de existir en la lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contains(item)</span></code>: devuelve un booleano indicando si el ítem está en la lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len()</span></code>: devuelve un entero con el número de elementos que tiene la lista.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first()</span></code>: devuelve el primer item de la lista y establece un <strong>cursor</strong> en el primer item. <strong>Precondición</strong>: la lista no puede estar vacia.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">next()</span></code>: mueve el cursor al siguiente item de la lista y devuelve el item en el que inicialmente estaba. <strong>Precondición</strong>: el cursor no puede estar en el último item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">has_more()</span></code>: devuelve un booleano <code class="docutils literal notranslate"><span class="pre">True</span></code> si el cursor está en el último item. Si no, devuelve <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="definicion-por-axiomas">
+<h3>Definición por axiomas<a class="headerlink" href="#definicion-por-axiomas" title="Permalink to this headline">¶</a></h3>
+<p><strong>TAD: <span class="math notranslate nohighlight">\(OrderedList\)</span></strong></p>
+<p><span class="math notranslate nohighlight">\(\forall \mathbb{T} \in Types, L \in OrderedList; a \in \mathbb{T}; k, n\in\mathbb{Z} \)</span></p>
+<ul class="simple">
+<li><p>signatures:
+$$</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-69c23fbf-816d-461c-8ad6-b7e8a4e42464">
+<span class="eqno">(3)<a class="headerlink" href="#equation-69c23fbf-816d-461c-8ad6-b7e8a4e42464" title="Permalink to this equation">¶</a></span>\[\begin{align}
+OrderedList (\mathbb{T}) &amp;\rightarrow OrderedList\\
+add(a) &amp;\rightarrow OrderedList\\
+remove(a) &amp;\rightarrow OrderedList\\
+contains(a) &amp;\rightarrow Bool\\
+len() &amp;\rightarrow \mathbb{Z}\\
+first() &amp;\rightarrow \mathbb{T}\\
+next() &amp;\rightarrow \mathbb{T}\\
+has\_more() &amp;\rightarrow Bool\\
+\end{align}\]</div>
+<p>$$</p>
+<ul class="simple">
+<li><p>definitions:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(L^n ::= L.first(); \;\;\; L.next() \times (n-1) \;\;with\;\;  n\in[1,len(L)]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(k ::= n\)</span> if <span class="math notranslate nohighlight">\(L^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L.has\_more() ::= k&lt;len(L)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>observa que la definición de <span class="math notranslate nohighlight">\(k\)</span> depende de cuantas veces haya llamado el usuario a la función <span class="math notranslate nohighlight">\(next\)</span> después de <span class="math notranslate nohighlight">\(first\)</span>.</p>
+<ul class="simple">
+<li><p>preconditions</p></li>
+</ul>
+<table>
+    <tr><th width=200>operación</th><th width=200>precondición</th></tr>
+    <tr><td>$OrderedList (\mathbb{T})$</td><td>$\mathbb{T}$ admite comparación</td></tr>
+    <tr><td>$L.add(a)$</td><td>$ a \in \mathbb{T}$</td></tr>
+    <tr><td>$L.remove(a)$</td><td>$ L.contains(a)$</td></tr>
+    <tr><td>$L.first()$</td><td>$len(L)>0$</td></tr>
+    <tr><td>$L^n$</td><td>$n\in[1,len(L)]$</td></tr>
+</table>
+<ul class="simple">
+<li><p>axioms (post conditions):</p>
+<ul>
+<li><p><strong>axiom 1</strong>: <span class="math notranslate nohighlight">\(len(OrderedList(\mathbb{T}))=0\)</span></p></li>
+<li><p><strong>axiom 2</strong>: <span class="math notranslate nohighlight">\(L^n &lt; L^{n+1}\)</span></p></li>
+<li><p><strong>axiom 3</strong>: <span class="math notranslate nohighlight">\(L.contains(a) \iff \exists n \;\;|\;\; a = L^n\)</span></p></li>
+<li><p><strong>axiom 4</strong>: <span class="math notranslate nohighlight">\(len(L.add(a)) = len(L)+ 1 - L.contains(a)\)</span></p></li>
+<li><p><strong>axiom 5</strong>: <span class="math notranslate nohighlight">\(len(L.remove(a)) = len(L) - L.contains(a)\)</span></p></li>
+<li><p><strong>axiom 6</strong>: <span class="math notranslate nohighlight">\(L.add(a) \Rightarrow L.contains(a)\)</span></p></li>
+<li><p><strong>axiom 7</strong>: <span class="math notranslate nohighlight">\(L.remove(a) \Rightarrow \neg L.contains(a)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Dada una implementación concreta, los axiomas nos permiten verificar si la implementación es correcta.</p>
+</div>
+<div class="section" id="implementacion-en-python">
+<h3>Implementación en Python<a class="headerlink" href="#implementacion-en-python" title="Permalink to this headline">¶</a></h3>
+<p><strong>Observa</strong>:</p>
+<ul class="simple">
+<li><p>el TAD se implementa como una clase de Python</p></li>
+<li><p>las precondiciones las implementamos con <code class="docutils literal notranslate"><span class="pre">assert</span></code></p></li>
+<li><p>¿qué tan eficiente es esta implementación?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class OrderedList:
+    
+    def __init__(self, item_type):
+        self.item_type = item_type
+        self.list = []
+        self.cursor = 0
+        
+    def add(self, item):
+        assert type(item)==self.item_type, &quot;must comply with declared type&quot;
+        self.list = [i for i in self.list if i&lt;item] + [item] + [i for i in self.list if i&gt;item]
+        return self
+        
+    def remove(self, item):
+        assert self.contains(item), &quot;item not in list&quot;
+        self.list = [i for i in self.list if item!=i]
+        return self
+    
+    def contains(self, item):
+        return item in self.list
+    
+    def first(self):
+        self.cursor = 1
+        return self.list[self.cursor-1]
+    
+    def __next__(self):
+        assert self.has_more(), &quot;no more items in list&quot;
+        self.cursor += 1
+        return self.list[self.cursor-1]
+    
+    def has_more(self):
+        return self.cursor&lt;len(self.list)
+    
+    def len(self):
+        return len(self.list)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprobamos a mano la implementación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = OrderedList(int)
+k.add(10).add(1).add(2)
+print(k.list)
+k.remove(2)
+print(k.list)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 10]
+[1, 10]
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprobamos alguna precondición</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(k.first(), k.has_more())
+print(next(k), k.has_more())
+print(next(k))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 True
+10 False
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">ba9de29813c3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">first</span><span class="p">(),</span> <span class="n">k</span><span class="o">.</span><span class="n">has_more</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">k</span><span class="o">.</span><span class="n">has_more</span><span class="p">())</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+
+<span class="nn">&lt;ipython-input-5-5f8717398b95&gt;</span> in <span class="ni">__next__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> 
+<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">26</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_more</span><span class="p">(),</span> <span class="s2">&quot;no more items in list&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>         <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="ne">AssertionError</span>: no more items in list
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.add(&quot;ho&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="n">f961c13bf47b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">k</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;ho&quot;</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-5-5f8717398b95&gt;</span> in <span class="ni">add</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>         <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">item</span><span class="p">)</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">item_type</span><span class="p">,</span> <span class="s2">&quot;must comply with declared type&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">item</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">item</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">return</span> <span class="bp">self</span>
+
+<span class="ne">AssertionError</span>: must comply with declared type
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k.remove(2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">3774</span><span class="n">a04f67d2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">k</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-5-5f8717398b95&gt;</span> in <span class="ni">remove</span><span class="nt">(self, item)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="s2">&quot;item not in list&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>         <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span> <span class="k">if</span> <span class="n">item</span><span class="o">!=</span><span class="n">i</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="k">return</span> <span class="bp">self</span>
+
+<span class="ne">AssertionError</span>: item not in list
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>SUGERENCIA</strong> ejecuta el código anterior en <a class="reference external" href="http://www.pythontutor.com/visualize.html#mode=edit">Python Tutor</a></p>
+</div>
+<div class="section" id="tests-unitarios-con-los-axiomas">
+<h3>tests unitarios con los axiomas<a class="headerlink" href="#tests-unitarios-con-los-axiomas" title="Permalink to this headline">¶</a></h3>
+<p>estos tests son <strong>independientes de la implementación</strong></p>
+<p><strong>axiom 1</strong>: <span class="math notranslate nohighlight">\(len(OrderedList(\mathbb{T}))=0\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def test_axiom1(ordered_list_class):
+    L = ordered_list_class(int)
+    print(&quot;new list length:&quot;, L.len())
+    assert L.len()==0
+    
+test_axiom1(OrderedList)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>new list length: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>axiom 2</strong>: <span class="math notranslate nohighlight">\(L^n &lt; L^{n+1}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def test_axiom2(ordered_list_class):
+    import numpy as np
+    
+    L = ordered_list_class(int)
+    print(&quot;inserting&quot;, end=&#39; &#39;) 
+    for i in range(20):
+        k = np.random.randint(1000)
+        print(k, end=&#39; &#39;) 
+        L.add(k)
+    print(&quot;\n\ntesting with list&quot;, L.list, &quot;\n&quot;)
+    
+    item = L.first()
+    while L.has_more():
+        k = next(L)
+        print(item,&quot;&lt;&quot;,k, &quot;  &quot;, end=&#39; &#39;)
+        assert item &lt; k, &quot;wrong list order: %d before %d&quot;%(item,k)
+        item = k
+        
+test_axiom2(OrderedList)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inserting 642 495 683 514 101 989 259 166 493 224 565 847 427 981 430 881 317 759 972 650 
+
+testing with list [101, 166, 224, 259, 317, 427, 430, 493, 495, 514, 565, 642, 650, 683, 759, 847, 881, 972, 981, 989] 
+
+101 &lt; 166    166 &lt; 224    224 &lt; 259    259 &lt; 317    317 &lt; 427    427 &lt; 430    430 &lt; 493    493 &lt; 495    495 &lt; 514    514 &lt; 565    565 &lt; 642    642 &lt; 650    650 &lt; 683    683 &lt; 759    759 &lt; 847    847 &lt; 881    881 &lt; 972    972 &lt; 981    981 &lt; 989    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="otra-implementacion-en-python">
+<h3>Otra implementación en Python<a class="headerlink" href="#otra-implementacion-en-python" title="Permalink to this headline">¶</a></h3>
+<p>usamos la librería <a class="reference external" href="https://docs.python.org/2/library/bisect.html">bisect</a>. observa este ejemplo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import bisect        
+l = [1,2,10,12,30]
+print(bisect.bisect_left(l,11), bisect.bisect_right(l,11))
+print(bisect.bisect_left(l,12), bisect.bisect_right(l,12))
+bisect.insort_left(l,9)
+print(l)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 3
+3 4
+[1, 2, 9, 10, 12, 30]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observa cómo usamos herencia para redefinir sólo los métodos que queremos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class OrderedList_bisect(OrderedList):
+    
+    def add(self, item):
+        assert type(item)==self.item_type, &quot;must comply with declared type&quot;
+        if not self.contains(item):
+            bisect.insort_left(self.list, item)
+        return self
+        
+    def remove(self, item):
+        k = bisect.bisect_left(self.list, item)
+        assert k&lt;len(self.list) and self.list[k]==item,  &quot;item not in list&quot;        
+        self.list = self.list[:k]+self.list[k+1:]
+        return self
+        
+    def contains(self, item):
+        k = bisect.bisect_left(self.list, item)
+        return k&lt;len(self.list) and self.list[k]==item
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="verificamos-los-axiomas-que-tenemos-implementados">
+<h3>verificamos los axiomas que tenemos implementados<a class="headerlink" href="#verificamos-los-axiomas-que-tenemos-implementados" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_axiom1(OrderedList)
+test_axiom1(OrderedList_bisect)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>new list length: 0
+new list length: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_axiom2(OrderedList)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inserting 484 210 70 721 896 371 586 943 677 838 833 174 399 331 378 6 543 716 928 810 
+
+testing with list [6, 70, 174, 210, 331, 371, 378, 399, 484, 543, 586, 677, 716, 721, 810, 833, 838, 896, 928, 943] 
+
+6 &lt; 70    70 &lt; 174    174 &lt; 210    210 &lt; 331    331 &lt; 371    371 &lt; 378    378 &lt; 399    399 &lt; 484    484 &lt; 543    543 &lt; 586    586 &lt; 677    677 &lt; 716    716 &lt; 721    721 &lt; 810    810 &lt; 833    833 &lt; 838    838 &lt; 896    896 &lt; 928    928 &lt; 943    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_axiom2(OrderedList_bisect)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inserting 180 149 839 533 669 274 637 321 583 853 379 752 461 444 351 209 822 933 703 922 
+
+testing with list [149, 180, 209, 274, 321, 351, 379, 444, 461, 533, 583, 637, 669, 703, 752, 822, 839, 853, 922, 933] 
+
+149 &lt; 180    180 &lt; 209    209 &lt; 274    274 &lt; 321    321 &lt; 351    351 &lt; 379    379 &lt; 444    444 &lt; 461    461 &lt; 533    533 &lt; 583    583 &lt; 637    637 &lt; 669    669 &lt; 703    703 &lt; 752    752 &lt; 822    822 &lt; 839    839 &lt; 853    853 &lt; 922    922 &lt; 933    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="medimos-rendimiento-de-ambas-implementaciones">
+<h3>medimos rendimiento de ambas implementaciones<a class="headerlink" href="#medimos-rendimiento-de-ambas-implementaciones" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+l = np.random.randint(100000,size=1000)
+print(len(l), len(np.unique(l)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1000 997
+</pre></div>
+</div>
+</div>
+</div>
+<p>para la operación de <code class="docutils literal notranslate"><span class="pre">add</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L1 = OrderedList(np.int64)
+L2 = OrderedList_bisect(np.int64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%timeit
+for i in l:
+    L1.add(i)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>146 ms ± 9.04 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%timeit
+for i in l:
+    L2.add(i)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.55 ms ± 37 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>para la operación <code class="docutils literal notranslate"><span class="pre">contains</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>L1 = OrderedList(np.int64)
+L2 = OrderedList_bisect(np.int64)
+for i in l:
+    L1.add(i)
+    L2.add(i)
+print(L1.len(), L2.len())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>997 997
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%timeit
+for i in l:
+    L1.contains(i)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.8 ms ± 146 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%timeit
+for i in l:
+    L2.contains(i)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.26 ms ± 30.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicios-propuestos">
+<h2>Ejercicios propuestos:<a class="headerlink" href="#ejercicios-propuestos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Complete la estructura númeroNatural incluyendo las operaciones módulo, potencia, factorial, máximo común divisor, mínimo común múltiplo, diferente, mayor, mayor o igual, menor y menor o igual.</p></li>
+<li><p>Defina estructura númeroEntero incluyendo las mismas operaciones que en la estructura númeroNatural. Defina operaciones que considere necesarias para desarrollar los axiomas de las funciones definidas.</p></li>
+<li><p>Defina una estructura Conjunto con operaciones Unión, Intersección, Pertenencia y Complemento.</p></li>
+<li><p>Defina estructura String con operaciones esVacío, longitud, concatenación, subHilera y posición.</p></li>
+<li><p>Defina estructura Lógico con sus correspondientes funciones y axiomas.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2000%20-%20Introduccion%20Python.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introducción a Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2000%20-%20Practica-Ejemplo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ejercicio 1: Suma dos matrices</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

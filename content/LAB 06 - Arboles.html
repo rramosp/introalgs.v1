@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 06 - Árboles &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB 07 Árboles de búsqueda" href="LAB%2007%20-%20Arboles%20de%20busqueda.html" />
+    <link rel="prev" title="LAB 05 - Listas generalizadas" href="LAB%2005%20-%20Listas%20generalizadas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 06 - Arboles.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 06 - Arboles.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   LAB 06 - Árboles
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heapsort">
+     Heapsort
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-1">
+     Ejercicio 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-2">
+     Ejercicio 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-3">
+     Ejercicio 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-4">
+     Ejercicio 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimentos">
+   Experimentos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complejidad-computacional">
+     Complejidad computacional
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB 06 - Árboles</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   LAB 06 - Árboles
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heapsort">
+     Heapsort
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-1">
+     Ejercicio 1
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-2">
+     Ejercicio 2
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-3">
+     Ejercicio 3
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-4">
+     Ejercicio 4
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       registra tu solución en línea
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimentos">
+   Experimentos
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complejidad-computacional">
+     Complejidad computacional
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import init
+from local.lib.rlxmoocapi import submit, session
+import inspect
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_06&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="lab-06-arboles">
+<h1>LAB 06 - Árboles<a class="headerlink" href="#lab-06-arboles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="heapsort">
+<h2>Heapsort<a class="headerlink" href="#heapsort" title="Permalink to this headline">¶</a></h2>
+<p>En este taller vamos a implementar el algoritmo de ordenación llamado Heapsort. Consulta <a class="reference external" href="https://en.wikipedia.org/wiki/Heapsort">Heapsort en Wikipedia</a>. Es un algoritmo que, dado un vector:</p>
+<ul class="simple">
+<li><p>Lo interpreta como un árbol binario</p></li>
+<li><p><strong>Fase 1</strong>: Lo convierte en un <strong>Heap</strong>, es decir, un árbol binario en el que cualquier padre tiene un valor mayor que sus hijos. Esto garantiza que la raíz sea el nodo con mayor valor.</p></li>
+<li><p><strong>Fase 2</strong>: Ordena el <strong>Heap</strong> de forma que, sucesivamente, va pasando la raíz al final del árbol</p></li>
+</ul>
+<p>Usaremos como base la clase de las notas</p>
+</div>
+<div class="section" id="ejercicio-1">
+<h2>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permalink to this headline">¶</a></h2>
+<p>Implementa el método <code class="docutils literal notranslate"><span class="pre">shift_down</span></code> para que descienda cualquier elemento hasta un punto en el que sus dos hijos son menores, sin pasarse de la posición <code class="docutils literal notranslate"><span class="pre">end</span></code>.</p>
+<p>Recuerda que:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sefl.v</span></code> es un vector que almacena todos los elementos del array en un orden predeterminado.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.get_children_positions</span></code> te da en qué lugar de ese vector están almacenados los hijos de un cierto nodo.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> es la posición del nodo que queremos desplazar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> es la posición más alta en la que se puede desplazar el nodo.</p></li>
+</ul>
+<p>Sugerencia de pseudo código:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. pos_nodo = start
+2. mientras pos_nodo tenga hijos y pos_nodo&lt;=end
+3.    intercambiar el valor del nodo por el mayor de los hijos que no esté más allá de end, si es que alguno de los hijos es mayor.
+4.    pos_nodo = hijo intercambiado
+</pre></div>
+</div>
+<p>ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>v = [5,9,4,1,6,2,8,3]
+print VBinTree1(v)
+print VBinTree1(v).shift_down(0)
+print VBinTree1(v).shift_down(1)
+print VBinTree1(v).shift_down(3)
+</pre></div>
+</div>
+<p>salida esperada:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>5
+  9
+    1
+      3
+    6
+  4
+    2
+    8
+
+9
+  6
+    1
+      3
+    5
+  4
+    2
+    8
+
+5
+  9
+    1
+      3
+    6
+  4
+    2
+    8
+
+5
+  9
+    3
+      1
+    6
+  4
+    2
+    8
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def VBinTree1(v=None, **kwargs):
+    
+    import numpy as np
+    
+    class VBinTree(object):
+    
+        def __init__(self, v=v,**kwargs):
+            import numpy as np
+            self.v = np.r_[[i for i in v]] # copy
+
+        def get_height(self):
+            i,c=0,0
+            while c&lt;len(self.v):
+                c += 2**i
+                i += 1
+            return i-1
+
+        def get_level(self, i):
+            n = 0
+            while sum([2**j for j in range(n)])&lt;=i:
+                n+=1
+            return n-1
+
+        def get_children_positions(self, i):
+            return (2*i+1 if 2*i+1&lt;len(self.v) else None,\
+                    2*i+2 if 2*i+2&lt;len(self.v) else None)
+
+        def get_parent_position(self, i):
+            assert type(i)==int and i&gt;=0
+            return (i-1)/2 if i!=0 else None
+
+        def get_sibling_position(self, i):
+            if i==0:
+                return None
+            return [k for k in self.get_children_positions(self.get_parent_position(i)) if k!=i][0]
+
+
+        def to_indented_string(self, i, level):
+            c = self.get_children_positions(i)
+            s = (&quot; &quot;*2*level + str(self.v[i]) + &quot;\n&quot;) if self.v[i] is not None else &quot;&quot;
+            s += self.to_indented_string(c[0],level+1) if c[0] is not None else &quot;&quot;
+            s += self.to_indented_string(c[1],level+1) if c[1] is not None else &quot;&quot;
+            return s
+
+        def __repr__(self):
+            return self.to_indented_string(0,0)
+        
+        
+    class VBinTree1_class(VBinTree):
+
+        def shift_down(self, start, end=None):
+            
+            &lt;... TU CODIGO AQUI ...&gt;
+
+            return self
+        
+    return VBinTree1_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>prueba los siguientes valores de i:</p>
+<ul class="simple">
+<li><p>0 (==5, el nodo root), fíjate hasta donde se mueve</p></li>
+<li><p>1 (==9, no se mueve)</p></li>
+<li><p>3 (==1, se intercambia con el 3)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = [5,9,4,1,6,2,8,3]
+b = VBinTree1(v)
+print(b)
+i=1
+print(&quot;shifting down element&quot;,i,&quot;whose value is&quot;, b.v[i])
+b.shift_down(i)
+print(b)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="registra-tu-solucion-en-linea">
+<h3>registra tu solución en línea<a class="headerlink" href="#registra-tu-solucion-en-linea" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_01&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permalink to this headline">¶</a></h2>
+<p>tendremos que hacer un recorrido desde el último nodo que sea padre en el árbol, hasta el primero, llamando al método del ejercicio anterior.</p>
+<p>para ello, implementaremos primero un método <code class="docutils literal notranslate"><span class="pre">get_past_parent_position</span></code> que, dado un árbol, encuentre la posición del último padre en el vector (que puede tener uno o dos hijos), pero no ninguno.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def VBinTree2(v=None,**kwargs):
+    import numpy as np
+    
+    class VBinTree(object):
+    
+        def __init__(self, v=v,**kwargs):
+            import numpy as np
+            self.v = np.r_[[i for i in v]] # copy
+
+        def get_height(self):
+            i,c=0,0
+            while c&lt;len(self.v):
+                c += 2**i
+                i += 1
+            return i-1
+
+        def get_level(self, i):
+            n = 0
+            while sum([2**j for j in range(n)])&lt;=i:
+                n+=1
+            return n-1
+
+        def get_children_positions(self, i):
+            return (2*i+1 if 2*i+1&lt;len(self.v) else None,\
+                    2*i+2 if 2*i+2&lt;len(self.v) else None)
+
+        def get_parent_position(self, i):
+            assert type(i)==int and i&gt;=0
+            return (i-1)/2 if i!=0 else None
+
+        def get_sibling_position(self, i):
+            if i==0:
+                return None
+            return [k for k in self.get_children_positions(self.get_parent_position(i)) if k!=i][0]
+
+
+        def to_indented_string(self, i, level):
+            c = self.get_children_positions(i)
+            s = (&quot; &quot;*2*level + str(self.v[i]) + &quot;\n&quot;) if self.v[i] is not None else &quot;&quot;
+            s += self.to_indented_string(c[0],level+1) if c[0] is not None else &quot;&quot;
+            s += self.to_indented_string(c[1],level+1) if c[1] is not None else &quot;&quot;
+            return s
+
+        def __repr__(self):
+            return self.to_indented_string(0,0)
+        
+    class VBinTree2_class(VBinTree):
+
+        def get_last_parent_position(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+            
+            
+    return VBinTree2_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>ejemplo de ejecución</strong>: para los siguientes dos árboles, la posición del último padre ha de ser 4 y 2 respectivamente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for v in [[5,9,0,1,6,2,8,3,4,5], [5,9,0,1,6,2,8]]:
+    b = VBinTree2(v)
+    print(&quot;\n\ntree:&quot;)
+    print(b)
+    p = b.get_last_parent_position()
+    print(&quot;last parent position&quot;,p, &quot;content&quot;, b.v[p])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>registra tu solución en línea<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_02&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-3">
+<h2>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permalink to this headline">¶</a></h2>
+<p>complela el método <code class="docutils literal notranslate"><span class="pre">make_heap</span></code> con un bucle desde el último padre hasta el primer elemento del árbol (su vector) realizando el <code class="docutils literal notranslate"><span class="pre">shift_down</span></code> de cada elemento. Con esto conseguimos que nuestra lista sea un <code class="docutils literal notranslate"><span class="pre">Heap</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def VBinTree3(v=None,**kwargs):
+    
+    import numpy as np
+    
+    class VBinTree(object):
+    
+        def __init__(self, v=v,**kwargs):
+            import numpy as np
+            self.v = np.r_[[i for i in v]] # copy
+
+        def get_height(self):
+            i,c=0,0
+            while c&lt;len(self.v):
+                c += 2**i
+                i += 1
+            return i-1
+
+        def get_level(self, i):
+            n = 0
+            while sum([2**j for j in range(n)])&lt;=i:
+                n+=1
+            return n-1
+
+        def get_children_positions(self, i):
+            return (2*i+1 if 2*i+1&lt;len(self.v) else None,\
+                    2*i+2 if 2*i+2&lt;len(self.v) else None)
+
+        def get_parent_position(self, i):
+            assert type(i)==int and i&gt;=0
+            return (i-1)/2 if i!=0 else None
+
+        def get_sibling_position(self, i):
+            if i==0:
+                return None
+            return [k for k in self.get_children_positions(self.get_parent_position(i)) if k!=i][0]
+
+
+        def to_indented_string(self, i, level):
+            c = self.get_children_positions(i)
+            s = (&quot; &quot;*2*level + str(self.v[i]) + &quot;\n&quot;) if self.v[i] is not None else &quot;&quot;
+            s += self.to_indented_string(c[0],level+1) if c[0] is not None else &quot;&quot;
+            s += self.to_indented_string(c[1],level+1) if c[1] is not None else &quot;&quot;
+            return s
+
+        def __repr__(self):
+            return self.to_indented_string(0,0)
+    
+    class VBinTree3_class(VBinTree):
+
+        def shift_down(self, start, end=None):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+            return self
+
+        def get_last_parent_position(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def make_heap(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+                
+                
+    return VBinTree3_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+v = list(np.random.permutation(100)[:10])
+#v = [2,48,65,95,66,42,30,32]
+b = VBinTree3(v)
+print(&quot;-- original tree&quot;)
+print(b)
+print(&quot;-- constructed heap&quot;)
+b.make_heap()
+print()
+print(b)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>registra tu solución en línea<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_03&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-4">
+<h2>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permalink to this headline">¶</a></h2>
+<p>Finalmente, sobre el árbol resultado del ejercicio anterior, en un bucle desde el último nodo hasta el primero, intercambiamos la raíz con dicho nodo.</p>
+<p><strong>Pseudocódigo sugerido</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1. desde nodo=último nodo hasta el primero
+2.    intercambia el valor de la raíz del árbol con nodo
+3.    haz un shift_down de la raíz del árbol hasta nodo-1
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def VBinTree4(v=None,**kwargs):
+    import numpy as np
+    
+    class VBinTree(object):
+    
+        def __init__(self, v=v,**kwargs):
+            import numpy as np
+            self.v = np.r_[[i for i in v]] # copy
+
+        def get_height(self):
+            i,c=0,0
+            while c&lt;len(self.v):
+                c += 2**i
+                i += 1
+            return i-1
+
+        def get_level(self, i):
+            n = 0
+            while sum([2**j for j in range(n)])&lt;=i:
+                n+=1
+            return n-1
+
+        def get_children_positions(self, i):
+            return (2*i+1 if 2*i+1&lt;len(self.v) else None,\
+                    2*i+2 if 2*i+2&lt;len(self.v) else None)
+
+        def get_parent_position(self, i):
+            assert type(i)==int and i&gt;=0
+            return (i-1)/2 if i!=0 else None
+
+        def get_sibling_position(self, i):
+            if i==0:
+                return None
+            return [k for k in self.get_children_positions(self.get_parent_position(i)) if k!=i][0]
+
+
+        def to_indented_string(self, i, level):
+            c = self.get_children_positions(i)
+            s = (&quot; &quot;*2*level + str(self.v[i]) + &quot;\n&quot;) if self.v[i] is not None else &quot;&quot;
+            s += self.to_indented_string(c[0],level+1) if c[0] is not None else &quot;&quot;
+            s += self.to_indented_string(c[1],level+1) if c[1] is not None else &quot;&quot;
+            return s
+
+        def __repr__(self):
+            return self.to_indented_string(0,0)
+        
+        
+    class VBinTree4_class(VBinTree):
+
+        def shift_down(self, start, end=None):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+            return self
+
+        def get_last_parent_position(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def make_heap(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+
+        def sort(self):
+            &lt;... TU CODIGO AQUI ...&gt;
+            
+    return VBinTree4_class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+v = list(np.random.permutation(100)[:15])
+v = [57,58,73,48,62,75,88,15,29,40,53,61,56,8,1,32,51]
+b = VBinTree4(v)
+print(&quot;-- original tree&quot;)
+print(b.v)
+
+b.sort()
+print(&quot;-- sorted tree&quot;)
+print(b.v)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>registra tu solución en línea<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_04&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="experimentos">
+<h1>Experimentos<a class="headerlink" href="#experimentos" title="Permalink to this headline">¶</a></h1>
+<p>observa el siguiente <strong>TEST UNITARIO</strong>. Generamos vectores aleatorios, los ordenamos con el algoritmo recién creado y verificamos que el resultado está en orden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+r=[]
+n=1000
+lengths = []
+for i in range(n):
+    v = list(np.random.permutation(1000)[:np.random.randint(300)])
+    b = VBinTree4(v)
+    b.sort()
+    lengths.append(len(v))
+    
+    a=np.r_[b.v]
+    r.append(np.alltrue(a[1:]-a[:-1]&gt;0))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;número total de vectores generados:&quot;, n)
+print(&quot;número total de vectores ordenados:&quot;, np.sum(r))
+print(&quot;avg/std longitud de los vectores:  &quot;, np.mean(lengths), &quot;+/- %.1f&quot;%np.std(lengths))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="complejidad-computacional">
+<h2>Complejidad computacional<a class="headerlink" href="#complejidad-computacional" title="Permalink to this headline">¶</a></h2>
+<p>Comprobamos experimentalmente que la complejidad computacional es <span class="math notranslate nohighlight">\(\mathcal{O}(n\log n)\)</span>. Fíjate que la notación <span class="math notranslate nohighlight">\(\mathcal{O}\)</span> es un orden de magnitud que es independiente sumas y multiplicaciones por una constante. Para ajustar las mediciones del experimento al ideal de  <span class="math notranslate nohighlight">\(\mathcal{O}(n\log n)\)</span> tenemos que calcular esa constante. ¿Dónde la calculamos en el código?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def heapsort_experiment(n):
+    
+    v = list(np.random.permutation(n*5)[:n])
+    b = VBinTree4(v)
+    b.sort()
+    return
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_set = np.arange(0,4100,500)[1:]
+s_times = []
+for n in n_set:
+    print (n),
+    t = %timeit -o -q heapsort_experiment(n)
+    s_times.append(t.best)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+%matplotlib inline
+plt.plot(n_set, s_times, label=&quot;measured&quot;)
+plt.scatter(n_set, s_times)
+log = n_set*np.log(n_set)
+log = log*np.mean(s_times/log)
+
+plt.plot(n_set, log, label=&quot;$\mathcal{O} (n\log n)$&quot;)
+plt.legend()
+plt.grid()
+plt.xlabel(&quot;number of elements&quot;)
+plt.ylabel(&quot;time (secs)&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>pero fíjate que en el experimento no tenemos la operación de <code class="docutils literal notranslate"><span class="pre">sort</span></code> aislada. Verificamos por tanto que el tiempo de creación de un vector aleatorio es despreciable respecto a nuestro experimento</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def randomlist_experiment(n):
+    v = list(np.random.permutation(n*5)[:n])
+    
+n_set = np.arange(0,5500,500)[1:]
+r_times = []
+for n in n_set:
+    print (n),
+    t = %timeit -r 10 -n 10 -o -q randomlist_experiment(n)
+    r_times.append(t.best)
+    
+import matplotlib.pyplot as plt
+%matplotlib inline
+plt.plot(n_set, r_times)
+plt.scatter(n_set, r_times)
+plt.grid()
+plt.xlabel(&quot;number of elements&quot;)
+plt.ylabel(&quot;time (secs)&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="LAB%2005%20-%20Listas%20generalizadas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">LAB 05 - Listas generalizadas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2007%20-%20Arboles%20de%20busqueda.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB 07 Árboles de búsqueda</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

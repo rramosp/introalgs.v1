@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arboles &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Árboles de búsqueda" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html" />
+    <link rel="prev" title="Listas generalizadas" href="NOTAS%2005%20-%20Listas%20generalizadas.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 06 - Arboles.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 06 - Arboles.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminologia">
+     Terminología
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construccion">
+     Construcción
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operaciones">
+     Operaciones
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-binarios">
+   Árboles binarios
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algoritmos-de-recorrido">
+     algoritmos de recorrido
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Arboles</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivos-del-modulo">
+   Objetivos del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas-basicas">
+   Preguntas básicas
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#terminologia">
+     Terminología
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construccion">
+     Construcción
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operaciones">
+     Operaciones
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-binarios">
+   Árboles binarios
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algoritmos-de-recorrido">
+     algoritmos de recorrido
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="arboles">
+<h1>Arboles<a class="headerlink" href="#arboles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivos-del-modulo">
+<h2>Objetivos del módulo<a class="headerlink" href="#objetivos-del-modulo" title="Permalink to this headline">¶</a></h2>
+<p>Conocer la estructura de árbol y de árbol binario, su representación y forma de manipularlos</p>
+</div>
+<div class="section" id="preguntas-basicas">
+<h2>Preguntas básicas<a class="headerlink" href="#preguntas-basicas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿Qué es un árbol, sus estructuras y características?</p></li>
+<li><p>¿Cómo se representa y se implementa?</p></li>
+<li><p>¿Cómo se puede recorrer un árbol?</p></li>
+<li><p>¿Cómo se puede explotar un árbol binario para ordenar un vector?</p></li>
+</ul>
+<p>Un árbol es un conjunto de <span class="math notranslate nohighlight">\(n\)</span> registros (<span class="math notranslate nohighlight">\(n &gt; 0\)</span>, árbol vacío no está definido), tales que hay un registro especial llamado raíz y los demás registros están particionados en conjuntos disjuntos, cada uno de los cuales es también un árbol.</p>
+<p>De la definición se desprende que un árbol es una estructura recursiva, además cada registro se podrá considerar como la raíz de un sub-árbol. Es decir, un árbol está compuesto de árboles. Un ejemplo de un árbol se presenta en la figura
+siguiente</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/arbol.jpg&#39;, width=500) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 06 - Arboles_2_0.jpg" src="../_images/NOTAS 06 - Arboles_2_0.jpg" />
+</div>
+</div>
+<p>En esta figura se tiene el árbol cuya raíz es <strong>a</strong>. Dicho árbol está compuesto por el árbol cuya raíz es <strong>b</strong>, el árbol cuya raíz es <strong>f</strong> y el árbol cuya raíz es <strong>g</strong>. A su vez, <strong>b</strong> está compuesto por el árbol cuya raíz es <strong>c</strong> y el árbol cuya raíz es <strong>d</strong>. Y así sucesivamente. Es supremamente importante entender esta parte de la definición.</p>
+<div class="section" id="terminologia">
+<h3>Terminología<a class="headerlink" href="#terminologia" title="Permalink to this headline">¶</a></h3>
+<p>Las ramificaciones de cada nodo o registro suelen llamarse <strong>hijos</strong> y los nodos de los cuales salen las ramificaciones se llaman <strong>padres</strong>. Los registros que tienen un mismo padre se denominan <strong>hermanos</strong>.</p>
+<ul class="simple">
+<li><p><strong>Grado de un registro</strong>: Es el número de ramificaciones que salen de ese registro. En el ejemplo de la figura se tiene: a tiene grado 3, b tiene grado 2, j tiene grado 0.</p></li>
+<li><p><strong>Grado de un árbol</strong>: Es el máximo grado de cualquier registro del árbol. El árbol de la figura anterior tiene grado 4, ya que el registro que contiene la g tiene grado 4 y es el registro que mayor grado tiene..</p></li>
+<li><p><strong>Hojas</strong>: Son los registros con grado cero (registros que no tienen hijos). En el árbol de la figura anterior las hojas son los registros que tienen los datos f, c, h, m, n, e, j, l.</p></li>
+</ul>
+<p>A la <strong>raíz</strong> se le asigna el <strong>nivel 0</strong>, a sus hijos el <strong>nivel 1</strong>, a sus nietos el <strong>nivel 2</strong> y así sucesivamente.</p>
+<p>Para un registro que se halle en un nivel i cualquiera, su padre se  halla  en  el  nivel i – 1, y sus hijos en el nivel i + 1.</p>
+<ul class="simple">
+<li><p><strong>Altura de un Arbol</strong>: Es el máximo nivel de cualquier registro del árbol. En el ejemplo de la figura anterior la altura es 4 ya que el registro que tiene la l está en el nivel 4 y ese es el máximo nivel del árbol.</p></li>
+<li><p><strong>Ancestros de un Registro x</strong>: Son todos los registros en la trayectoria desde la raíz hasta x. Los ancestros de d son a, b y d.</p></li>
+</ul>
+<p>En general, los árboles en los cuales cualquier registro puede tener cualquier cantidad de hijos, se denominan <strong>árboles n-arios</strong>.</p>
+<p>Adicionalmente, cada nodo puede contenter un dato. Los nodos <strong>hoja</strong> tienen necesariamente que contenter un dato.</p>
+</div>
+<div class="section" id="construccion">
+<h3>Construcción<a class="headerlink" href="#construccion" title="Permalink to this headline">¶</a></h3>
+<p>Creemos una estructura básica para construir árboles. Observa la recursividad en la función <code class="docutils literal notranslate"><span class="pre">to_indented_string</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class TreeNode1(object):
+    
+    def __init__(self, value=None):
+        self.value = value
+        self.children = []
+        
+    def add_child(self, node):
+        self.children.append(node)
+        return self
+        
+    def to_indented_string(self, level):
+        s = &quot; &quot;*level*2 + str(self.value)+&quot;\n&quot;
+        if len(self.children)&gt;0:
+            s += &quot;&quot;.join([i.to_indented_string(level+1) for i in self.children])
+        return s
+    
+    def __repr__(self):
+        return self.to_indented_string(level=0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = TreeNode1(1).add_child(TreeNode1(11).add_child(TreeNode1(111)).add_child(TreeNode1(112))).add_child(TreeNode1(12))
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+  11
+    111
+    112
+  12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = TreeNode1(&quot;a&quot;).\
+        add_child(TreeNode1(&quot;b&quot;).\
+            add_child(TreeNode1(&quot;c&quot;)).\
+            add_child(TreeNode1(&quot;d&quot;).\
+              add_child(TreeNode1(&quot;e&quot;)))).\
+        add_child(TreeNode1(&quot;f&quot;)).\
+        add_child(TreeNode1(&quot;g&quot;).\
+            add_child(TreeNode1(&quot;h&quot;)).\
+            add_child(TreeNode1(&quot;i&quot;).\
+              add_child(TreeNode1(&quot;j&quot;)).
+              add_child(TreeNode1(&quot;k&quot;).\
+                add_child(TreeNode1(&quot;l&quot;)))).\
+            add_child(TreeNode1(&quot;m&quot;)).\
+            add_child(TreeNode1(&quot;n&quot;)))
+t
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+  b
+    c
+    d
+      e
+  f
+  g
+    h
+    i
+      j
+      k
+        l
+    m
+    n
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="operaciones">
+<h3>Operaciones<a class="headerlink" href="#operaciones" title="Permalink to this headline">¶</a></h3>
+<p>creamos varios métodos recursivos:</p>
+<ul class="simple">
+<li><p>para contar el número de hojas</p></li>
+<li><p>para calcular la altura del árbol</p></li>
+<li><p>para calcular el grado del árbol</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class TreeNode2(TreeNode1):
+    
+    def count_leaves(self):
+        if len(self.children)==0:
+            return 1
+        return sum([i.count_leaves() for i in self.children])
+    
+    def height(self):
+        import numpy as np
+        if len(self.children)==0:
+            return 0
+        return np.max([i.height() for i in self.children])+1
+    
+    def grade(self):
+        import numpy as np        
+        return np.max([len(self.children)]+[i.grade() for i in self.children])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = TreeNode2(1).add_child(TreeNode2(11).add_child(TreeNode2(111)).add_child(TreeNode2(112))).add_child(TreeNode2(12))
+print(t)
+print(&quot;nb leaves&quot;, t.count_leaves())
+print(&quot;height   &quot;, t.height())
+print(&quot;grade    &quot;, t.grade())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+  11
+    111
+    112
+  12
+
+nb leaves 3
+height    2
+grade     2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>t = TreeNode2(&quot;a&quot;).\
+        add_child(TreeNode2(&quot;b&quot;).\
+            add_child(TreeNode2(&quot;c&quot;)).\
+            add_child(TreeNode2(&quot;d&quot;).\
+              add_child(TreeNode2(&quot;e&quot;)))).\
+        add_child(TreeNode2(&quot;f&quot;)).\
+        add_child(TreeNode2(&quot;g&quot;).\
+            add_child(TreeNode2(&quot;h&quot;)).\
+            add_child(TreeNode2(&quot;i&quot;).\
+              add_child(TreeNode2(&quot;j&quot;)).
+              add_child(TreeNode2(&quot;k&quot;).\
+                add_child(TreeNode2(&quot;l&quot;)))).\
+            add_child(TreeNode2(&quot;m&quot;)).\
+            add_child(TreeNode2(&quot;n&quot;)))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;nb leaves&quot;, t.count_leaves())
+print(&quot;height   &quot;, t.height())
+print(&quot;grade    &quot;, t.grade())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nb leaves 8
+height    4
+grade     4
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="arboles-binarios">
+<h2>Árboles binarios<a class="headerlink" href="#arboles-binarios" title="Permalink to this headline">¶</a></h2>
+<p>Un árbol binario es un conjunto de n registros (<span class="math notranslate nohighlight">\(n \ge 0\)</span>), el cual, puede ser vacío o constar de una raíz y los demás registros particionados en dos conjuntos disjuntos, cada uno de los cuales es un árbol binario (definición recursiva), que se conocen como sub-árbol izquierdo y sub-árbol derecho. El siguiente es un ejemplo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/arbol_binario.jpg&#39;, width=500)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 06 - Arboles_14_0.jpg" src="../_images/NOTAS 06 - Arboles_14_0.jpg" />
+</div>
+</div>
+<p><strong>Propiedades</strong></p>
+<ol>
+<li><p>El máximo número de registros en un nivel <span class="math notranslate nohighlight">\(n\)</span> cualquiera es <span class="math notranslate nohighlight">\(2^n\)</span></p></li>
+<li><p>Para un árbol binario de altura <span class="math notranslate nohighlight">\(k\)</span> el máximo número de registros es <span class="math notranslate nohighlight">\(2^{k+1} – 1\)</span></p></li>
+<li><p><strong>Arbol Lleno</strong>: Es un árbol binario de altura <span class="math notranslate nohighlight">\(k\)</span> que tiene <span class="math notranslate nohighlight">\(2^{k+1} – 1\)</span> registros.</p></li>
+<li><p>Sea</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(n_0\)</span> = Número de hojas del árbol (registros con grado 0).</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_2\)</span> = Número de registros con grado 2.</p>
+<p>En un árbol lleno se cumple que <span class="math notranslate nohighlight">\(n_0 = n_2 + 1\)</span>. En el ejemplo de la figura 11.1 <span class="math notranslate nohighlight">\(n_2 = 7\)</span> y <span class="math notranslate nohighlight">\(n_0 = 8\)</span></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Representación como vector</strong></p>
+<p>Podemos representar un árbol binario con un vector, ya que cualquier nivel tiene un número de nodos conocido. Por ejemplo el árbol anterior</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/arbol_binario_vector.jpg&#39;, width=500)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 06 - Arboles_16_0.jpg" src="../_images/NOTAS 06 - Arboles_16_0.jpg" />
+</div>
+</div>
+<p>observa que:</p>
+<ul class="simple">
+<li><p>si algún nodo sólo tiene un hijo, el faltante se representará como <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p>el último nivel ha de tener <span class="math notranslate nohighlight">\(2^{k-1}\)</span> valores (con <span class="math notranslate nohighlight">\(k\)</span>: la altura del árbol)</p></li>
+<li><p>si el último nivel tiene menos valores se asumen los faltantes como <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<p><strong>Propiedades de la Representación de un Árbol Binario en un Vector</strong></p>
+<p>Para un registro en la posición <span class="math notranslate nohighlight">\(i\)</span> del vector:</p>
+<ul class="simple">
+<li><p>Su nivel es</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[level(i) = \text{max}\;n\;\Big |\;\sum_{j=0}^n 2^j &lt; i\]</div>
+<ul class="simple">
+<li><p>Su padre se halla en la posición <span class="math notranslate nohighlight">\(\frac{i-1}{2}\)</span> del vector (<span class="math notranslate nohighlight">\(i  \ge  1\)</span> división entera)</p></li>
+<li><p>Su hijo izquierdo se halla en  la  posición <span class="math notranslate nohighlight">\(2i+1\)</span> (siempre y cuando <span class="math notranslate nohighlight">\(i\)</span> no sea hoja).</p></li>
+<li><p>Su hijo derecho se halla en la posición <span class="math notranslate nohighlight">\(2i + 2\)</span> (siempre y cuando <span class="math notranslate nohighlight">\(i\)</span> no sea hoja).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+class VBinTree(object):
+    
+    def __init__(self, v):
+        self.v = v
+        
+    def get_height(self):
+        i,c=0,0
+        while c&lt;len(self.v):
+            c += 2**i
+            i += 1
+        return i-1
+    
+    def get_level(self, i):
+        n = 0
+        while sum([2**j for j in range(n)])&lt;=i:
+            n+=1
+        return n-1
+    
+    def get_children_positions(self, i):
+        return (2*i+1 if 2*i+1&lt;len(self.v) else None,\
+                2*i+2 if 2*i+2&lt;len(self.v) else None)
+    
+    def get_parent_position(self, i):
+        assert type(i)==int and i&gt;=0
+        return (i-1)/2 if i!=0 else None
+
+    def get_sibling_position(self, i):
+        if i==0:
+            return None
+        return [k for k in self.get_children_positions(self.get_parent_position(i)) if k!=i][0]
+  
+
+    def to_indented_string(self, i, level):
+        c = self.get_children_positions(i)
+        s = (&quot; &quot;*2*level + str(self.v[i]) + &quot;\n&quot;) if self.v[i] is not None else &quot;&quot;
+        s += self.to_indented_string(c[0],level+1) if c[0] is not None else &quot;&quot;
+        s += self.to_indented_string(c[1],level+1) if c[1] is not None else &quot;&quot;
+        return s
+    
+    def __repr__(self):
+        return self.to_indented_string(0,0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = [&quot;a&quot;, &quot;b&quot;, &quot;i&quot;, &quot;c&quot;, &quot;d&quot;, &quot;j&quot;, &quot;k&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;, &quot;h&quot;, &quot;l&quot;, &quot;m&quot;, &quot;n&quot;, &quot;o&quot;]
+
+b = VBinTree(v)
+
+print(&quot;  node value  height     children parent&quot;)
+for i in range(len(v)):
+    print(&quot;%5d&quot;%i, &quot;%5s&quot;%str(b.v[i]), &quot;%5d&quot;%b.get_level(i), \
+          &quot;%15s&quot;%str(b.get_children_positions(i)), \
+          &quot;%5s&quot;%str(b.get_parent_position(i)), \
+          str(b.get_sibling_position(i)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  node value  height     children parent
+    0     a     0          (1, 2)  None None
+    1     b     1          (3, 4)   0.0 2.0
+    2     i     1          (5, 6)   0.5 3.0
+    3     c     2          (7, 8)   1.0 4.0
+    4     d     2         (9, 10)   1.5 5.0
+    5     j     2        (11, 12)   2.0 6.0
+    6     k     2        (13, 14)   2.5 7.0
+    7     e     3    (None, None)   3.0 8.0
+    8     f     3    (None, None)   3.5 9.0
+    9     g     3    (None, None)   4.0 10.0
+   10     h     3    (None, None)   4.5 11.0
+   11     l     3    (None, None)   5.0 12.0
+   12     m     3    (None, None)   5.5 13.0
+   13     n     3    (None, None)   6.0 14.0
+   14     o     3    (None, None)   6.5 None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+  b
+    c
+      e
+      f
+    d
+      g
+      h
+  i
+    j
+      l
+      m
+    k
+      n
+      o
+</pre></div>
+</div>
+</div>
+</div>
+<p>fíjate como también podemos definir un árbol binario <strong>no completo</strong>, es decir, algunos nodos sólo tienen uno o ningún hijo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = [&quot;a&quot;, &quot;b&quot;, &quot;l&quot;, &quot;c&quot;, &quot;d&quot;, &quot;k&quot;, &quot;m&quot;, &quot;e&quot;, None, &quot;f&quot;, None, &quot;j&quot;, None, &quot;n&quot;, &quot;o&quot;, &quot;g&quot;, &quot;h&quot;, None, None, 
+    None, None, None, None, None, None, None, None, None, None, None, &quot;p&quot;, None, None,None,&quot;i&quot;]
+b = VBinTree(v)
+print(b.get_height())
+b
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+  b
+    c
+      e
+        g
+        h
+          i
+    d
+      f
+  l
+    k
+      j
+    m
+      n
+      o
+        p
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="algoritmos-de-recorrido">
+<h3>algoritmos de recorrido<a class="headerlink" href="#algoritmos-de-recorrido" title="Permalink to this headline">¶</a></h3>
+<p>en función de cómo se recorre cada nodo respecto a sus hijos</p>
+<ul class="simple">
+<li><p>IRD (Izquierdo, Raíz, Derecho) <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>INORDEN</strong></p></li>
+<li><p>IDR (Izquierdo, Derecho, Raíz) <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>POSORDEN</strong></p></li>
+<li><p>RID (Raíz, Izquierdo, Derecho) <span class="math notranslate nohighlight">\(\rightarrow\)</span> <strong>PREORDEN</strong></p></li>
+</ul>
+<p>Fíjate en la recursividad de los algoritmos implementados más abajo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/binnode.jpg&#39;, width=300)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 06 - Arboles_24_0.jpg" src="../_images/NOTAS 06 - Arboles_24_0.jpg" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class VBinTree2(VBinTree):
+
+    def ird(self, i=0):
+        if self.v[i]==None:
+            return &quot;&quot;
+        c = self.get_children_positions(i)
+        s1 = self.ird(c[0]) if c[0] is not None else &quot;&quot;
+        s2 = self.ird(c[1]) if c[1] is not None else &quot;&quot;
+        return s1+str(self.v[i])+s2
+
+    def idr(self, i=0):
+        if self.v[i]==None:
+            return &quot;&quot;
+        c = self.get_children_positions(i)
+        s1 = self.idr(c[0]) if c[0] is not None else &quot;&quot;
+        s2 = self.idr(c[1]) if c[1] is not None else &quot;&quot;
+        return s1+s2+str(self.v[i])    
+    
+    def rid(self, i=0):
+        if self.v[i]==None:
+            return &quot;&quot;
+        c = self.get_children_positions(i)
+        s1 = self.rid(c[0]) if c[0] is not None else &quot;&quot;
+        s2 = self.rid(c[1]) if c[1] is not None else &quot;&quot;
+        return str(self.v[i])+s1+s2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = [&quot;a&quot;, &quot;b&quot;, &quot;l&quot;, &quot;c&quot;, &quot;d&quot;, &quot;k&quot;, &quot;m&quot;, &quot;e&quot;, None, &quot;f&quot;, None, &quot;j&quot;, None, &quot;n&quot;, &quot;o&quot;, &quot;g&quot;, &quot;h&quot;, None, None, 
+    None, None, None, None, None, None, None, None, None, None, None, &quot;p&quot;, None, None,None,&quot;i&quot;]
+b = VBinTree2(v)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(b.ird())
+print(b.idr())
+print(b.rid())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gehicbfdajklnmop
+gihecfdbjknpomla
+abceghidflkjmnop
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2005%20-%20Listas%20generalizadas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Listas generalizadas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Árboles de búsqueda</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

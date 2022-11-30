@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB 11 - KNAPSACK PROBLEM &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Simulated annealing" href="NOTAS%2012%20-%20Simulated%20Annealing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 11 - Algoritmos Genéticos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 11 - Algoritmos Genéticos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-inicializacion-de-la-poblacion">
+   Ejercicio 1: Inicialización de la población
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2-funcion-de-coste">
+   Ejercicio 2: Función de coste
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3-funcion-de-mutacion">
+   Ejercicio 3: Función de mutación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ya-esta-usaremos-la-siguiente-funcion-de-crossover">
+   Ya está! Usaremos la siguiente función de
+   <em>
+    crossover
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creamos-un-problema-ks-con-volumenes-y-valores-para-objectos">
+   Creamos un problema KS con volúmenes y valores para objectos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#y-vemos-como-se-comporta-con-distintos-valores-de-las-probabilidades-de-mutacion-y-crossover">
+   Y vemos cómo se comporta con distintos valores de las probabilidades de mutación y crossover
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB 11 - KNAPSACK PROBLEM</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-inicializacion-de-la-poblacion">
+   Ejercicio 1: Inicialización de la población
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-2-funcion-de-coste">
+   Ejercicio 2: Función de coste
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-3-funcion-de-mutacion">
+   Ejercicio 3: Función de mutación
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ya-esta-usaremos-la-siguiente-funcion-de-crossover">
+   Ya está! Usaremos la siguiente función de
+   <em>
+    crossover
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creamos-un-problema-ks-con-volumenes-y-valores-para-objectos">
+   Creamos un problema KS con volúmenes y valores para objectos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#y-vemos-como-se-comporta-con-distintos-valores-de-las-probabilidades-de-mutacion-y-crossover">
+   Y vemos cómo se comporta con distintos valores de las probabilidades de mutación y crossover
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-11-knapsack-problem">
+<h1>LAB 11 - KNAPSACK PROBLEM<a class="headerlink" href="#lab-11-knapsack-problem" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import init
+from local.lib.rlxmoocapi import submit, session
+import inspect
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_11&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/ks.jpg&#39;) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/LAB 11 - Algoritmos Genéticos_3_0.jpg" src="../_images/LAB 11 - Algoritmos Genéticos_3_0.jpg" />
+</div>
+</div>
+<p>Tenemos <span class="math notranslate nohighlight">\(n\)</span> objectos numerados del <span class="math notranslate nohighlight">\(0\)</span> a <span class="math notranslate nohighlight">\(n-1\)</span>, con un tamaño <span class="math notranslate nohighlight">\(s_i\)</span> y valor <span class="math notranslate nohighlight">\(v_i\)</span> cada uno. Una solución cualquiera del problema es el vector <span class="math notranslate nohighlight">\(X=[x_0, x_2, ..., x_i, ... x_{n-1}]\)</span>, en donde <span class="math notranslate nohighlight">\(x_i \in \{0,1\}\)</span> indica si el objecto <span class="math notranslate nohighlight">\(i\)</span> se incluye o no la mochila. Como la mochila tiene un volumen máximo, <span class="math notranslate nohighlight">\(KS_{vol}\)</span> el problema se formula de la siguiente manera:</p>
+<div class="math notranslate nohighlight">
+\[ maximize \; X \;\; \sum_{i=0}^{n-1} x_i v_i\]</div>
+<div class="math notranslate nohighlight">
+\[subject \; to \;\; \sum_{i=0}^{n-1} x_i s_i \le KS_{vol}\]</div>
+<p>El vector <span class="math notranslate nohighlight">\(S=[s_0, s_2, ..., s_i, ... s_{n-1}]\)</span> representa los tamaños de todos los objectos y el vector <span class="math notranslate nohighlight">\(V=[v_0, v_2, ..., v_i, ... v_{n-1}]\)</span>, los valores.</p>
+<p>Fíjate a continuación cómo:</p>
+<ul class="simple">
+<li><p>generamos vectores <span class="math notranslate nohighlight">\(S\)</span> y <span class="math notranslate nohighlight">\(V\)</span> aleatorios</p></li>
+<li><p>generamos soluciones aleatorias</p></li>
+<li><p>verificamos si las soluciones generadas son válidas</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+n_objects         = 10
+max_object_value  = 100
+max_object_volume = 50
+KS_volume         = 100
+
+object_values  = np.random.randint(max_object_value-1, size=n_objects)+1
+object_volumes = np.random.randint(max_object_volume-1, size=n_objects)+1
+
+print (&quot;vals &quot;, object_values)
+print (&quot;sizes&quot;, object_volumes)
+
+def KS_isvalid(solution, object_volumes, KS_volume):
+    return np.sum(solution*object_volumes)&lt;=KS_volume
+
+for i in range(10):
+    solution = np.random.randint(2, size=len(object_volumes))
+    print (&quot;solution&quot;, i, solution, KS_isvalid(solution, object_volumes, KS_volume))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vals  [45 86 48 32 60 73 27 59 75 71]
+sizes [44  6  8  9 25 27 25 25 13 23]
+solution 0 [0 1 0 0 1 1 1 1 0 0] False
+solution 1 [1 0 1 0 0 0 0 1 0 0] True
+solution 2 [0 0 0 0 0 1 1 1 0 0] True
+solution 3 [1 0 1 0 1 0 0 0 1 0] True
+solution 4 [0 1 1 1 0 1 0 1 0 1] True
+solution 5 [1 1 1 0 0 0 0 1 1 1] False
+solution 6 [1 1 0 0 1 0 0 0 1 0] True
+solution 7 [1 0 1 1 0 0 0 0 0 0] True
+solution 8 [0 1 0 1 1 0 1 1 1 0] False
+solution 9 [1 1 1 1 1 0 1 1 1 1] False
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>HAZTE LA SIGUIENTE PREGUNTA</strong> ¿Cuál es la probabilidad de que una solución aleatoria sea válida?</p>
+<div class="section" id="ejercicio-1-inicializacion-de-la-poblacion">
+<h2>Ejercicio 1: Inicialización de la población<a class="headerlink" href="#ejercicio-1-inicializacion-de-la-poblacion" title="Permalink to this headline">¶</a></h2>
+<p>Crea una función para crear una población de soluciones aleatorias. Ten en cuenta que</p>
+<ul class="simple">
+<li><p><strong>TODAS LAS SOLUCIONES HAN DE SER VÁLIDAS</strong>.</p></li>
+<li><p>Si creas soluciones aleatorias y las descartas si no son válidas seguramente tu código tarde mucho en generar la población si la probablidad de que una solución aleatoria sea válida es muy pequeña</p></li>
+<li><p>Tu código ha de devolver un array numpy de números enteros</p></li>
+</ul>
+<p>Ejecución de ejemplo</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>n_objects         = 20
+KS_volume         = 50
+n_individuals     = 10
+pop = KS_initialize_population(n_individuals, object_volumes, KS_volume)
+print pop
+</pre></div>
+</div>
+<p>Salida esperada (la población es aleatoria, tu salida probablemente sea distinta)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+   [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+   [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def KS_initialize_population(n_individuals, object_volumes, KS_volume):
+    
+    
+    ##&lt;---- Ingresa tu código aquí ----&gt;
+        
+    return 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verifica tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_objects         = 50
+max_object_value  = 100
+max_object_volume = 50
+KS_volume         = 50
+
+n_individuals     = 100
+
+object_values  = np.random.randint(max_object_value-1, size=n_objects)+1
+object_volumes = np.random.randint(max_object_volume-1, size=n_objects)+1
+
+pop = KS_initialize_population(n_individuals, object_volumes, KS_volume)
+
+n_invalid = int(np.sum([1 for i in pop if not KS_isvalid(i, object_volumes, KS_volume)]))
+
+print(&quot;Hay&quot;, n_invalid, &quot;soluciones inválidas de un total de&quot;, len(pop), &quot;soluciones&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-2-funcion-de-coste">
+<h2>Ejercicio 2: Función de coste<a class="headerlink" href="#ejercicio-2-funcion-de-coste" title="Permalink to this headline">¶</a></h2>
+<p>El valor máximo que tendríamos si pudiéramos incluir todos los objetos en la mochila sería <span class="math notranslate nohighlight">\(V_{max}=\sum v_i\)</span>. El volumen de los objetos incluidos en una solución <span class="math notranslate nohighlight">\(X\)</span> es <span class="math notranslate nohighlight">\(S(X)=\sum s_i x_i\)</span>. El valor de todos los objetos incluidos en una solución es <span class="math notranslate nohighlight">\(V(X)=\sum v_i x_i\)</span></p>
+<p>Crea una función de coste de manera que valores altos de las combinaciones de objetos representen un coste bajo, siempre y cuando no excedan la capacidad de la mochila. Observa que nuestra implementación de GA <strong>MINIMIZA</strong> un coste y nosotros queremos <strong>MAXIMIZAR</strong> un valor.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}    KS\_cost(X)=\left\{
+                \begin{array}{ll}
+                  V_{max} - V(X) &amp; si \;\; S(X) \le KS_{vol}\\
+                  V_{max} &amp; si \;\; S(X) \gt KS_{vol}\\
+                \end{array}
+              \right.
+              \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def KS_cost(solution, object_values, object_volumes, KS_volume):
+        ##&lt;-- Ingrese su codigo aqui--&gt;
+    return 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comprueba tu código. La gráfica generada tiene que tener aproximadamente la siguiente forma:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+Image(filename=&#39;local/imgs/kscost.jpg&#39;) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/LAB 11 - Algoritmos Genéticos_14_0.jpg" src="../_images/LAB 11 - Algoritmos Genéticos_14_0.jpg" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+n_objects         = 10
+max_object_value  = 100
+max_object_volume = 40
+KS_volume         = 150
+
+n_individuals     = 1000
+
+object_values  = np.random.randint(max_object_value-1, size=n_objects)+1
+object_volumes = np.random.randint(max_object_volume-1, size=n_objects)+1
+
+pop = KS_initialize_population(n_individuals, object_volumes, KS_volume)
+
+pop = np.random.randint(2, size=(n_individuals, len(object_volumes)))
+
+vols  = [np.sum(i*object_volumes) for i in pop]
+costs = [KS_cost(i, object_values, object_volumes, KS_volume) for i in pop]
+
+plt.scatter(vols, costs)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-3-funcion-de-mutacion">
+<h2>Ejercicio 3: Función de mutación<a class="headerlink" href="#ejercicio-3-funcion-de-mutacion" title="Permalink to this headline">¶</a></h2>
+<p>Crea una función de mutación que, con probabilidad <span class="math notranslate nohighlight">\(mutation\_prob\)</span> genere una mutación <strong>VALIDA</strong> de un bit de una solución.</p>
+<p>Ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sol = np.array([0 0 0 0 1 0 1 1 0 0])
+print KS_mutate(pop[1], 0.9, object_volumes, KS_volume)
+</pre></div>
+</div>
+<p>Salida esperada (sujeto a procesos aleatorios):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; [0 0 0 0 1 0 1 0 0 0]
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+
+def KS_isvalid(solution, object_volumes, KS_volume):
+    import numpy as np
+    return np.sum(solution*object_volumes)&lt;=KS_volume
+
+def KS_mutate(solution, mutation_prob, object_volumes, KS_volume):
+    import numpy as np
+    ## &lt;-- Ingrese su código aquí --&gt;
+    return solution
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comprueba tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>object_values  = np.array([22, 19, 49, 32, 66, 86, 51, 94, 33, 33])
+object_volumes = np.array([ 6, 36,  8, 14, 12, 19, 27,  4, 15,  4])
+KS_volume      = 150
+
+pop  = np.array([[0, 1, 1, 0, 0, 1, 0, 1, 0, 1],
+                 [1, 1, 0, 1, 1, 0, 0, 1, 1, 1], 
+                 [1, 0, 0, 1, 1, 1, 1, 0, 0, 1],
+                 [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])    
+mutation_prob     = 0.1
+
+print (&quot;original              mutada                diferencia&quot;)
+for i in pop:
+    m = KS_mutate(i, mutation_prob, object_volumes, KS_volume)
+    print((m, i, np.sum((m-i)**2)))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ya-esta-usaremos-la-siguiente-funcion-de-crossover">
+<h2>Ya está! Usaremos la siguiente función de <em>crossover</em><a class="headerlink" href="#ya-esta-usaremos-la-siguiente-funcion-de-crossover" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def KS_cross_over(solution1, solution2):
+    l = len(solution1)
+    cstart = np.random.randint(l)
+    cend   = np.random.randint(l-cstart)+cstart+1
+
+    r = np.zeros(l).astype(int)
+    r[:cstart]     = solution1[:cstart]
+    r[cstart:cend] = solution2[cstart:cend]
+    r[cend:]       = solution1[cend:]            
+    return r
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creamos-un-problema-ks-con-volumenes-y-valores-para-objectos">
+<h2>Creamos un problema KS con volúmenes y valores para objectos<a class="headerlink" href="#creamos-un-problema-ks-con-volumenes-y-valores-para-objectos" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>##%run utils/ga.py
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+n_objects         = 50
+KS_volume         = 100
+mutation_prob     = 0.1
+crossover_prob    = 0.5
+
+object_values  = np.array([36, 20, 47, 53, 55, 46, 48, 66,  1,  6, 13, 59, 95,  7, 54, 32, 76, 63, 76, 19,  2, 17, 16, 12, 78,
+ 67, 44, 20, 41, 26, 24, 68, 55, 53, 35, 49, 46, 46, 16, 64, 41, 27,  8, 30, 76, 92, 85, 81, 84, 98])
+object_volumes = np.array([ 8, 47, 16,  8, 41, 11, 45, 34, 26, 48, 16,  8, 10, 13, 28,  6,  7, 11,  8, 27, 44, 30, 25, 23, 45,
+  3, 12, 12, 23,  3, 37, 10, 47, 46, 27, 10, 30,  8,  2, 47,  4, 44, 43, 37, 22, 20,  1, 17, 42, 27])
+
+
+print (&quot;total volume of objects&quot;, np.sum(object_volumes))
+print (&quot;knapsack max volume    &quot;, KS_volume)
+print (&quot;total value of objects &quot;, np.sum(object_values))
+
+print (object_values)
+print (object_volumes)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="y-vemos-como-se-comporta-con-distintos-valores-de-las-probabilidades-de-mutacion-y-crossover">
+<h2>Y vemos cómo se comporta con distintos valores de las probabilidades de mutación y crossover<a class="headerlink" href="#y-vemos-como-se-comporta-con-distintos-valores-de-las-probabilidades-de-mutacion-y-crossover" title="Permalink to this headline">¶</a></h2>
+<p>Deberemos de observar cómo el problema está dominado por la probabilidad de mutación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r =  run_ga(pop_size=100, 
+            init_population_function = lambda x: KS_initialize_population(x, object_volumes, KS_volume), 
+            mutation_function        = lambda x,y: KS_mutate(x, y, object_volumes, KS_volume), 
+            crossover_function       = KS_cross_over,
+            cost_function            = lambda x: sKS_cost(x, object_values, object_volumes, KS_volume), 
+            crossover_prob           = 0.5,
+            mutation_prob            = 0.5, 
+            n_iters                  = 100)
+
+best, best_costs, means, stds = r
+print (&quot;best knapsack is&quot;, best, &quot;cost&quot;, np.min(best_costs), &quot;value&quot;, np.sum(best*object_values), &quot;volume&quot;, np.sum(best*object_volumes))
+plot_evolution(best_costs, means, stds)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import PS11_01 as st1
+import PS11_02 as st2
+import PS11_03 as st3
+
+r =  run_ga(pop_size=100, 
+               init_population_function = lambda x: st1.KS_initialize_population(x, object_volumes, KS_volume), 
+               mutation_function        = lambda x,y: st3.KS_mutate(x, y, object_volumes, KS_volume), 
+               crossover_function       = KS_cross_over,
+               cost_function            = lambda x: st2.KS_cost(x, object_values, object_volumes, KS_volume), 
+               crossover_prob           = 0.9,
+               mutation_prob            = 0.9, 
+               n_iters                  = 400)
+
+best, best_costs, means, stds = r
+print (&quot;best knapsack is&quot;, best, &quot;cost&quot;, np.min(best_costs), &quot;value&quot;, np.sum(best*object_values), &quot;volume&quot;, np.sum(best*object_volumes))
+plot_evolution(best_costs, means, stds)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r =  run_ga(pop_size=100, 
+               init_population_function = lambda x: KS_initialize_population(x, object_volumes, KS_volume), 
+               mutation_function        = lambda x,y: KS_mutate(x, y, object_volumes, KS_volume), 
+               crossover_function       = KS_cross_over,
+               cost_function            = lambda x: KS_cost(x, object_values, object_volumes, KS_volume), 
+               crossover_prob           = 0.1,
+               mutation_prob            = 0.1, 
+               n_iters                  = 200)
+
+best, best_costs, means, stds = r
+print (&quot;best knapsack is&quot;, best, &quot;cost&quot;, np.min(best_costs), &quot;value&quot;, np.sum(best*object_values), &quot;volume&quot;, np.sum(best*object_volumes))
+plot_evolution(best_costs, means, stds)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>r =  run_ga(pop_size=100, 
+               init_population_function = lambda x: KS_initialize_population(x, object_volumes, KS_volume), 
+               mutation_function        = lambda x,y: KS_mutate(x, y, object_volumes, KS_volume), 
+               crossover_function       = KS_cross_over,
+               cost_function            = lambda x: KS_cost(x, object_values, object_volumes, KS_volume), 
+               crossover_prob           = 0.1,
+               mutation_prob            = 1.0, 
+               n_iters                  = 200)
+
+best, best_costs, means, stds = r
+print (&quot;best knapsack is&quot;, best, &quot;cost&quot;, np.min(best_costs), &quot;value&quot;, np.sum(best*object_values), &quot;volume&quot;, np.sum(best*object_volumes))
+plot_evolution(best_costs, means, stds)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2012%20-%20Simulated%20Annealing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Simulated annealing</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

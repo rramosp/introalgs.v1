@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulated annealing &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB 11 - KNAPSACK PROBLEM" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html" />
+    <link rel="prev" title="Algoritmos genéticos" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 12 - Simulated Annealing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 12 - Simulated Annealing.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creamos-una-funcion-que-para-obtener-un-vecino-de-cualquier-solucion">
+   Creamos una función que para obtener un
+   <em>
+    vecino
+   </em>
+   de cualquier solución
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usamos-las-mismas-funciones-para-el-tsp-de-las-notas-anteriores">
+   Usamos las mismas funciones para el TSP de las notas anteriores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hemos-un-bucle-bajando-la-temperatura">
+   Hemos un bucle bajando la temperatura
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-pocos-individuos-y-pocos-pasos-de-enfrieamiento">
+   Con pocos individuos y pocos pasos de enfrieamiento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-pocos-individuos-y-muchos-pasos-de-enfrieamiento">
+   Con pocos individuos y muchos pasos de enfrieamiento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-muchos-individuos-y-no-tantos-pasos-de-enfrieamiento">
+   Con muchos individuos y no tantos pasos de enfrieamiento
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Simulated annealing</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creamos-una-funcion-que-para-obtener-un-vecino-de-cualquier-solucion">
+   Creamos una función que para obtener un
+   <em>
+    vecino
+   </em>
+   de cualquier solución
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usamos-las-mismas-funciones-para-el-tsp-de-las-notas-anteriores">
+   Usamos las mismas funciones para el TSP de las notas anteriores
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hemos-un-bucle-bajando-la-temperatura">
+   Hemos un bucle bajando la temperatura
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-pocos-individuos-y-pocos-pasos-de-enfrieamiento">
+   Con pocos individuos y pocos pasos de enfrieamiento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-pocos-individuos-y-muchos-pasos-de-enfrieamiento">
+   Con pocos individuos y muchos pasos de enfrieamiento
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#con-muchos-individuos-y-no-tantos-pasos-de-enfrieamiento">
+   Con muchos individuos y no tantos pasos de enfrieamiento
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="simulated-annealing">
+<h1>Simulated annealing<a class="headerlink" href="#simulated-annealing" title="Permalink to this headline">¶</a></h1>
+<p>Refs:</p>
+<ul class="simple">
+<li><p>Original paper: Kirkpatrick, S., Gelatt, C.D., and Vecchi, M.P., “Optimization by Simulated
+Annealing,” Science, Volume 220, Number 4598, 13 May 1983, pp. 671-
+680</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+w_size = 100
+n_cities = 20
+cities = (np.random.random((n_cities,2))*w_size).astype(int)
+cities = np.array([[ 2,88],[87,84],[84,6],[99,37], [60, 87], [ 8, 83], [43, 33], [45, 66], [28, 94], [ 3, 56], [14, 92], [88, 10], [33, 12], [33, 85], [69, 60], [67, 58], [80, 19], [81, 30], [69, 21], [78, 35]])
+plt.scatter(cities[:,0], cities[:,1])
+def TSP_cost(cities, solution):
+    sol_cities = cities[solution]
+    return np.sum(np.sqrt(np.sum((sol_cities - np.roll(sol_cities,-1, axis=0))**2, axis=1)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 12 - Simulated Annealing_2_0.png" src="../_images/NOTAS 12 - Simulated Annealing_2_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sol = np.random.permutation(len(cities))
+print(sol)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 2  6 15 14 12 11 18  9  5  8  0 10 19 16  3 17  4 13  7  1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creamos-una-funcion-que-para-obtener-un-vecino-de-cualquier-solucion">
+<h2>Creamos una función que para obtener un <em>vecino</em> de cualquier solución<a class="headerlink" href="#creamos-una-funcion-que-para-obtener-un-vecino-de-cualquier-solucion" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def TSP_neighbour(solution):
+    i1 = np.random.randint(len(solution))
+    i2 = i1+1 if i1&lt;len(solution)-1 else 0
+    r = np.copy(solution)
+    r[i1]=solution[i2]
+    r[i2]=solution[i1]
+    return r
+
+
+def TSP_neighbour2(solution):
+    return TSP_neighbour(TSP_neighbour(solution))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="usamos-las-mismas-funciones-para-el-tsp-de-las-notas-anteriores">
+<h2>Usamos las mismas funciones para el TSP de las notas anteriores<a class="headerlink" href="#usamos-las-mismas-funciones-para-el-tsp-de-las-notas-anteriores" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def TSP_initialize_population(n_individuals, n_cities):
+    r = []
+    for i in range(n_individuals):
+        r.append(np.random.permutation(n_cities))
+    return np.array(r)
+
+def TSP_cost(cities, solution):
+    sol_cities = cities[solution]
+    return np.sum(np.sqrt(np.sum((sol_cities - np.roll(sol_cities,-1, axis=0))**2, axis=1)))
+
+def TSP_plot_solution(cities, solution):
+    plt.scatter(cities[:,0], cities[:,1])
+    plt.plot(cities[solution,0].tolist()+[cities[solution[0],0]], cities[solution,1].tolist()+[cities[solution[0],1]])
+    plt.scatter(cities[solution[0],0], cities[solution[0],1], marker=&quot;x&quot;, s=60, c=&quot;red&quot;, lw=&quot;5&quot;)
+    plt.title(&quot;cost %.3f&quot;%(TSP_cost(cities, solution)))
+    
+def TSP_plot_result(best, bests, means, stds):
+    fig = plt.figure(figsize=(12,4))
+    fig.add_subplot(121)
+    plot_evolution(bests, means, stds)
+    fig.add_subplot(122)
+    TSP_plot_solution(cities, best)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="hemos-un-bucle-bajando-la-temperatura">
+<h2>Hemos un bucle bajando la temperatura<a class="headerlink" href="#hemos-un-bucle-bajando-la-temperatura" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%writefile sa.py
+
+import numpy as np
+import matplotlib.pyplot as plt
+import progressbar
+pbar = progressbar.progressbar
+
+def plot_evolution(bests, means, stds):
+    plt.plot(means, label=&quot;means&quot;)
+    plt.plot(bests, label=&quot;bests&quot;)
+    plt.fill_between(range(len(means)), means-stds, means+stds, color=&quot;yellow&quot;, alpha=0.2)
+    plt.legend()
+
+def run_sa(n_individuals, n_cooling_steps, init_population_function, cost_function, generate_neighbor_function):
+
+    pop = init_population_function(n_individuals)
+
+    mean_costs = []
+    std_costs  = []
+    best_costs = []
+    best_sols  = []
+
+    min_cost = np.inf
+    min_sol  = None
+
+    for T in pbar(np.linspace(1,0,n_cooling_steps)):
+        costs = []
+        for i in range(len(pop)):
+            sol = pop[i]
+            cost_sol = cost_function(sol)
+
+            # generate a neighbour
+            nbr = generate_neighbor_function(sol)
+            cost_nbr = cost_function(nbr)
+
+            # if the neighbour is better
+            if cost_nbr&lt;cost_sol or np.random.random()&lt;T:
+                sol = nbr
+                cost_sol = cost_nbr
+
+            pop[i] = sol
+            costs.append(cost_sol)
+
+            if cost_sol &lt; min_cost:
+                min_sol  = np.copy(pop[i])
+                min_cost = cost_function(pop[i])
+
+        best_costs.append(np.min(costs))
+        mean_costs.append(np.mean(costs))
+        std_costs.append(np.std(costs))
+
+    mean_costs = np.array(mean_costs)
+    std_costs  = np.array(std_costs)
+    best_costs = np.array(best_costs)
+    
+    return min_sol, best_costs, mean_costs, std_costs
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing sa.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="con-pocos-individuos-y-pocos-pasos-de-enfrieamiento">
+<h2>Con pocos individuos y pocos pasos de enfrieamiento<a class="headerlink" href="#con-pocos-individuos-y-pocos-pasos-de-enfrieamiento" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%run sa.py
+
+n_individuals = 20
+n_cooling_steps = 5000
+
+
+bestsol, bests, means, stds = run_sa(n_individuals              = n_individuals, 
+                                     n_cooling_steps            = n_cooling_steps, 
+                                     init_population_function   = lambda x: TSP_initialize_population(x, n_cities), 
+                                     cost_function              = lambda x: TSP_cost(cities, x),
+                                     generate_neighbor_function = TSP_neighbour2)
+
+
+TSP_plot_result(bestsol, bests, means, stds)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (5000 of 5000) |####################| Elapsed Time: 0:00:14 Time:  0:00:14
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 12 - Simulated Annealing_11_2.png" src="../_images/NOTAS 12 - Simulated Annealing_11_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="con-pocos-individuos-y-muchos-pasos-de-enfrieamiento">
+<h2>Con pocos individuos y muchos pasos de enfrieamiento<a class="headerlink" href="#con-pocos-individuos-y-muchos-pasos-de-enfrieamiento" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_individuals = 20
+n_cooling_steps = 10000
+
+bestsol, bests, means, stds = run_sa(n_individuals              = n_individuals, 
+                                     n_cooling_steps            = n_cooling_steps, 
+                                     init_population_function   = lambda x: TSP_initialize_population(x, n_cities), 
+                                     cost_function              = lambda x: TSP_cost(cities, x),
+                                     generate_neighbor_function = TSP_neighbour)
+
+
+TSP_plot_result(bestsol, bests, means, stds)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR:root:File `&#39;tmp/sa.py&#39;` not found.
+100% (10000 of 10000) |##################| Elapsed Time: 0:00:23 Time:  0:00:23
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 12 - Simulated Annealing_14_1.png" src="../_images/NOTAS 12 - Simulated Annealing_14_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_individuals = 40
+n_cooling_steps = 10000
+
+
+bestsol, bests, means, stds = run_sa(n_individuals              = n_individuals, 
+                                     n_cooling_steps            = n_cooling_steps, 
+                                     init_population_function   = lambda x: TSP_initialize_population(x, n_cities), 
+                                     cost_function              = lambda x: TSP_cost(cities, x),
+                                     generate_neighbor_function = TSP_neighbour2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (10000 of 10000) |##################| Elapsed Time: 0:00:51 Time:  0:00:51
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>TSP_plot_result(bestsol, bests, means, stds)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 12 - Simulated Annealing_16_0.png" src="../_images/NOTAS 12 - Simulated Annealing_16_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="con-muchos-individuos-y-no-tantos-pasos-de-enfrieamiento">
+<h2>Con muchos individuos y no tantos pasos de enfrieamiento<a class="headerlink" href="#con-muchos-individuos-y-no-tantos-pasos-de-enfrieamiento" title="Permalink to this headline">¶</a></h2>
+<p>(puede demorar uno o dos minutos)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_individuals = 100
+n_cooling_steps = 5000
+
+bestsol, bests, means, stds = run_sa(n_individuals              = n_individuals, 
+                                     n_cooling_steps            = n_cooling_steps, 
+                                     init_population_function   = lambda x: TSP_initialize_population(x, n_cities), 
+                                     cost_function              = lambda x: TSP_cost(cities, x),
+                                     generate_neighbor_function = TSP_neighbour)
+
+
+TSP_plot_result(bestsol, bests, means, stds)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100% (5000 of 5000) |####################| Elapsed Time: 0:00:55 Time:  0:00:55
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 12 - Simulated Annealing_18_1.png" src="../_images/NOTAS 12 - Simulated Annealing_18_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Algoritmos genéticos</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB 11 - KNAPSACK PROBLEM</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

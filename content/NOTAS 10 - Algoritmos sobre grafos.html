@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algoritmos sobre grafos &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LAB 08 Grafos" href="LAB%2008%20-%20Grafos.html" />
+    <link rel="prev" title="Recorridos sobre grafos" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/NOTAS 10 - Algoritmos sobre grafos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/NOTAS 10 - Algoritmos sobre grafos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas">
+   Preguntas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generacion-aleatoria-de-grafos">
+   Generación aleatoria de grafos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spanning-tree">
+   Spanning tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algoritmo-de-kruskal-para-la-obtencion-del-spanning-tree-de-costo-minimo-mst">
+   Algoritmo de Kruskal para la obtención del spanning tree de costo mínimo (
+   <em>
+    MST
+   </em>
+   )
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtencion-de-distancias-y-recorridos-minimos">
+   Obtención de distancias y recorridos mínimos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dijkstra-shortest-path">
+     Dijkstra shortest path
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intuicion-del-algoritmo-de-dijsktra">
+     intuición del algoritmo de Dijsktra
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Algoritmos sobre grafos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objetivo-del-modulo">
+   Objetivo del módulo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preguntas">
+   Preguntas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generacion-aleatoria-de-grafos">
+   Generación aleatoria de grafos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spanning-tree">
+   Spanning tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algoritmo-de-kruskal-para-la-obtencion-del-spanning-tree-de-costo-minimo-mst">
+   Algoritmo de Kruskal para la obtención del spanning tree de costo mínimo (
+   <em>
+    MST
+   </em>
+   )
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#obtencion-de-distancias-y-recorridos-minimos">
+   Obtención de distancias y recorridos mínimos
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dijkstra-shortest-path">
+     Dijkstra shortest path
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intuicion-del-algoritmo-de-dijsktra">
+     intuición del algoritmo de Dijsktra
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+endpoint https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m3g87w9l3k.execute-api.us-west-2.amazonaws.com/dev/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="algoritmos-sobre-grafos">
+<h1>Algoritmos sobre grafos<a class="headerlink" href="#algoritmos-sobre-grafos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objetivo-del-modulo">
+<h2>Objetivo del módulo<a class="headerlink" href="#objetivo-del-modulo" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Conocer lo que es un spanning tree y los algoritmos con los cuales se construye spanning tree de costo mínimo en grafos no dirigidos.</p></li>
+<li><p>Determinar la distancia mínima y el camino más corto para ir desde un vértice hacia los demás en grafos dirigidos.</p></li>
+</ol>
+</div>
+<div class="section" id="preguntas">
+<h2>Preguntas<a class="headerlink" href="#preguntas" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>¿Qué es un spanning tree?</p></li>
+<li><p>¿Para qué se utiliza el algoritmo de Kruskal?</p></li>
+<li><p>¿Para qué se utiliza el algoritmo de Prim?</p></li>
+<li><p>¿Para qué se utiliza el algoritmo de Dijkstra?</p></li>
+<li><p>¿Para qué se utiliza el algoritmo de Floyd?</p></li>
+<li><p>¿Para qué se utiliza el algoritmo de Warshall?</p></li>
+</ul>
+</div>
+<div class="section" id="generacion-aleatoria-de-grafos">
+<h2>Generación aleatoria de grafos<a class="headerlink" href="#generacion-aleatoria-de-grafos" title="Permalink to this headline">¶</a></h2>
+<p>Observa el código siguiente para entender cómo generamos grafos de manera aleatoria de forma que:</p>
+<ul class="simple">
+<li><p>los nodos tienen una <strong>posición</strong></p></li>
+<li><p>los lados tienen un <strong>peso</strong></p></li>
+</ul>
+<p>Generando grafos de esta manera podemos experimentar y construir las intuiciones de los algoritmos que estamos tratando.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
+%matplotlib inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def create_random_graph(directed=False, w_size=200, n_cities=7, prob_connected=0.5):
+    import itertools
+    cities = (np.random.random((n_cities,2))*w_size).astype(int)
+    g = nx.DiGraph() if directed else nx.Graph()
+    
+    for node_id, location in enumerate(cities):
+        g.add_node(node_id, pos=location)
+    for i,j in itertools.product(list(range(len(cities))), list(range(len(cities)))):
+        if i&lt;j and np.random.random()&lt;prob_connected:
+            g.add_edge(i,j,weight=np.round(np.linalg.norm(cities[i]-cities[j]),2))    
+            if directed and np.random.random()&gt;.5:
+                g.add_edge(j,i,weight=np.round(np.linalg.norm(cities[i]-cities[j]),2))    
+                
+    return g
+
+def draw_graph(g,node_size=500, font_color=&quot;white&quot;, 
+               show_edge_labels=True, edge_units=&quot; km&quot;,
+               x_units=&quot;km lon&quot;, y_units=&quot;km lat&quot;):
+    positions = {i: g.nodes[i][&quot;pos&quot;] for i in g.nodes} if &quot;pos&quot; in list(g.nodes.values())[0].keys() else None
+    nx.drawing.draw(g, with_labels=True, pos=positions,
+                    node_alpha=.5, node_color=&quot;blue&quot;, width=2,
+                    node_size=node_size, font_color=font_color)   
+    if show_edge_labels and positions is not None:
+        nx.draw_networkx_edge_labels(g, pos=positions,
+                                     edge_labels={i:&quot;%.1f%s&quot;%(g.get_edge_data(*i)[&quot;weight&quot;],edge_units) for i in g.edges});
+        plt.axis(&quot;on&quot;)
+        plt.xlabel(x_units)
+        plt.ylabel(y_units)
+        plt.grid()
+    plt.axis(&quot;equal&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>observa cómo con estas funciones creamos y visualizamos un grafo aleatorio. Experimenta con los parámetros para entender qué tipos de grafos puedes generar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = create_random_graph(n_cities=6, prob_connected=.9)
+draw_graph(g)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_6_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="spanning-tree">
+<h2>Spanning tree<a class="headerlink" href="#spanning-tree" title="Permalink to this headline">¶</a></h2>
+<p><strong>DEFINIR SPANNING TREE</strong>  cableado</p>
+</div>
+<div class="section" id="algoritmo-de-kruskal-para-la-obtencion-del-spanning-tree-de-costo-minimo-mst">
+<h2>Algoritmo de Kruskal para la obtención del spanning tree de costo mínimo (<em>MST</em>)<a class="headerlink" href="#algoritmo-de-kruskal-para-la-obtencion-del-spanning-tree-de-costo-minimo-mst" title="Permalink to this headline">¶</a></h2>
+<p><strong>INPUT</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code>: lista de lados (<em>edges</em>) del grafo ordenada ascendientemente por coste</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vset</span></code>: lista de conjuntos unitarios con los vértices (<em>nodes</em>) del grafo.</p></li>
+</ul>
+<p><strong>PSEUDOCÓDIGO</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    1.      st = {}
+    2.      para cada lado en E
+    3.		        si lado (u, w) no forma ciclo en st
+    4.		                 incluír lado (u, w) en st
+    5.			     unir en Vset los subconjuntos que contenga a u y a w
+</pre></div>
+</div>
+<p><strong>OUTPUT</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">st</span></code>: lista de lados (<em>edges</em>) que conforman el MST</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def get_mst(g, illustrate=False):
+    sorted_edges = [tuple(i) for i in np.r_[[i for i in g.edges]][np.argsort([g.edges[i][&quot;weight&quot;] for i in g.edges])]]
+    vsets = [set([i]) for i in g.nodes]
+
+    # --- begin cosmetics ----
+    if illustrate:
+        print(&quot;starting vsets&quot;, &quot;, &quot;.join([&quot;{&quot;+&quot;,&quot;.join([str(i) for i in s])+&quot;}&quot; for s in vsets]))
+        xs = [i[&quot;pos&quot;][0] for i in g.nodes.values()]
+        ys = [i[&quot;pos&quot;][1] for i in g.nodes.values()]   
+        xr = np.max(xs) - np.min(xs)
+        yr = np.max(ys) - np.min(ys)
+        print(xr, xs)
+    # --- end cosmetics ----
+        
+    st = []
+    for step_nb, edge in enumerate(sorted_edges):
+
+        n0,n1 = edge
+
+        # check no cycles: both n0 and n1 are NOT in the same set        
+        if sum([n0 in s and n1 in s for s in vsets])&gt;0:
+            continue
+
+        # add edge to spanning tree
+        st.append(edge)
+
+        # makes the union of all sets containing n1 or n0
+        containing = [i for i in vsets if n0 in i or n1 in i]
+        containing = containing[0].union(*containing[1:])
+        not_containing = [i for i in vsets if not n0 in i and not n1 in i]
+        vsets = [containing] + not_containing  
+
+        # --- begin cosmetics ----
+        if illustrate:
+            plt.figure(figsize=(2,2))
+            draw_graph(g.edge_subgraph(st), node_size=200, show_edge_labels=False)
+            str_vsets = &quot;, &quot;.join([&quot;{&quot;+&quot;,&quot;.join([str(i) for i in s])+&quot;}&quot; for s in vsets])
+            plt.title(&quot;step %d&quot;%step_nb+&quot;   edge &quot;+str(edge)+&quot;\nvsets: &quot;+str_vsets)
+            plt.grid()
+            plt.axis(&quot;tight&quot;)
+            plt.xlim(np.min(xs)-xr*.1, np.max(xs)+xr*.1)
+            plt.ylim(np.min(ys)-yr*.1, np.max(ys)+yr*.1)
+        # --- end cosmetics ----
+                        
+    return g.edge_subgraph(st)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xs = [i[&quot;pos&quot;][0] for i in g.nodes.values()]
+ys = [i[&quot;pos&quot;][1] for i in g.nodes.values()]
+</pre></div>
+</div>
+</div>
+</div>
+<p>creamos un grafo que nosotros definimos o generamos uno aleatorio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = nx.Graph()
+g.add_node(1, pos=(0,10))
+g.add_node(2, pos=(0,0))
+g.add_node(3, pos=(10,10))
+g.add_node(4, pos=(10,0))
+g.add_node(5, pos=(15,5))
+
+g.add_edge(1,2, weight=1)
+g.add_edge(1,3, weight=4)
+g.add_edge(1,4, weight=3)
+g.add_edge(2,3, weight=6)
+g.add_edge(2,4, weight=2)
+g.add_edge(3,4, weight=5)
+g.add_edge(3,5, weight=7)
+g.add_edge(4,5, weight=8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## DESCOMENTA LA SIGUIENTE LINEA SI QUIERES USAR UN GRAFO ALEATORIO
+g = create_random_graph(n_cities=10, prob_connected=.6)
+draw_graph(g)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_12_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_12_0.png" />
+</div>
+</div>
+<p>obtenermos el MST (con nuestro algoritmo y con <code class="docutils literal notranslate"><span class="pre">networkx</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_mst = nx.minimum_spanning_tree(g)
+g_mst = get_mst(g)
+
+plt.figure(figsize=(15,5))
+plt.subplot(121)
+draw_graph(n_mst)
+plt.title(&quot;networkx&quot;)
+plt.subplot(122)
+draw_graph(g_mst)
+plt.title(&quot;nuestra implementacion&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_14_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_14_0.png" />
+</div>
+</div>
+<p>vemos el paso a paso que hace nuestro algoritmo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g_mst = get_mst(g, illustrate=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>starting vsets {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}
+192 [45, 2, 16, 98, 70, 39, 36, 60, 194, 164]
+</pre></div>
+</div>
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_1.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_1.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_2.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_2.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_3.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_3.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_4.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_4.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_5.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_5.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_6.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_6.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_7.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_7.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_8.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_8.png" />
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_16_9.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_16_9.png" />
+</div>
+</div>
+</div>
+<div class="section" id="obtencion-de-distancias-y-recorridos-minimos">
+<h2>Obtención de distancias y recorridos mínimos<a class="headerlink" href="#obtencion-de-distancias-y-recorridos-minimos" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = create_random_graph(n_cities=7, prob_connected=.2, directed=True)
+draw_graph(g)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_18_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_18_0.png" />
+</div>
+</div>
+<div class="section" id="dijkstra-shortest-path">
+<h3>Dijkstra shortest path<a class="headerlink" href="#dijkstra-shortest-path" title="Permalink to this headline">¶</a></h3>
+<p>observa los distintos métodos que tiene <code class="docutils literal notranslate"><span class="pre">network</span></code> alrededor del <a class="reference external" href="https://es.wikipedia.org/wiki/Algoritmo_de_Dijkstra">Algoritmo de Dijkstra</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>source, target = 0,1
+print(&quot;shortest route from&quot;,source,&quot;to&quot;,target)
+print(nx.dijkstra_path(g, source, target))
+print(&quot;\nshortest route length from&quot;,source,&quot;to&quot;,target)
+print(nx.dijkstra_path_length(g, source, target))
+pred, dist = nx.dijkstra_predecessor_and_distance(g, source)
+print(&quot;\npredecessors to&quot;,source)
+print(pred)
+print(&quot;\ndistances to predecessors to&quot;, source)
+print(dist)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shortest route from 0 to 1
+[0, 1]
+
+shortest route length from 0 to 1
+60.3
+
+predecessors to 0
+{0: [], 1: [0], 5: [1]}
+
+distances to predecessors to 0
+{0: 0, 1: 60.3, 5: 217.14999999999998}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dpath = nx.dijkstra_path(g, source, target)
+draw_graph(g.subgraph(dpath))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_21_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="intuicion-del-algoritmo-de-dijsktra">
+<h3>intuición del algoritmo de Dijsktra<a class="headerlink" href="#intuicion-del-algoritmo-de-dijsktra" title="Permalink to this headline">¶</a></h3>
+<p>consideremos el siguiente grafo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = nx.DiGraph()
+g.add_node(&quot;S&quot;, pos=(0,5))
+g.add_node(&quot;A&quot;, pos=(10,10))
+g.add_node(&quot;B&quot;, pos=(10,0))
+g.add_node(&quot;C&quot;, pos=(20,15))
+g.add_node(&quot;D&quot;, pos=(20,5))
+
+g.add_edge(&quot;S&quot;,&quot;A&quot;, weight=5)
+g.add_edge(&quot;S&quot;,&quot;B&quot;, weight=10)
+g.add_edge(&quot;A&quot;,&quot;B&quot;, weight=3)
+g.add_edge(&quot;A&quot;,&quot;C&quot;, weight=7)
+g.add_edge(&quot;A&quot;,&quot;D&quot;, weight=10)
+g.add_edge(&quot;B&quot;,&quot;D&quot;, weight=1)
+
+plt.figure(figsize=(3,3))
+draw_graph(g, edge_units=&quot;&quot;)
+plt.axis(&quot;off&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NOTAS 10 - Algoritmos sobre grafos_23_0.png" src="../_images/NOTAS 10 - Algoritmos sobre grafos_23_0.png" />
+</div>
+</div>
+<p>queremos obtener la distancia más corta para ir <strong>desde el nodo S al D</strong></p>
+<ol class="simple">
+<li><p>Examinamos todos los lados que parten del nodo S</p></li>
+<li><p><strong>Inferimos</strong> que la distancia más corta para llegar al nodo A desde el nodo S es de 5 ya que:</p>
+<ul class="simple">
+<li><p>el nodo S solo tiene dos salidas (a través del nodo A y a través del nodo B)</p></li>
+<li><p>si saliéramos a través del nodo B para llegar al A, empezaríamos con un coste de 10</p></li>
+<li><p>pero el camino S <span class="math notranslate nohighlight">\(\rightarrow\)</span> A tiene un coste de 5km</p></li>
+<li><p>esto <strong>garantiza</strong> que el camino más corto entre S y A es de 5km</p></li>
+</ul>
+</li>
+<li><p>Todavía <strong>no podemos saber</strong> cual es la distancia más corta para llegar a D ya que a D se puede llegar también por B y no sabemos la distancia más corta para llegar a B.</p></li>
+<li><p><strong>Inferimos</strong> que la distancia más corta para llegar a B es de 8 ya que:</p>
+<ul class="simple">
+<li><p>al nodo B sólo se puede llegar desde A o S.</p></li>
+<li><p>ya <strong>sabemos</strong> cual es la distancia más corta por la que se puede llegar a A o S</p></li>
+<li><p>Pasando por A, el camino hasta B desde S es de 8km</p></li>
+<li><p>Directamente desde S, el camino es de 10km</p></li>
+</ul>
+</li>
+<li><p>ahora ya podemos <strong>inferir</strong> que la distancia más corta para llegar a D es de 9km ya que:</p>
+<ul class="simple">
+<li><p><strong>sabemos</strong> que la distancia más corta para llegar a A es de 5km, y desde ahí hasta D tenemos 10km más.</p></li>
+<li><p><strong>sabemos</strong> que la distancia más corta para llegar a B es de 8km, y desde ahí hasta D tenemos 1km más.</p></li>
+<li><p>no hay más formas de llegar a D</p></li>
+</ul>
+</li>
+</ol>
+<p>## Algoritmo de Floyd Warshall</p>
+<p>El <a class="reference external" href="https://es.wikipedia.org/wiki/Algoritmo_de_Floyd-Warshall">Algoritmo de Floyd Warshall</a> genera las distancias más cortas entre todos los pares de nodos. Observa las distintas versiones del mismo que proporciona <code class="docutils literal notranslate"><span class="pre">networkx</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = nx.floyd_warshall_numpy(g)
+print(k)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.  5.  8. 12.  9.]
+ [inf  0.  3.  7.  4.]
+ [inf inf  0. inf  1.]
+ [inf inf inf  0. inf]
+ [inf inf inf inf  0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>k = nx.floyd_warshall(g)
+k
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: defaultdict(&lt;function networkx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;,
+             {&#39;A&#39;: 0, &#39;B&#39;: 3, &#39;C&#39;: 7, &#39;D&#39;: 4, &#39;S&#39;: inf}),
+ &#39;B&#39;: defaultdict(&lt;function networkx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;,
+             {&#39;A&#39;: inf, &#39;B&#39;: 0, &#39;C&#39;: inf, &#39;D&#39;: 1, &#39;S&#39;: inf}),
+ &#39;C&#39;: defaultdict(&lt;function networkx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;,
+             {&#39;A&#39;: inf, &#39;B&#39;: inf, &#39;C&#39;: 0, &#39;D&#39;: inf, &#39;S&#39;: inf}),
+ &#39;D&#39;: defaultdict(&lt;function networkx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;,
+             {&#39;A&#39;: inf, &#39;B&#39;: inf, &#39;C&#39;: inf, &#39;D&#39;: 0, &#39;S&#39;: inf}),
+ &#39;S&#39;: defaultdict(&lt;function networkx.algorithms.shortest_paths.dense.floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;,
+             {&#39;A&#39;: 5, &#39;B&#39;: 8, &#39;C&#39;: 12, &#39;D&#39;: 9, &#39;S&#39;: 0})}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>preds, distances = nx.floyd_warshall_predecessor_and_distance(g)
+print(&quot;\npredecessors&quot;)
+print(preds)
+print(&quot;\ndistances&quot;)
+print(distances)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>predecessors
+{&#39;S&#39;: {&#39;A&#39;: &#39;S&#39;, &#39;B&#39;: &#39;A&#39;, &#39;C&#39;: &#39;A&#39;, &#39;D&#39;: &#39;B&#39;}, &#39;A&#39;: {&#39;B&#39;: &#39;A&#39;, &#39;C&#39;: &#39;A&#39;, &#39;D&#39;: &#39;B&#39;}, &#39;B&#39;: {&#39;D&#39;: &#39;B&#39;}}
+
+distances
+{&#39;S&#39;: defaultdict(&lt;function floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt; at 0x7ff0f1b8cd90&gt;, {&#39;S&#39;: 0, &#39;A&#39;: 5, &#39;B&#39;: 8, &#39;C&#39;: 12, &#39;D&#39;: 9}), &#39;A&#39;: defaultdict(&lt;function floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt; at 0x7ff0f1bb2620&gt;, {&#39;A&#39;: 0, &#39;B&#39;: 3, &#39;C&#39;: 7, &#39;D&#39;: 4, &#39;S&#39;: inf}), &#39;B&#39;: defaultdict(&lt;function floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt; at 0x7ff0f1bb2158&gt;, {&#39;B&#39;: 0, &#39;D&#39;: 1, &#39;S&#39;: inf, &#39;A&#39;: inf, &#39;C&#39;: inf}), &#39;C&#39;: defaultdict(&lt;function floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt; at 0x7ff0f1bb22f0&gt;, {&#39;C&#39;: 0, &#39;S&#39;: inf, &#39;A&#39;: inf, &#39;B&#39;: inf, &#39;D&#39;: inf}), &#39;D&#39;: defaultdict(&lt;function floyd_warshall_predecessor_and_distance.&lt;locals&gt;.&lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt; at 0x7ff0f1bb2378&gt;, {&#39;D&#39;: 0, &#39;S&#39;: inf, &#39;A&#39;: inf, &#39;B&#39;: inf, &#39;C&#39;: inf})}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Recorridos sobre grafos</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="LAB%2008%20-%20Grafos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LAB 08 Grafos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1117 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAB Tipos abstractos de datos &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="B. Estructuras y memoria" href="M02.html" />
+    <link rel="prev" title="Ejercicio 1: Suma dos matrices" href="LAB%2000%20-%20Practica-Ejemplo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MBFEZ3PF64"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-MBFEZ3PF64');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Introducción a Algoritmos y Estructuras de Datos</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Course info
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="M01.html">
+   A. Introducción
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
+     00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
+     01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
+     LAB 00 - Intro Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 01 - Tipos abstractos de datos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M02.html">
+   B. Estructuras y memoria
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2002%20-%20Polinomios.html">
+     02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2003%20-%20Matrices%20dispersas.html">
+     03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2004%20-%20Representacion%20en%20memoria.html">
+     04 - Representación en memoria
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2002%20-%20Polinomios.html">
+     LAB 02 - Polinomios
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2003%20-%20Matrices%20dispersas.html">
+     LAB 03 - Matrices dispersas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2004%20-%20Representacion%20en%20memoria.html">
+     LAB 04 - Representación en memoria
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M03.html">
+   C. Listas y árboles
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2005%20-%20Listas%20generalizadas.html">
+     05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2006%20-%20Arboles.html">
+     06 - Arboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2007%20-%20Arboles%20de%20busqueda.html">
+     07 - Arboles de búsqueda
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2005%20-%20Listas%20generalizadas.html">
+     LAB 05 - Listas generalizadas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2006%20-%20Arboles.html">
+     LAB 06 - Árboles
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2007%20-%20Arboles%20de%20busqueda.html">
+     LAB 07 - Arboles de búsqueda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M04.html">
+   D. Grafos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2008%20-%20Grafos.html">
+     08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2009%20-%20Recorridos%20sobre%20grafos.html">
+     09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     10 - Algoritmos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2008%20-%20Grafos.html">
+     LAB 08 - Grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2009%20-%20Recorridos%20sobre%20grafos.html">
+     LAB 09 - Recorridos sobre grafos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2010%20-%20Algoritmos%20sobre%20grafos.html">
+     LAB 10 - Algoritmos sobre grafos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="M05.html">
+   E. Optimización estocástica
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2011%20-%20Algoritmos%20Geneticos.html">
+     11 - Algoritmos genéticos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NOTAS%2012%20-%20Simulated%20Annealing.html">
+     12 - Simulated annealing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="LAB%2011%20-%20Algoritmos%20Gen%C3%A9ticos.html">
+     LAB 11 - Algoritmos genéticos
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/content/LAB 01 - Tipos abstractos de datos.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 01 - Tipos abstractos de datos.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-pila">
+   Implementación de una Pila
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-cola">
+   Implementación de una Cola
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medicion-de-renidimientos-y-complejidades-algoritmicas">
+   Medición de renidimientos y complejidades algorítmicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimento">
+   Experimento
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>LAB Tipos abstractos de datos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-pila">
+   Implementación de una Pila
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#registra-tu-solucion-en-linea">
+     registra tu solución en línea
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     registra tu solución en línea
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementacion-de-una-cola">
+   Implementación de una Cola
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medicion-de-renidimientos-y-complejidades-algoritmicas">
+   Medición de renidimientos y complejidades algorítmicas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-5">
+   Ejercicio 5
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-6">
+   Ejercicio 6
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     registra tu solución en línea
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimento">
+   Experimento
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+student = session.Session(init.endpoint).login( course_id=init.course_id, 
+                                                session_id=&quot;UDEA&quot;, 
+                                                lab_id=&quot;lab_01&quot; )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="lab-tipos-abstractos-de-datos">
+<h1>LAB Tipos abstractos de datos<a class="headerlink" href="#lab-tipos-abstractos-de-datos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="implementacion-de-una-pila">
+<h2>Implementación de una Pila<a class="headerlink" href="#implementacion-de-una-pila" title="Permalink to this headline">¶</a></h2>
+<p>Definimos el siguiente TAD, como una estructura de tipo LIFO (<em>Last In First Out</em>)</p>
+<p><strong>TAD</strong> <span class="math notranslate nohighlight">\(Stack\)</span></p>
+<p><span class="math notranslate nohighlight">\(\forall S \in Stack, d \in AnyType\)</span></p>
+<p><strong>signatures</strong>:
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b12e77bd-8f4a-4f41-873f-8cc0bab04bc7">
+<span class="eqno">(4)<a class="headerlink" href="#equation-b12e77bd-8f4a-4f41-873f-8cc0bab04bc7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+new() &amp;\rightarrow Stack\\
+S.put(d) &amp;\rightarrow Stack \\
+S.get() &amp;\rightarrow AnyType\\
+S.len() &amp;\rightarrow \mathbb{Z}
+\end{align}\]</div>
+<p>$$</p>
+<p><strong>axioms</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(new().len() ::= 0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S.put(d).get() ::= d\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S.put(d).len() ::= S.len()+1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S.get() \;\;and\;\; S.len()==0::=Error\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S.len()=n \;\;and\;\;S.get() \Rightarrow S.len()=n-1\)</span></p></li>
+</ul>
+<p>## Ejercicio 1</p>
+<p>completa la función siguiente para añadir un elemento a una lista</p>
+<p>ejecución de ejemplo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; x = [1,4,3]
+&gt; print st.append(x,5)
+
+[1, 4, 3, 5]
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def append(l,d):
+    return ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>verifica manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = [1,4,3]
+append(x,5)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="registra-tu-solucion-en-linea">
+<h3>registra tu solución en línea<a class="headerlink" href="#registra-tu-solucion-en-linea" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_01&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>## Ejercicio 2</p>
+<p>completa la función siguiente para que, dada una lista, devuelva dos resultados:</p>
+<ul class="simple">
+<li><p>el valor del último elemento de la lista</p></li>
+<li><p>una nueva lista en la que se eliminó el último elemento</p></li>
+<li><p>si la lista es vacía debe de generar un <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code></p></li>
+</ul>
+<p>Ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; x = [1,5,6]
+&gt; print &quot;initial&quot;, x
+&gt; for _ in range(len(x)+1):
+&gt;     v,x = getremove_last(x)
+&gt;     print &quot;last val&quot;, v, &quot;, remaining list&quot;, x
+
+initial [1, 5, 6]
+last val 6 , remaining list [1, 5]
+last val 5 , remaining list [1]
+last val 1 , remaining list []
+
+----------------------------------------------------------------------
+AssertionError                       Traceback (most recent call last)
+&lt;ipython-input-4-578f9f1609fe&gt; in &lt;module&gt;()
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def getremove_last(l):
+    assert &lt;... TU CODIGO AQUI ...&gt;
+    val, rest_list = &lt;... TU CODIGO AQUI ...&gt;
+    return val, rest_list
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = [1,5,6]
+print (&quot;initial&quot;, x)
+for _ in range(len(x)+1):
+    v,x = getremove_last(x)
+    print (&quot;last val&quot;, v, &quot;, remaining list&quot;, x)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>registra tu solución en línea<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_02&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>##  Ejercicio 3</p>
+<p>Completa la clase <code class="docutils literal notranslate"><span class="pre">Stack</span></code> con la semántica del TAD definido anteriormente. Usa las funciones anteriores si lo consideras necesario. Ejemplo de ejecución:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; print &quot;stacking elements&quot;
+&gt; s = st.Stack()
+&gt; s.put(4).put(2).put(&quot;hola&quot;)
+&gt; print s.len()
+&gt; print s.elements
+&gt; 
+&gt; print (&quot;\n--\nunstacking&quot;)
+&gt; for _ in range(s.len()):
+&gt;     print s.get()
+&gt; 
+&gt; print &quot;this next call must fail&quot;
+&gt; s.get()
+
+stacking elements
+3
+[4, 2, &#39;hola&#39;]
+
+--
+unstacking
+hola
+2
+4
+this next call must fail
+
+AssertionErrorTraceback (most recent call last)
+&lt;ipython-input-13-749203dd226f&gt; in &lt;module&gt;()
+     13 
+     14 print &quot;this next call must fail&quot;
+---&gt; 15 s.get()
+    ...
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def Stack(**kwargs):
+    def append(l,d):
+        &lt;... TU CODIGO AQUI DEL EJERCICIO ANTERIOR ...&gt;       
+
+    def getremove_last(l):
+        &lt;... TU CODIGO AQUI DEL EJERCICIO ANTERIOR ...&gt;       
+
+
+    class Stack__class:
+
+        def __init__(self):
+            self.elements = []
+
+        def put(self, d):
+            &lt;... TU CODIGO AQUI ...&gt;
+            return self
+
+        def get(self):
+            return &lt;... TU CODIGO AQUI ...&gt;
+
+        def len(self):
+            return &lt;... TU CODIGO AQUI ...&gt;
+        
+    return Stack__class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+print (&quot;stacking elements&quot;)
+s = Stack()
+s.put(4).put(2).put(&quot;hola&quot;)
+print (s.len())
+print (s.elements)
+
+print (&quot;\n--\nunstacking&quot;)
+for _ in range(s.len()):
+    print (s.get())
+    
+try:
+    s.get()
+    print (&quot;*** cuidado! tu código no contiene asserts&quot;)
+except AssertionError:
+    print (&quot;*** tu codigo está generando asserts correctos&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>registra tu solución en línea<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_03&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="implementacion-de-una-cola">
+<h2>Implementación de una Cola<a class="headerlink" href="#implementacion-de-una-cola" title="Permalink to this headline">¶</a></h2>
+<p>Definimos el siguiente TAD, como una estructura de tipo FIFO (<em>First In First Out</em>)</p>
+<p><strong>TAD</strong> <span class="math notranslate nohighlight">\(Queue\)</span></p>
+<p><span class="math notranslate nohighlight">\(\forall Q \in Queue, d \in AnyType\)</span></p>
+<p><strong>signatures</strong>:
+$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-43a5d899-33ee-4ee3-aad6-f856ffe2c6f7">
+<span class="eqno">(5)<a class="headerlink" href="#equation-43a5d899-33ee-4ee3-aad6-f856ffe2c6f7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+new() &amp;\rightarrow Queue\\
+Q.put(d) &amp;\rightarrow Queue \\
+Q.get() &amp;\rightarrow AnyType\\
+Q.len() &amp;\rightarrow \mathbb{Z}
+\end{align}\]</div>
+<p>$$</p>
+<p><strong>axioms</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(new().len() ::= 0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q.get()^n==d_i \iff Q=new().put(d_i)^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q.get(d).len() ::= Q.len()+1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q.get() \;\;and\;\; Q.len()==0::=Error\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q.len()=n \;\;and\;\;Q.get() \Rightarrow Q.len()=n-1\)</span></p></li>
+</ul>
+<p>y definimos la notación:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q.put(d_i)^n ::= Q.put(d_1).put(d_2)....put(d_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Q.get()^n ::= Q.get()\;,\;... n\; veces\; ...\;,\; Q.get()\)</span> y tomando el resultado del último</p></li>
+</ul>
+<p>##  Ejercicio 4</p>
+<p>Completa la clase <code class="docutils literal notranslate"><span class="pre">Queue</span></code> con la semántica que acabamos de definir. Ejemplo de ejecución</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; import PS01_04 as st  
+&gt; reload(st)
+&gt; 
+&gt; print &quot;enqueueing elements&quot;
+&gt; q = st.Queue()
+&gt; q.put(4).put(2).put(&quot;hola&quot;)
+&gt; print q.len()
+&gt; print q.elements
+&gt;
+&gt; print (&quot;\n--\ndequeueing&quot;)
+&gt; for _ in range(q.len()):
+&gt;     print q.get()
+&gt;
+&lt; print &quot;this next call must fail&quot;
+&gt; q.get()
+
+
+enqueueing elements
+3
+[4, 2, &#39;hola&#39;]
+
+--
+dequeueing
+4
+2
+hola
+this next call must fail
+
+AssertionErrorTraceback (most recent call last)
+&lt;ipython-input-284-50dc775a67ed&gt; in &lt;module&gt;()
+     13 
+     14 print &quot;this next call must fail&quot;
+---&gt; 15 q.get()
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def Queue(**kwargs):
+    
+    &lt;... INSERTA AQUI LAS FUNCIONES QUE CREES QUE NECESITES ...&gt;
+
+    class Queue__class:
+
+        def __init__(self):
+            self.elements = []
+
+        def put(self, d):
+            &lt;... TU CODIGO AQUI ...&gt;
+            return self
+
+        def get(self):
+            return &lt;... TU CODIGO AQUI ...&gt;
+
+        def len(self):
+            return &lt;... TU CODIGO AQUI ...&gt;
+        
+    return Queue__class(**kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print (&quot;enqueueing elements&quot;)
+q = Queue()
+q.put(4).put(2).put(&quot;hola&quot;)
+print (q.len())
+print (q.elements)
+
+print (&quot;\n--\ndequeueing&quot;)
+for _ in range(q.len()):
+    print (q.get())
+
+print (&quot;this next call must fail&quot;)
+q.get()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>registra tu solución en línea<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_04&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="medicion-de-renidimientos-y-complejidades-algoritmicas">
+<h2>Medición de renidimientos y complejidades algorítmicas<a class="headerlink" href="#medicion-de-renidimientos-y-complejidades-algoritmicas" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ejercicio-5">
+<h2>Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permalink to this headline">¶</a></h2>
+<p>completa la función siguiente que debe de llenar una cola o una pila <code class="docutils literal notranslate"><span class="pre">t</span></code>, pasada como argumento, con <code class="docutils literal notranslate"><span class="pre">n</span></code> números <strong>enteros</strong> aleatorios con valores entre 0 y 9, ambos incluidos. Usa <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.randint.html">np.random.randint</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+def fill(t, n):
+    return &lt;... TU CODIGO AQUI ...&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código, cada ejecución ha de generar valores distintos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>q = fill(Queue(), 100)
+print (&quot;len=&quot;,q.len())
+for _ in range(q.len()):
+    print (q.get(), end=&quot; &quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>registra tu solución en línea<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_05&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-6">
+<h2>Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permalink to this headline">¶</a></h2>
+<p>completa la función siguiente que debe de vaciar una cola o pila <code class="docutils literal notranslate"><span class="pre">t</span></code> y devolver el conjunto de datos obtenido tras vaciarla.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def empty(t):
+    return &lt;... TU CODIGO AQUI ...&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1,4,1,10,2,3]
+q = Queue()
+for i in a:
+    q.put(i)
+k = empty(q)
+k
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>registra tu solución en línea<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(globals(), task_id=&quot;task_06&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="experimento">
+<h2>Experimento<a class="headerlink" href="#experimento" title="Permalink to this headline">¶</a></h2>
+<p><strong>ya acabaste el taller</strong>, fíjate ahora como hacemos un experimento con pilas y colas de varios tamaños y comparamos los tiempos de ejecución. Comparamos también con las implementaciones que ya vienen en las librerías estándar de Python: <a class="reference external" href="https://docs.python.org/2/library/queue.html">Queue LifoQueue</a>. Observa que <code class="docutils literal notranslate"><span class="pre">queue.Queue</span></code> es funcionalmente equivalente a nuestro <code class="docutils literal notranslate"><span class="pre">Queue</span></code> y <code class="docutils literal notranslate"><span class="pre">queue.LifoQueue</span></code> es equivalente a nuestro <code class="docutils literal notranslate"><span class="pre">Stack</span></code>.</p>
+<p>Hazte las siguientes preguntas:</p>
+<ul class="simple">
+<li><p>¿Qué implementaciones son más lentas y más rápidas? ¿Por qué?</p></li>
+<li><p>¿Qué complejidades tenemos en inserción y recuperación? <span class="math notranslate nohighlight">\(\mathcal{O}(n)\)</span>, <span class="math notranslate nohighlight">\(\mathcal{O}(\log n)\)</span>, <span class="math notranslate nohighlight">\(\mathcal{O}(c)\)</span> ?</p></li>
+</ul>
+<p>Observa que las métricas de tiempo tienen dos componentes:</p>
+<ul class="simple">
+<li><p>El debido a la complejidad intrínseca del algoritmo</p></li>
+<li><p>El debido a la implementación del mismo</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+
+%matplotlib inline
+def compare(class_1, class_2, n_powers=5):
+    global n, class_A, class_B, q
+    class_A = class_1
+    class_B = class_2
+    t1, t2, t3, t4 = [], [], [], []
+
+    ns = [int(10**i) for i in range(n_powers)]
+    
+    for n in ns:
+        print (n,end=&quot; &quot;)
+        k = %timeit -o -q fill(class_A(), n)
+        t1.append(k.best*1000)
+
+        k = %timeit -o -q fill(class_B(), n)
+        t2.append(k.best*1000)
+        
+        q = fill(class_A(), n)
+        k = %timeit -o -r 1 -n 1 -q empty(q)
+        t3.append(k.best*1000)
+
+        q = fill(class_B(), n)
+        k = %timeit -o -r 1 -n 1 -q empty(q)
+        t4.append(k.best*1000)
+                
+    plt.figure(figsize=(10,3))
+    
+    plt.subplot(121)
+    plt.plot(t1, label=class_A.__name__+&quot; fill&quot;)
+    plt.plot(t2, label=class_B.__name__+&quot; fill&quot;)
+    plt.xticks(range(len(ns)), ns)
+    plt.xlabel(&quot;number of elements&quot;)
+    plt.ylabel(&quot;time (ms)&quot;)
+    plt.legend()
+    
+    plt.subplot(122)
+    plt.plot(t3, label=class_A.__name__+&quot; empty&quot;)
+    plt.plot(t4, label=class_B.__name__+&quot; empty&quot;)
+    plt.xticks(range(len(ns)), ns)
+    plt.xlabel(&quot;number of elements&quot;)
+    plt.legend()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>compare(Queue, Stack);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import queue
+
+class wQueue(queue.Queue):
+    def len(self):
+        return self.qsize()
+
+class wLifoQueue(queue.LifoQueue):
+    def len(self):
+        return self.qsize()
+
+    
+compare(wQueue, wLifoQueue)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="LAB%2000%20-%20Practica-Ejemplo.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ejercicio 1: Suma dos matrices</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="M02.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">B. Estructuras y memoria</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Diana Margot López, Raúl Ramos / Universidad de Antioquia<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
