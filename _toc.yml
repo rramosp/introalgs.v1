@@ -1,6 +1,8 @@
 format: jb-book
 root: intro
 chapters:
+  - file: content/M00
+    title: Información UDEA 2023.1
   - file: content/M01
     sections:
       - file: "content/NOTAS 00 - Introduccion Python.ipynb"
@@ -8,7 +10,7 @@ chapters:
       - file: "content/NOTAS 01 - Tipos abstractos de datos.ipynb"
         title: "01 - Tipos abstractos de datos"
       - file: "content/LAB 00 - Practica-Ejemplo.ipynb"
-        title: "LAB 00 - Intro Python"
+        title: "LAB 00 - Práctica de ejemplo"
       - file: "content/LAB 01 - Tipos abstractos de datos.ipynb"
         title: "LAB 01 - Tipos abstractos de datos"
   - file: content/M02
