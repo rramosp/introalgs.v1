@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
+    <title>Problem Set de Ejemplo &#8212; Introducción a Algoritmos y Estructuras de Datos</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -101,22 +101,22 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="M00.html">
    Información UDEA 2023.1
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="M01.html">
    A. Introducción
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="NOTAS%2000%20-%20Introduccion%20Python.html">
      00 - Intro Python
@@ -125,6 +125,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="NOTAS%2001%20-%20Tipos%20abstractos%20de%20datos.html">
      01 - Tipos abstractos de datos
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     LAB 00 - Práctica de ejemplo
     </a>
    </li>
    <li class="toctree-l2">
@@ -348,6 +353,22 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/rramosp/introalgs.v1/blob/main/content/LAB 00 - Practica-Ejemplo.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -357,7 +378,19 @@ const thebe_selector_output = ".output, .cell_output"
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-suma-dos-matrices">
+   Ejercicio 1: Suma dos matrices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplo-de-ejecucion">
+     Ejemplo de ejecución
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -368,7 +401,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Problem Set de Ejemplo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -377,7 +410,19 @@ const thebe_selector_output = ".output, .cell_output"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ejercicio-1-suma-dos-matrices">
+   Ejercicio 1: Suma dos matrices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejemplo-de-ejecucion">
+     Ejemplo de ejecución
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -387,7 +432,80 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  
+  <div class="tex2jax_ignore mathjax_ignore section" id="problem-set-de-ejemplo">
+<h1>Problem Set de Ejemplo<a class="headerlink" href="#problem-set-de-ejemplo" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/introalgs.v1/main/content/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L00&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ejercicio-1-suma-dos-matrices">
+<h2>Ejercicio 1: Suma dos matrices<a class="headerlink" href="#ejercicio-1-suma-dos-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Completa la función <code class="docutils literal notranslate"><span class="pre">suma_matrices</span></code> para que, dadas dos arrays numpy cualquiera devuelva la suma elemento a elemento.</p>
+<div class="section" id="ejemplo-de-ejecucion">
+<h3>Ejemplo de ejecución<a class="headerlink" href="#ejemplo-de-ejecucion" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; s = np.array([1,2,3])
+&gt; t = np.array([4,5,6])
+&gt; suma_matrices(s,t)
+
+  [5 7 9]
+</pre></div>
+</div>
+<p><em>Sugerencia</em>: completa el código de la siguiente manera:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def suma_matrices(a,b):
+   ## --- TU CODIGO AQUI ---
+   result = a + b
+   return result
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+def suma_matrices(a,b):
+    result = .... # ---- TU CODIGO AQUI ----
+    return result
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>comprueba manualmente tu código</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.random.randint(10, size=(3,2))
+b = np.random.randint(10, size=(3,2))
+print (a)
+print (b)
+print (&quot;---resultado----\n&quot;,suma_matrices(a,b))
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>envía tu solución a la plataforma</strong> para obtener tu calificación y que quede registrada</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
