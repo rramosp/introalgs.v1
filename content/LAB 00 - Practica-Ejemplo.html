@@ -430,8 +430,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/20192.L3/master/init.py
-import init; init.init(force_download=False); init.get_weblink()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/2021.deeplearning/main/content/init.py
+import init; init.init(force_download=False); 
 </pre></div>
 </div>
 </div>
@@ -440,9 +440,7 @@ import init; init.init(force_download=False); init.get_weblink()
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
 import inspect
-student = session.Session(init.endpoint).login( course_id=init.course_id, 
-                                                session_id=&quot;UDEA&quot;, 
-                                                lab_id=&quot;lab_00&quot; )
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L00&quot;, varname=&quot;student&quot;);
 </pre></div>
 </div>
 </div>
