@@ -130,11 +130,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="LAB%2000%20-%20Practica-Ejemplo.html">
-     LAB 00 - Práctica de ejemplo
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="LAB%2001%20-%20Tipos%20abstractos%20de%20datos.html">
      LAB 01 - Tipos abstractos de datos
     </a>
@@ -450,7 +445,15 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="polinomios">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/rramosp/introalgs.v1/main/content/init.py
+import init; init.init(force_download=False); 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="polinomios">
 <h1>Polinomios<a class="headerlink" href="#polinomios" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="objetivo-del-modulo">
 <h2>Objetivo del módulo<a class="headerlink" href="#objetivo-del-modulo" title="Permalink to this headline">¶</a></h2>
@@ -484,8 +487,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><span class="math notranslate nohighlight">\(\forall P,Q,R \in Polynom;\;\; c,d \in \mathbb{R};\;\; e,f\in\mathbb{N}\)</span></p>
 <p><strong>signatures</strong>:
 $$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cddfc487-5ac6-4092-8239-4abc35ac5f11">
-<span class="eqno">(6)<a class="headerlink" href="#equation-cddfc487-5ac6-4092-8239-4abc35ac5f11" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-16e89de6-c14a-4f74-aba7-99164855bd84">
+<span class="eqno">(6)<a class="headerlink" href="#equation-16e89de6-c14a-4f74-aba7-99164855bd84" title="Permalink to this equation">¶</a></span>\[\begin{align}
 new() &amp;\rightarrow Polynom\\
 P.add\_term(c,e) &amp;\rightarrow Polynom\\
 P.is\_empty() &amp;\rightarrow Bool\\
